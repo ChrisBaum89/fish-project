@@ -1,5 +1,5 @@
 class FishSerializer
   include FastJsonapi::ObjectSerializer
-  attributes
-
+  attributes :name, :description
+  belongs_to :category
 end

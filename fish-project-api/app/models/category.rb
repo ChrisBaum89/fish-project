@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_many :fishes
+  has_many :fish
 end
