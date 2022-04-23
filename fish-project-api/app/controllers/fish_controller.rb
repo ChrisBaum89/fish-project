@@ -7,7 +7,8 @@ class FishController < ApplicationController
 
   def show
     fish = Fish.find(params[:id])
-    render json: FishSerializer.new(fish)
+    puts fish
+    #render json: FishSerializer.new(fish)
   end
 
 end
