@@ -1,4 +1,5 @@
 class CategorySerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :name, :description
+  has_many :fish
 end
