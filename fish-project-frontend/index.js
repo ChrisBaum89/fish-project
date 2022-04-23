@@ -1,7 +1,8 @@
 document.addEventListener( "DOMContentLoaded", function () {
   console.log('DOM loaded')
   addFishTiles()
-  addFishImages()
+  fetchCategories()
+  fetchFish()
 });
 
 function addFishTiles(){
@@ -13,7 +14,17 @@ function addFishTiles(){
 
   }
 
-  function addFishImages(){
+function fetchCategories(){
+  
+}
 
-  }
+function fetchFish(){
+  fetch('http://api.open-notify.org/astros.json')
+  .then(function(response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function(json) {
+    console.log(json);
+  });
 }
