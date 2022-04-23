@@ -4,7 +4,7 @@ class CreateFish < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :description
       t.string :size
-      t.string :category_id
+      t.integer :category_id
 
       t.timestamps
     end
