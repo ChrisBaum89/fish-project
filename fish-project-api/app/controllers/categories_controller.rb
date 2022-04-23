@@ -1,3 +1,10 @@
 class CategoriesController < ApplicationController
-  has_many :fish
+
+  def index
+    fish
+  end
+
+  def show
+
+  end
 end
