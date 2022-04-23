@@ -11,15 +11,22 @@ function addFishTiles(){
     newSpan.setAttribute('id', 'rectangle')
     //newSpan.setAttribute('id', `rectangle${i}`)
     document.body.appendChild(newSpan)
-
+    }
   }
 
 function fetchCategories(){
-  
+  fetch('http://localhost:3000/categories')
+  .then(function(response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function(json) {
+    console.log(json);
+  });
 }
 
 function fetchFish(){
-  fetch('http://api.open-notify.org/astros.json')
+  fetch('http://localhost:3000/fish')
   .then(function(response) {
     console.log(response);
     return response.json();
