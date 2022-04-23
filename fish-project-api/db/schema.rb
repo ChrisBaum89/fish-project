@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_173933) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "fishes", force: :cascade do |t|
+  create_table "fish", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "size"
