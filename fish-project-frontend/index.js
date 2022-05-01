@@ -28,12 +28,16 @@ function backgroundTiles(json){
 
   function fishPictures(json, i, element){
     const newImg = document.createElement('img')
+    newImg.setAttribute('class', 'fishpic')
     newImg.src = json[i].img_url
-    newImg.width = 200;
+    newImg.width = 250;
     newImg.height = 200;
     element.appendChild(newImg)
   }
 
   function fishNames(json, i, element){
     element.innerHTML = json[i].name
+    element.style.textAlign = 'center'
+    element.style.fontSize = '20px';
+
   }
