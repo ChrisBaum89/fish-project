@@ -18,7 +18,6 @@ function backgroundTiles(json){
     const newDiv = document.createElement('div')
     newDiv.setAttribute('class', 'rectangle')
     newDiv.setAttribute('id', `rectangle${i}`)
-    console.log(newDiv)
     document.body.appendChild(newDiv)
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
@@ -63,4 +62,14 @@ function backgroundTiles(json){
     document.getElementById(`fishpic${i}`).style.display="none"
     //removes 'show description button'
     document.getElementById(`descripbtn${i}`).style.display="none"
+    showDescription(i, json)
+  }
+
+  function showDescription(i, json){
+    const tile = document.getElementById(`rectangle${i}`)
+    const newDiv = document.createElement('div')
+    newDiv.setAttribute('class', 'fishdesc')
+    newDiv.innerHTML = json[i].description
+    newDiv.style.fontSize = '16px'
+    tile.appendChild(newDiv)
   }
