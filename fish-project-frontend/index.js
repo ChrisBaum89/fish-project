@@ -67,20 +67,26 @@ function backgroundTiles(json){
   }
 
   function showDescription(i, json){
-    const tile = document.getElementById(`rectangle${i}`)
-    const newDiv = document.createElement('div')
-    newDiv.setAttribute('class', 'fishdesc')
-    newDiv.setAttribute('id', `fishdesc${i}`)
-    newDiv.innerHTML = json[i].description
-    newDiv.style.fontSize = '16px'
-    element = tile.appendChild(newDiv)
-    imgButton(i, element, json)
+    if (document.getElementById(`fishdesc${i}`)){
+      document.getElementById(`fishdesc${i}`).style.display="block"
+      document.getElementById(`imgbtn${i}`).style.display="block"
+    }
+    else{
+      const tile = document.getElementById(`rectangle${i}`)
+      const newDiv = document.createElement('div')
+      newDiv.setAttribute('class', 'fishdesc')
+      newDiv.setAttribute('id', `fishdesc${i}`)
+      newDiv.innerHTML = `\n${json[i].description}`
+      newDiv.style.fontSize = '16px'
+      element = tile.appendChild(newDiv)
+      imgButton(i, element, json)
+    }
   }
 
   function imgButton(i, element, json){
     if (document.getElementById(`imgbtn${i}`)){
-      document.getElementById(`fishdesc${i}`).style.display="initial"
-      document.getElementById(`imgbtn${i}`).style.display="initial"
+      document.getElementById(`fishdesc${i}`).style.display="block"
+      document.getElementById(`imgbtn${i}`).style.display="block"
     }
     else{
       var buttonEl = document.createElement("a");
@@ -99,7 +105,7 @@ function backgroundTiles(json){
     document.getElementById(`fishdesc${i}`).style.display="none"
     document.getElementById(`fishpic${i}`).style.display="initial"
     //removes 'show description button'
-    document.getElementById(`descriptbtn${i}`).style.display="initial"
+    document.getElementById(`descriptbtn${i}`).style.display="block"
   }
 
   function imgButtonListener(i, json){
