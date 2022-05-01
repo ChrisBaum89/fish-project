@@ -59,6 +59,8 @@ function backgroundTiles(json){
   }
 
   function displayDescription(i, json){
+    //removes image
     document.getElementById(`fishpic${i}`).style.display="none"
-    
+    //removes 'show description button'
+    document.getElementById(`descripbtn${i}`).style.display="none"
   }
