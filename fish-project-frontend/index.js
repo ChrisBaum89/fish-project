@@ -10,7 +10,6 @@ function fetchFish(){
   })
   .then(function(json) {
     backgroundTiles(json);
-    fishPictures(json)
   });
 }
 
@@ -23,13 +22,15 @@ function backgroundTiles(json){
     document.body.appendChild(newDiv)
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
-    descripButton(json, i , newDiv)
+    descripButton(i , newDiv)
+    descripButtonListender(i, json)
     }
   }
 
   function fishPictures(json, i, element){
     const newImg = document.createElement('img')
     newImg.setAttribute('class', 'fishpic')
+    newImg.setAttribute('id', `fishpic${i}`)
     newImg.src = json[i].img_url
     newImg.width = 250;
     newImg.height = 200;
@@ -42,12 +43,22 @@ function backgroundTiles(json){
     element.style.fontSize = '20px';
   }
 
-  function descripButton(json, i, element){
+  function descripButton(i, element){
     var buttonEl = document.createElement("a");
 	  var buttonTextEl = document.createElement("span");
-	  buttonTextEl.className = "fishpic";
+	  buttonTextEl.className = "descripbtn";
+    buttonTextEl.id = `descripbtn${i}`
 	  buttonTextEl.innerText = '\n'+"Click for Description";
     buttonTextEl.style.color = "blue"
 	  buttonEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
+  }
+
+  function descripButtonListender(i, json){
+    document.getElementById(`descripbtn${i}`).addEventListener("click", function(){displayDescription(i, json)});
+  }
+
+  function displayDescription(i, json){
+    document.getElementById(`fishpic${i}`).style.display="none"
+    
   }
