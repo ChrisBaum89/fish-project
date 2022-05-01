@@ -29,8 +29,12 @@ function backgroundTiles(json){
       var elementDiv = document.getElementById(`rectangle${i}`)
       const newImg = document.createElement('img')
       newImg.src = json[i].img_url
-      newImg.width = 100;
-      newImg.height = 100;
+      newImg.width = 200;
+      newImg.height = 200;
       elementDiv.appendChild(newImg)
     }
+  }
+
+  function fishNames(json){
+    
   }
