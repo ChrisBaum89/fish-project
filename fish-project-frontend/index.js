@@ -23,6 +23,7 @@ function backgroundTiles(json){
     document.body.appendChild(newDiv)
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
+    descripButton(json, i , newDiv)
     }
   }
 
@@ -39,4 +40,14 @@ function backgroundTiles(json){
     element.innerHTML = json[i].name
     element.style.textAlign = 'center'
     element.style.fontSize = '20px';
+  }
+
+  function descripButton(json, i, element){
+    var buttonEl = document.createElement("a");
+	  var buttonTextEl = document.createElement("span");
+	  buttonTextEl.className = "fishpic";
+	  buttonTextEl.innerText = '\n'+"Click for Description";
+    buttonTextEl.style.color = "blue"
+	  buttonEl.appendChild(buttonTextEl);
+	  element.appendChild(buttonEl);
   }
