@@ -73,3 +73,11 @@ function backgroundTiles(json){
     newDiv.style.fontSize = '16px'
     tile.appendChild(newDiv)
   }
+
+function imgButton(i, element){
+  
+}
+
+  function displayImage(i, json){
+    document.getElementById(`fishdesc${i}`).style.display="none"
+  }
