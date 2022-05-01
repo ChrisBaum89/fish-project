@@ -21,8 +21,7 @@ function backgroundTiles(json){
     document.body.appendChild(newDiv)
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
-    descripButton(i , newDiv)
-    descripButtonListender(i, json)
+    descriptButton(i , newDiv, json)
     }
   }
 
@@ -42,26 +41,28 @@ function backgroundTiles(json){
     element.style.fontSize = '20px';
   }
 
-  function descripButton(i, element){
+  function descriptButton(i, element, json){
     var buttonEl = document.createElement("a");
 	  var buttonTextEl = document.createElement("span");
-	  buttonTextEl.className = "descripbtn";
-    buttonTextEl.id = `descripbtn${i}`
+	  buttonTextEl.className = "descriptbtn";
+    buttonTextEl.id = `descriptbtn${i}`
 	  buttonTextEl.innerText = '\n'+"Click for Description";
     buttonTextEl.style.color = "blue"
 	  buttonEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
+    descriptButtonListener(i, json)
   }
 
-  function descripButtonListender(i, json){
-    document.getElementById(`descripbtn${i}`).addEventListener("click", function(){displayDescription(i, json)});
+  function descriptButtonListener(i, json){
+    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){displayDescription(i, json)});
   }
 
   function displayDescription(i, json){
+    console.log('in displayDescription')
     //removes image
     document.getElementById(`fishpic${i}`).style.display="none"
     //removes 'show description button'
-    document.getElementById(`descripbtn${i}`).style.display="none"
+    document.getElementById(`descriptbtn${i}`).style.display="none"
     showDescription(i, json)
   }
 
@@ -69,15 +70,32 @@ function backgroundTiles(json){
     const tile = document.getElementById(`rectangle${i}`)
     const newDiv = document.createElement('div')
     newDiv.setAttribute('class', 'fishdesc')
+    newDiv.setAttribute('id', `fishdesc${i}`)
     newDiv.innerHTML = json[i].description
     newDiv.style.fontSize = '16px'
-    tile.appendChild(newDiv)
+    element = tile.appendChild(newDiv)
+    imgButton(i, element, json)
   }
 
-function imgButton(i, element){
-  
-}
+  function imgButton(i, element, json){
+    var buttonEl = document.createElement("a");
+    var buttonTextEl = document.createElement("span");
+    buttonTextEl.className = "imgbtn";
+    buttonTextEl.id = `imgbtn${i}`
+    buttonTextEl.innerText = '\n'+"Click for Image";
+    buttonTextEl.style.color = "blue"
+    buttonEl.appendChild(buttonTextEl);
+    element.appendChild(buttonEl);
+    imgButtonListener(i, json)
+  }
 
   function displayImage(i, json){
     document.getElementById(`fishdesc${i}`).style.display="none"
+    document.getElementById(`fishpic${i}`).style.display="initial"
+    //removes 'show description button'
+    document.getElementById(`descriptbtn${i}`).style.display="initial"
+  }
+
+  function imgButtonListener(i, json){
+    document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
   }
