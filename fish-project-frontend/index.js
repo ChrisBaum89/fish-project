@@ -21,20 +21,19 @@ function backgroundTiles(json){
     newDiv.setAttribute('id', `rectangle${i}`)
     console.log(newDiv)
     document.body.appendChild(newDiv)
+    fishNames(json, i, newDiv)
+    fishPictures(json, i, newDiv)
     }
   }
 
-  function fishPictures(json){
-    for (let i = 0; i < json.length; i++){
-      var elementDiv = document.getElementById(`rectangle${i}`)
-      const newImg = document.createElement('img')
-      newImg.src = json[i].img_url
-      newImg.width = 200;
-      newImg.height = 200;
-      elementDiv.appendChild(newImg)
-    }
+  function fishPictures(json, i, element){
+    const newImg = document.createElement('img')
+    newImg.src = json[i].img_url
+    newImg.width = 200;
+    newImg.height = 200;
+    element.appendChild(newImg)
   }
 
-  function fishNames(json){
-    
+  function fishNames(json, i, element){
+    element.innerHTML = json[i].name
   }
