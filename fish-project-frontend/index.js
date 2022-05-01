@@ -39,5 +39,4 @@ function backgroundTiles(json){
     element.innerHTML = json[i].name
     element.style.textAlign = 'center'
     element.style.fontSize = '20px';
-
   }
