@@ -5,6 +5,7 @@
   background-color: #29b6f6;
   border: solid;
   border-color: white;
-  float: left
-
+  float: left;
+  overflow-y: auto;
+  max-height: 300px;
 }
