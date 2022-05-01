@@ -1,8 +1,6 @@
 document.addEventListener( "DOMContentLoaded", function () {
-  console.log('DOM loaded')
-  fetchFish()
-  backgroundTiles()
-  fishPictures()
+  console.log('DOM loaded');
+  fetchFish();
 });
 
 function fetchFish(){
@@ -12,19 +10,27 @@ function fetchFish(){
     return response.json();
   })
   .then(function(json) {
-    console.log(json[0].name)
+    backgroundTiles(json);
+    //fishPictures(json)
   });
 }
 
-function backgroundTiles(){
-  for (let i = 1; i <= 6; i++){
+function backgroundTiles(json){
+  for (let i = 1; i <= json.length; i++){
     const newSpan = document.createElement('div')
-    newSpan.setAttribute('id', 'rectangle')
+    newSpan.setAttribute('id', 'rectangle' + i)
     document.body.appendChild(newSpan)
     }
   }
 
-  function fishPictures(){
-    let fish = "fish"
-    console.log(fish)
+  function fishPictures(json){
+    for (let i = 1; i <= json.length; i++){
+      console.log(i)
+      var elementDiv = document.getElementById('rectangle'+i)
+      const newImg = document.createElement('img')
+      newImg.src = json[i].img_url
+      newImg.width = 100;
+      newImg.height = 100;
+      document.getElementById('rectangle'+i).appendChild(newImg)
+    }
   }
