@@ -78,15 +78,21 @@ function backgroundTiles(json){
   }
 
   function imgButton(i, element, json){
-    var buttonEl = document.createElement("a");
-    var buttonTextEl = document.createElement("span");
-    buttonTextEl.className = "imgbtn";
-    buttonTextEl.id = `imgbtn${i}`
-    buttonTextEl.innerText = '\n'+"Click for Image";
-    buttonTextEl.style.color = "blue"
-    buttonEl.appendChild(buttonTextEl);
-    element.appendChild(buttonEl);
-    imgButtonListener(i, json)
+    if (document.getElementById(`imgbtn${i}`)){
+      document.getElementById(`fishdesc${i}`).style.display="initial"
+      document.getElementById(`imgbtn${i}`).style.display="initial"
+    }
+    else{
+      var buttonEl = document.createElement("a");
+      var buttonTextEl = document.createElement("span");
+      buttonTextEl.className = "imgbtn";
+      buttonTextEl.id = `imgbtn${i}`
+      buttonTextEl.innerText = '\n'+"Click for Image";
+      buttonTextEl.style.color = "blue"
+      buttonEl.appendChild(buttonTextEl);
+      element.appendChild(buttonEl);
+      imgButtonListener(i, json)
+    }
   }
 
   function displayImage(i, json){
