@@ -29,13 +29,15 @@ function backgroundTiles(json){
 
   //adds picture from the json to the tile
   function fishPictures(json, i, element){
+    const newDiv = document.createElement('div')
     const newImg = document.createElement('img')
     newImg.setAttribute('class', 'fishpic')
     newImg.setAttribute('id', `fishpic${i}`)
     newImg.src = json[i].img_url
     newImg.width = 250;
     newImg.height = 200;
-    element.appendChild(newImg)
+    element.appendChild(newDiv)
+    newDiv.appendChild(newImg)
   }
 
   //adds fish name from the json to the tile
@@ -48,14 +50,13 @@ function backgroundTiles(json){
 // creates "Click for Description" button
   function descriptButton(i, element, json){
     var buttonEl = document.createElement("button");
-	  var buttonTextEl = document.createElement("span");
-	  buttonTextEl.className = "descriptbtn";
-    buttonTextEl.id = `descriptbtn${i}`
-	  buttonTextEl.innerText = "Description";
-    buttonTextEl.style.color = "blue"
-    buttonTextEl.style.fontSize = '18px'
-    buttonTextEl.style.borderradius = "20px"
-	  buttonEl.appendChild(buttonTextEl);
+	  buttonEl.className = "descriptbtn";
+    buttonEl.id = `descriptbtn${i}`
+	  buttonEl.innerText = "Description";
+    buttonEl.style.color = "blue"
+    buttonEl.style.fontSize = '18px'
+    buttonEl.style.borderradius = "20px"
+	  //buttonTextEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
     descriptButtonListener(i, json)
   }
@@ -68,9 +69,9 @@ function backgroundTiles(json){
 //hides elements and shows description
   function hideImage(i, json){
     //hides image
-    document.getElementById(`fishpic${i}`).style.display="none"
-    //hides 'show description button'
-    document.getElementById(`descriptbtn${i}`).style.display="none"
+    console.log(document.getElementById(`descriptbtn${i}`))
+    document.getElementById(`fishpic${i}`).style.display= `none`
+    document.getElementById(`descriptbtn${i}`).style.display= `none`
     showDescription(i, json)
   }
 
