@@ -62,11 +62,11 @@ function backgroundTiles(json){
 
 // creates listener for when the "Click for Description" button is pressed
   function descriptButtonListener(i, json){
-    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){displayDescription(i, json)});
+    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, json)});
   }
 
 //hides elements and shows description
-  function displayDescription(i, json){
+  function hideImage(i, json){
     //hides image
     document.getElementById(`fishpic${i}`).style.display="none"
     //hides 'show description button'
@@ -87,6 +87,7 @@ function backgroundTiles(json){
       newDiv.setAttribute('id', `fishdesc${i}`)
       newDiv.innerHTML = `\n${json[i].description}`
       newDiv.style.fontSize = '16px'
+      //newDiv.style.font = "American Typewriter";
       element = tile.appendChild(newDiv)
       imgButton(i, element, json)
     }
