@@ -47,12 +47,14 @@ function backgroundTiles(json){
 
 // creates "Click for Description" button
   function descriptButton(i, element, json){
-    var buttonEl = document.createElement("a");
+    var buttonEl = document.createElement("button");
 	  var buttonTextEl = document.createElement("span");
 	  buttonTextEl.className = "descriptbtn";
     buttonTextEl.id = `descriptbtn${i}`
-	  buttonTextEl.innerText = '\n'+"Click for Description";
+	  buttonTextEl.innerText = "Description";
     buttonTextEl.style.color = "blue"
+    buttonTextEl.style.fontSize = '18px'
+    buttonTextEl.style.borderradius = "20px"
 	  buttonEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
     descriptButtonListener(i, json)
