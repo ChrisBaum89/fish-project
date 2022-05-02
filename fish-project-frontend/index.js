@@ -38,6 +38,7 @@ function backgroundTiles(json){
     element.appendChild(newImg)
   }
 
+  //adds fish name from the json to the tile
   function fishNames(json, i, element){
     element.innerHTML = json[i].name
     element.style.textAlign = 'center'
