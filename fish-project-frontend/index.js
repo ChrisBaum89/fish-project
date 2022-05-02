@@ -41,6 +41,7 @@ function backgroundTiles(json){
     element.style.fontSize = '20px';
   }
 
+// creates "Click for Description" button
   function descriptButton(i, element, json){
     var buttonEl = document.createElement("a");
 	  var buttonTextEl = document.createElement("span");
@@ -53,20 +54,22 @@ function backgroundTiles(json){
     descriptButtonListener(i, json)
   }
 
+// creates listener for when the "Click for Description" button is pressed
   function descriptButtonListener(i, json){
     document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){displayDescription(i, json)});
   }
 
+//hides elements and shows description
   function displayDescription(i, json){
-    console.log('in displayDescription')
-    //removes image
+    //hides image
     document.getElementById(`fishpic${i}`).style.display="none"
-    //removes 'show description button'
+    //hides 'show description button'
     document.getElementById(`descriptbtn${i}`).style.display="none"
     showDescription(i, json)
   }
 
   function showDescription(i, json){
+    //checks if fishdesc element alread exists.  If it doesn't then it creates it
     if (document.getElementById(`fishdesc${i}`)){
       document.getElementById(`fishdesc${i}`).style.display="block"
       document.getElementById(`imgbtn${i}`).style.display="block"
@@ -84,6 +87,7 @@ function backgroundTiles(json){
   }
 
   function imgButton(i, element, json){
+    //checks if elements already exist, if not then it creates them
     if (document.getElementById(`imgbtn${i}`)){
       document.getElementById(`fishdesc${i}`).style.display="block"
       document.getElementById(`imgbtn${i}`).style.display="block"
@@ -102,9 +106,11 @@ function backgroundTiles(json){
   }
 
   function displayImage(i, json){
+    //hides description
     document.getElementById(`fishdesc${i}`).style.display="none"
+    //unhides picture
     document.getElementById(`fishpic${i}`).style.display="initial"
-    //removes 'show description button'
+    //unhides "Click for Description"
     document.getElementById(`descriptbtn${i}`).style.display="block"
   }
 
