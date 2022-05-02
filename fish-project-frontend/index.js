@@ -13,6 +13,8 @@ function fetchFish(){
   });
 }
 
+//creates number of tiles for the fish found
+//adds fish names, pictures, and button to go to description
 function backgroundTiles(json){
   for (let i = 0; i < json.length; i++){
     const newDiv = document.createElement('div')
