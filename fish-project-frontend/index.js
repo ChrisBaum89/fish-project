@@ -89,7 +89,9 @@ function backgroundTiles(json){
   function imgButton(i, element, json){
     //checks if elements already exist, if not then it creates them
     if (document.getElementById(`imgbtn${i}`)){
+      //unhides fish description if it exists
       document.getElementById(`fishdesc${i}`).style.display="block"
+      //unhides "Click for Image" if it exists
       document.getElementById(`imgbtn${i}`).style.display="block"
     }
     else{
