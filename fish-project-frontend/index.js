@@ -27,6 +27,7 @@ function backgroundTiles(json){
     }
   }
 
+  //adds picture from the json to the tile
   function fishPictures(json, i, element){
     const newImg = document.createElement('img')
     newImg.setAttribute('class', 'fishpic')
