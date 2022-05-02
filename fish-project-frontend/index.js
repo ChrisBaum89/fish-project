@@ -76,7 +76,7 @@ function backgroundTiles(json){
     //checks if fishdesc element alread exists.  If it doesn't then it creates it
     if (document.getElementById(`fishdesc${i}`)){
       document.getElementById(`fishdesc${i}`).style.display="block"
-      document.getElementById(`imgbtn${i}`).style.display="block"
+      document.getElementById(`imgbtn${i}`).style.display="initial"
     }
     else{
       const tile = document.getElementById(`rectangle${i}`)
@@ -96,15 +96,16 @@ function backgroundTiles(json){
       //unhides fish description if it exists
       document.getElementById(`fishdesc${i}`).style.display="block"
       //unhides "Click for Image" if it exists
-      document.getElementById(`imgbtn${i}`).style.display="block"
+      document.getElementById(`imgbtn${i}`).style.display="initial"
     }
     else{
       var buttonEl = document.createElement("a");
       var buttonTextEl = document.createElement("span");
       buttonTextEl.className = "imgbtn";
       buttonTextEl.id = `imgbtn${i}`
-      buttonTextEl.innerText = '\n'+"Click for Image";
+      buttonTextEl.innerText = '\n'+"<<";
       buttonTextEl.style.color = "blue"
+      buttonTextEl.style.fontSize = '20px'
       buttonEl.appendChild(buttonTextEl);
       element.appendChild(buttonEl);
       imgButtonListener(i, json)
@@ -117,7 +118,7 @@ function backgroundTiles(json){
     //unhides picture
     document.getElementById(`fishpic${i}`).style.display="initial"
     //unhides "Click for Description"
-    document.getElementById(`descriptbtn${i}`).style.display="block"
+    document.getElementById(`descriptbtn${i}`).style.display="initial"
   }
 
   function imgButtonListener(i, json){
