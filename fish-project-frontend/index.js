@@ -24,6 +24,7 @@ function backgroundTiles(json){
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
     descriptButton(i , newDiv, json)
+    addPrice(i, json, newDiv)
     }
   }
 
@@ -128,4 +129,13 @@ function backgroundTiles(json){
 
   function imgButtonListener(i, json){
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
+  }
+
+  function addPrice(i, json, element){
+    var priceEl = document.createElement("div")
+    priceEl.setAttribute("class", "price")
+    priceEl.setAttribute("id", `price${i}`)
+    console.log(json[i].price)
+    priceEl.innerText = `Price: $${json[i].price}`
+    element.appendChild(priceEl)
   }
