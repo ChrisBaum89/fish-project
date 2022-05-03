@@ -6,6 +6,8 @@ class CreateFish < ActiveRecord::Migration[6.1]
       t.string :size
       t.string :img_url
       t.integer :category_id
+      t.integer :number_in_stock
+      t.integer :price
 
       t.timestamps
     end
