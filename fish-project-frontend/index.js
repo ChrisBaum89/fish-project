@@ -25,6 +25,7 @@ function backgroundTiles(json){
     fishPictures(json, i, newDiv)
     descriptButton(i , newDiv, json)
     addPrice(i, json, newDiv)
+    addInStock(i, json, newDiv)
     }
   }
 
@@ -135,7 +136,14 @@ function backgroundTiles(json){
     var priceEl = document.createElement("div")
     priceEl.setAttribute("class", "price")
     priceEl.setAttribute("id", `price${i}`)
-    console.log(json[i].price)
     priceEl.innerText = `Price: $${json[i].price}`
     element.appendChild(priceEl)
+  }
+
+  function addInStock(i, json, element){
+    var inStockEl = document.createElement("div")
+    inStockEl.setAttribute("class", "inventory")
+    inStockEl.setAttribute("id", `inventory${i}`)
+    inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
+    element.appendChild(inStockEl)
   }
