@@ -50,7 +50,7 @@ function backgroundTiles(json){
     element.appendChild(newDiv)
   }
 
-// creates "Click for Description" button
+// creates "Description" button
   function descriptButton(i, element, json){
     var buttonEl = document.createElement("button");
 	  buttonEl.className = "descriptbtn";
