@@ -22,15 +22,13 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    createObjects(json)
-
-
+    createCatObjects(json)
     createFilter(json)
     fetchFish()
   });
 }
 
-function createObjects(json){
+function createCatObjects(json){
   //console.log(json.data[0].relationships.fish.data[0].id)
   let catObjArray = []
   let fishArray = []
@@ -42,7 +40,7 @@ function createObjects(json){
     //console.log(json.data[i].attributes.name)
     catObjArray.push(new Category(json.data[i].attributes.name, fishArray))
   }
-  console.log(catObjArray)
+  return catObjArray
 }
 
 function createFilter(json){
