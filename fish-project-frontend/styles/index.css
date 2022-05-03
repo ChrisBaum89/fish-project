@@ -33,3 +33,9 @@
   margin-right: auto;
   width: 80%;
 }
+
+.filter{
+  position: absolute;
+  top: 50px;
+  left: 300px;
+}
