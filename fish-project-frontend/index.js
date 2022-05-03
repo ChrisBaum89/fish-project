@@ -73,8 +73,12 @@ function backgroundTiles(json){
   function hideImage(i, json){
     //hides image
     console.log(document.getElementById(`descriptbtn${i}`))
-    document.getElementById(`fishpic${i}`).style.display= `none`
-    document.getElementById(`descriptbtn${i}`).style.display= `none`
+    hideElement("fishpic", i)
+    hideElement("descriptbtn", i)
+    hideElement("price", i)
+    hideElement("instock", i)
+    //document.getElementById(`descriptbtn${i}`).style.display= `none`
+    //document.getElementById(`price${i}`).style.display = `none`
     showDescription(i, json)
   }
 
@@ -120,12 +124,9 @@ function backgroundTiles(json){
   }
 
   function displayImage(i, json){
-    //hides description
-    document.getElementById(`fishdesc${i}`).style.display="none"
-    //unhides picture
-    document.getElementById(`fishpic${i}`).style.display="block"
-    //unhides "Click for Description"
-    document.getElementById(`descriptbtn${i}`).style.display="block"
+    hideElement("fishdesc", i)
+    showElement("fishpic", i, "block")
+    showElement("descriptbtn", i, "block")
   }
 
   function imgButtonListener(i, json){
@@ -142,8 +143,16 @@ function backgroundTiles(json){
 
   function addInStock(i, json, element){
     var inStockEl = document.createElement("div")
-    inStockEl.setAttribute("class", "inventory")
-    inStockEl.setAttribute("id", `inventory${i}`)
+    inStockEl.setAttribute("class", "instock")
+    inStockEl.setAttribute("id", `instock${i}`)
     inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
     element.appendChild(inStockEl)
+  }
+
+  function hideElement(className, i){
+    document.getElementById(`${className}${i}`).style.display= `none`
+  }
+
+  function showElement(className, i, showType){
+    document.getElementById(`${className}${i}`).style.display = `${showType}`
   }
