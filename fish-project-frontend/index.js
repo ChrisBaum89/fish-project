@@ -145,7 +145,13 @@ function backgroundTiles(json){
     var inStockEl = document.createElement("div")
     inStockEl.setAttribute("class", "instock")
     inStockEl.setAttribute("id", `instock${i}`)
-    inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
+    if (json[i].number_in_stock > 0){
+      inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
+    }
+    else{
+      inStockEl.innerText = `Out of Stock`
+      inStockEl.style.color = 'red'
+    }
     element.appendChild(inStockEl)
   }
 
