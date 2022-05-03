@@ -19,3 +19,10 @@
   font-family: "Fantasy", "papyrus"
 
 }
+
+.fishpic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
