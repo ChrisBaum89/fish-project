@@ -31,8 +31,13 @@ function createFilter(json){
   var select = document.createElement("select")
   newDiv.setAttribute('class', 'filter')
   newDiv.setAttribute('id', `filter`)
+  newDiv.innerText = "Filter by Category:  "
   select.name = "categories"
   select.id = "categories"
+  option = document.createElement("option")
+  option.val = ""
+  option.text = ""
+  select.appendChild(option)
 
   for (let i = 0; i < json.data.length; i++){
     //json.data[i].attributes.name
