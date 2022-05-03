@@ -42,9 +42,13 @@ function backgroundTiles(json){
 
   //adds fish name from the json to the tile
   function fishNames(json, i, element){
-    element.innerHTML = json[i].name
-    element.style.textAlign = 'center'
-    element.style.fontSize = '20px';
+    const newDiv = document.createElement('div')
+    newDiv.setAttribute('class', 'fishname')
+    newDiv.setAttribute('id', `fishname${i}`)
+    newDiv.innerHTML = json[i].name
+    newDiv.style.textAlign = 'center'
+    newDiv.style.fontSize = '20px';
+    element.appendChild(newDiv)
   }
 
 // creates "Click for Description" button
