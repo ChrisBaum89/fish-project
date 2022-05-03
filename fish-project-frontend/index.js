@@ -125,6 +125,8 @@ function backgroundTiles(json){
     hideElement("fishdesc", i)
     showElement("fishpic", i, "block")
     showElement("descriptbtn", i, "block")
+    showElement("price", i, "block")
+    showElement("instock", i, "block")
   }
 
   function imgButtonListener(i, json){
