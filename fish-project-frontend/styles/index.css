@@ -8,6 +8,7 @@
   float: left;
   overflow-y: auto;
   max-height: 300px;
+  font-family: "Fantasy", "papyrus"
 }
 
 .descriptbtn {
