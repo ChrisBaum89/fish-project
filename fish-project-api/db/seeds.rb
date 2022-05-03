@@ -60,7 +60,7 @@ volitan = Fish.create(
   size: "15 inches",
   img_url: "https://www.niabizoo.com/wp-content/uploads/2018/09/VolitanLionfish.jpg",
   category_id: 2,
-  number_in_stock: 3,
+  number_in_stock: 0,
   price: 70)
 dogface = Fish.create(
   name: "Grey Dogface Puffer",
