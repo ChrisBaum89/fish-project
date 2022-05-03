@@ -1,7 +1,7 @@
 document.addEventListener( "DOMContentLoaded", function () {
   console.log('DOM loaded');
-  //fetchCategories()
-  fetchFish();
+  fetchCategories()
+  //fetchFish();
 });
 
 function fetchFish(){
@@ -10,8 +10,9 @@ function fetchFish(){
     return response.json();
   })
   .then(function(json) {
-    fetchCategories()
+    //fetchCategories()
     backgroundTiles(json);
+    filterEventListener(json)
   });
 }
 
@@ -21,8 +22,27 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    createFilter(json);
+    createObjects(json)
+
+
+    createFilter(json)
+    fetchFish()
   });
+}
+
+function createObjects(json){
+  //console.log(json.data[0].relationships.fish.data[0].id)
+  let catObjArray = []
+  let fishArray = []
+  for (let i = 0; i < json.data.length; i++){
+    fishArray = []
+    for (let j = 0; j < json.data[i].relationships.fish.data.length; j++){
+      fishArray.push(json.data[i].relationships.fish.data[j].id)
+    }
+    //console.log(json.data[i].attributes.name)
+    catObjArray.push(new Category(json.data[i].attributes.name, fishArray))
+  }
+  console.log(catObjArray)
 }
 
 function createFilter(json){
@@ -48,8 +68,25 @@ function createFilter(json){
   }
   newDiv.appendChild(select)
   document.body.appendChild(newDiv)
-  console.log("created filter")
+}
 
+function filterEventListener(json){
+  console.log(document.getElementById("filter"))
+  document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
+}
+
+function performFilter(json){
+  //event.targe.value gives you the value of the filter
+  for (let i = 0; i < json.length; i++){
+    fetch(`http://localhost:3000/categories`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      //console.log(json)
+    });
+
+  }
 }
 
 //creates number of tiles for the fish found
@@ -60,7 +97,6 @@ function backgroundTiles(json){
     newDiv.setAttribute('class', 'rectangle')
     newDiv.setAttribute('id', `rectangle${i}`)
     document.body.appendChild(newDiv)
-    console.log("created tile")
     fishNames(json, i, newDiv)
     fishPictures(json, i, newDiv)
     descriptButton(i , newDiv, json)
@@ -201,4 +237,21 @@ function backgroundTiles(json){
 
   function showElement(className, i, showType){
     document.getElementById(`${className}${i}`).style.display = `${showType}`
+  }
+
+  class Category {
+    constructor(name, fish){
+      this.name = name
+      this.fish = fish
+    }
+
+    fish(){
+      console.log("i'm a fish")
+    }
+  }
+
+  class Fish {
+    constructor(name){
+
+    }
   }
