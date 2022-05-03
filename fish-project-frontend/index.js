@@ -47,7 +47,6 @@ function backgroundTiles(json){
     newDiv.setAttribute('id', `fishname${i}`)
     newDiv.innerHTML = json[i].name
     newDiv.style.textAlign = 'center'
-    newDiv.style.fontSize = '20px';
     element.appendChild(newDiv)
   }
 
@@ -124,9 +123,9 @@ function backgroundTiles(json){
     //hides description
     document.getElementById(`fishdesc${i}`).style.display="none"
     //unhides picture
-    document.getElementById(`fishpic${i}`).style.display="initial"
+    document.getElementById(`fishpic${i}`).style.display="block"
     //unhides "Click for Description"
-    document.getElementById(`descriptbtn${i}`).style.display="initial"
+    document.getElementById(`descriptbtn${i}`).style.display="block"
   }
 
   function imgButtonListener(i, json){
