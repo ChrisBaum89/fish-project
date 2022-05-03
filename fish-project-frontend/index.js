@@ -34,8 +34,6 @@ function backgroundTiles(json){
     newImg.setAttribute('class', 'fishpic')
     newImg.setAttribute('id', `fishpic${i}`)
     newImg.src = json[i].img_url
-    newImg.width = 250;
-    newImg.height = 200;
     element.appendChild(newDiv)
     newDiv.appendChild(newImg)
   }
