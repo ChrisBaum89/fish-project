@@ -1,4 +1,4 @@
 class CartSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :user_id, :fish_id
 end
