@@ -1,7 +1,6 @@
 document.addEventListener( "DOMContentLoaded", function () {
   console.log('DOM loaded');
   fetchCategories()
-  //fetchFish();
 });
 
 function fetchFish(){
@@ -22,25 +21,30 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    createCatObjects(json)
+    createObjects(json)
     createFilter(json)
     fetchFish()
   });
 }
 
-function createCatObjects(json){
-  //console.log(json.data[0].relationships.fish.data[0].id)
+function createObjects(json){
   let catObjArray = []
-  let fishArray = []
-  for (let i = 0; i < json.data.length; i++){
-    fishArray = []
-    for (let j = 0; j < json.data[i].relationships.fish.data.length; j++){
-      fishArray.push(json.data[i].relationships.fish.data[j].id)
-    }
-    //console.log(json.data[i].attributes.name)
-    catObjArray.push(new Category(json.data[i].attributes.name, fishArray))
+  let fishObjArray = []
+
+  //create fish objects
+  for (i = 0; i < json.included.length; i ++){
+    fishObjArray.push(new Fish(json.included[i].attributes.name, json.included[i].attributes.description, json.included[i].attributes.size, json.included[i].attributes.img_url, json.included[i].relationships.category.data.id, json.included[i].attributes.price, json.included[i].attributes.number_in_stock))
   }
-  return catObjArray
+
+  //create category objects
+  for (i = 0; i < json.data.length; i++){
+    catObjArray.push(new Category(json.data[i].attributes.name, []))
+  }
+
+  //assign fish objects to category objects
+  console.log(fishObjArray)
+
+  return fishObjArray
 }
 
 function createFilter(json){
@@ -69,7 +73,6 @@ function createFilter(json){
 }
 
 function filterEventListener(json){
-  console.log(document.getElementById("filter"))
   document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
 }
 
@@ -237,19 +240,21 @@ function backgroundTiles(json){
     document.getElementById(`${className}${i}`).style.display = `${showType}`
   }
 
-  class Category {
-    constructor(name, fish){
-      this.name = name
-      this.fish = fish
-    }
-
-    fish(){
-      console.log("i'm a fish")
-    }
-  }
+  //class Category {
+  //  constructor(name, fish){
+  //    this.name = name
+  //    this.fish = fish
+  //  }
+  // }
 
   class Fish {
-    constructor(name){
-
+    constructor(name, description, size, img_url, category_id, price, number_in_stock){
+      this.name = name
+      this.description = description
+      this.size = size
+      this.img_url = img_url
+      this.category_id = category_id
+      this.price = price
+      this.number_in_stock = number_in_stock
     }
   }
