@@ -9,7 +9,7 @@ function fetchFish(){
     return response.json();
   })
   .then(function(json) {
-    return json
+
   });
 }
 
@@ -19,13 +19,10 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    return json
+    let categories = createObjects(json)[0]
+    let fish = createObjects(json)[1]
+    backgroundTiles(fish)
   });
-}
-
-function dataObjects(){
-  jsonCat = fetchCategories()
-  jsonFish = fetchFish()
 }
 
 function createObjects(json){
@@ -50,7 +47,6 @@ function createObjects(json){
   }
 
   objArray.push(catObjArray, fishObjArray)
-  console.log(objArray)
   return objArray
 }
 
