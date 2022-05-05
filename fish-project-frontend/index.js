@@ -31,31 +31,21 @@ function createObjects(json){
   let catObjArray = []
   let fishObjArray = []
 
-  //create category objects
-  for (i = 0; i < json.data.length; i++){
-
-    newCategory = new Category(json.data[i].attributes.name, [])
-    console.log(newCategory.id)
-    for (j = 0; j < json.data[i].relationships.fish.data.length; j++)
-
-    //console.log(json.included)
-    //let categoryFish = json.included.filter( record => record. == newCategory)
-
-    //assigns fish ids
-    //newCategory.fish.push(json.data[i].relationships.fish.data[j])
-    console.log(newCategory)
-  }
-
   //create fish objects
   for (i = 0; i < json.included.length; i ++){
-    newFish = new Fish(json.included[i].attributes.id, json.included[i].attributes.name, json.included[i].attributes.description, json.included[i].attributes.size, json.included[i].attributes.img_url, json.included[i].relationships.category.data.id, json.included[i].attributes.price, json.included[i].attributes.number_in_stock)
-    //console.log(catObjArray)
-    //category = catObjArray.find( function(s) { console.log(s) })
-    //console.log(category)
-    fishObjArray.push()
-
+    fish = json.included[i].attributes
+    newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.img_url, json.included[i].relationships.category.data.id, fish.price, fish.number_in_stock)
+    fishObjArray.push(newFish)
   }
 
+  //create category objects
+  console.log(json)
+  for (let i = 0; i < json.data.length; i++){
+    newCategory = new Category(json.data[i].id, json.data[i].attributes.name, [])
+    for (let j = 0; j < json.data[i].relationships.fish.data.length; j++){
+      newCategory.fish_ids.push(json.data[i].relationships.fish.data[j].id)
+    }
+  }
 
   //assign fish objects to category objects
   for (i = 0; i < catObjArray.length; i++){
@@ -260,10 +250,10 @@ function backgroundTiles(json){
   }
 
   class Category {
-    constructor(id, name, fish){
+    constructor(id, name, fish_ids){
       this.id = id
       this.name = name
-      this.fish = fish
+      this.fish_ids = fish_ids
     }
    }
 
