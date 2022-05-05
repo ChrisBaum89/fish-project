@@ -172,8 +172,8 @@ function backgroundTiles(fish, i){
   function showDescription(fish, i){
     //checks if fishdesc element alread exists.  If it doesn't then it creates it
     if (document.getElementById(`fishdescrip${i}`)){
-      showElement('fishdesc', i, "block")
-      showElement('imgbtn', i, "initial")
+      showElement('fishdescrip', i, "block")
+      showElement('imgbtn', i, "block")
     }
     else{
       const tile = document.getElementById(`rectangle${i}`)
@@ -188,7 +188,7 @@ function backgroundTiles(fish, i){
   function imgButton(fish, i){
     //checks if elements already exist, if not then it creates them
     if (document.getElementById(`imgbtn${i}`)){
-      showElement('fishdesc', i, "block")
+      showElement('fishdescrip', i, "block")
       showElement('imgbtn', i, "initial")
     }
     else{
