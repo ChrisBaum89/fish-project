@@ -53,6 +53,7 @@ function createTiles(fish){
     descriptButton(fish, i, tileDiv)
     addPrice(fish, i, tileDiv)
     addInStock(fish, i, tileDiv)
+    descriptButtonListener(fish, i)
   }
 }
 
@@ -144,13 +145,18 @@ function backgroundTiles(fish, i){
   }
 
 // creates listener for when the "Click for Description" button is pressed
-  function descriptButtonListener(i, fish){
+  function descriptButtonListener(fish, i){
     document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, fish)});
+  }
+
+  function filterEventListener(json){
+    document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
   }
 
 //hides elements and shows description
   function hideImage(i, fish){
     //hides image
+    console.log("hidding image")
     hideElement("fishpic", i)
     hideElement("descriptbtn", i)
     hideElement("price", i)
@@ -210,9 +216,7 @@ function backgroundTiles(fish, i){
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
   }
 
-  function filterEventListener(json){
-    document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
-  }
+
 
   function performFilter(json){
     //event.targe.value gives you the value of the filter
