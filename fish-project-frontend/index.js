@@ -146,15 +146,21 @@ function backgroundTiles(fish, i){
 
 // creates listener for when the "Click for Description" button is pressed
   function descriptButtonListener(fish, i){
-    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, fish)});
+    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
   }
 
   function filterEventListener(json){
     document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
   }
 
+  function switchToDescription(fish, i){
+    hideImageElements(fish, i)
+    showDescription(fish, i)
+    imgButton(fish, i)
+  }
+
 //hides elements and shows description
-  function hideImage(i, fish){
+  function hideImageElements(fish, i){
     //hides image
     hideElement("fishpic", i)
     hideElement("descriptbtn", i)
