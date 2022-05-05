@@ -50,10 +50,10 @@ function createTiles(fish){
     tileDiv = backgroundTiles(fish, i)
     fishNames(fish, i, tileDiv)
     fishPictures(fish, i, tileDiv)
-    descriptButton(fish, i, tileDiv)
+    descripButton(fish, i, tileDiv)
     addPrice(fish, i, tileDiv)
     addInStock(fish, i, tileDiv)
-    descriptButtonListener(fish, i)
+    descripButtonListener(fish, i)
   }
 }
 
@@ -90,10 +90,10 @@ function backgroundTiles(fish, i){
   }
 
 // creates "Description" button
-  function descriptButton(fish, i, element){
+  function descripButton(fish, i, element){
     var buttonEl = document.createElement("button");
-	  buttonEl.className = "descriptbtn";
-    buttonEl.id = `descriptbtn${i}`
+	  buttonEl.className = "descripbtn";
+    buttonEl.id = `descripbtn${i}`
 	  buttonEl.innerText = "Description";
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
@@ -145,8 +145,8 @@ function backgroundTiles(fish, i){
   }
 
 // creates listener for when the "Click for Description" button is pressed
-  function descriptButtonListener(fish, i){
-    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
+  function descripButtonListener(fish, i){
+    document.getElementById(`descripbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
   }
 
   function filterEventListener(json){
@@ -164,7 +164,7 @@ function backgroundTiles(fish, i){
   function hideImageElements(fish, i){
     //hides image
     hideElement("fishpic", i)
-    hideElement("descriptbtn", i)
+    hideElement("descripbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
   }
@@ -207,7 +207,7 @@ function backgroundTiles(fish, i){
     hideElement("fishdescrip", i)
     hideElement("imgbtn", i)
     showElement("fishpic", i, "block")
-    showElement("descriptbtn", i, "block")
+    showElement("descripbtn", i, "block")
     showElement("price", i, "block")
     showElement("instock", i, "block")
   }
