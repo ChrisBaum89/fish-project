@@ -97,7 +97,6 @@ function backgroundTiles(fish, i){
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
     buttonEl.style.borderradius = "20px"
-	  //buttonTextEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
   }
 
