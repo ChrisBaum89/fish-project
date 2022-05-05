@@ -218,11 +218,15 @@ function backgroundTiles(fish, i){
     for (let i = 0; i < fish.length; i++){
       showElement('rectangle', i, 'block')
 
-      let category = categories.find(category => category.name === eventValue)
-      if (fish[i].category_id != category.id) {
-        hideElement('rectangle', i)
+      if (eventValue != ""){
+        let category = categories.find(category => category.name === eventValue)
+        if (fish[i].category_id != category.id) {
+          hideElement('rectangle', i)
+        }
       }
+
     }
+
   }
 
 
