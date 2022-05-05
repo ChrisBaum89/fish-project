@@ -13,6 +13,7 @@ function fetchCategories(){
     let fish = createObjects(json)[1]
     createTiles(fish)
     createFilterEl(categories)
+    filterEventListener(fish, categories)
   });
 }
 
@@ -123,6 +124,7 @@ function backgroundTiles(fish, i){
     let filterArray = [];
 
     var filterDiv = createDiv('filter', i)
+    filterDiv.id = 'filter'
     filterDiv.innerText = "Filter by Category:  "
     var select = document.createElement("select")
     select.name = "categories"
@@ -148,8 +150,8 @@ function backgroundTiles(fish, i){
     document.getElementById(`descripbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
   }
 
-  function filterEventListener(json){
-    document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
+  function filterEventListener(fish, categories){
+    document.getElementById(`filter`).addEventListener("change", function(){performFilter(fish, categories, event.target.value)});
   }
 
   function switchToDescription(fish, i){
@@ -211,17 +213,15 @@ function backgroundTiles(fish, i){
     showElement("instock", i, "block")
   }
 
-  function performFilter(json){
-    //event.targe.value gives you the value of the filter
-    for (let i = 0; i < json.length; i++){
-      fetch(`http://localhost:3000/categories`)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(json) {
-        //console.log(json)
-      });
+  function performFilter(fish, categories, eventValue){
 
+    for (let i = 0; i < fish.length; i++){
+      showElement('rectangle', i, 'block')
+
+      let category = categories.find(category => category.name === eventValue)
+      if (fish[i].category_id != category.id) {
+        hideElement('rectangle', i)
+      }
     }
   }
 
