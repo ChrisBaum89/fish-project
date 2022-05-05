@@ -166,8 +166,6 @@ function backgroundTiles(fish, i){
     hideElement("descriptbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
-    showDescription(fish, i)
-    //imgButton(fish, i, element)
   }
 
   function showDescription(fish, i){
@@ -186,23 +184,17 @@ function backgroundTiles(fish, i){
     }
   }
 
-  function imgButton(i, element, json){
+  function imgButton(fish, i){
     //checks if elements already exist, if not then it creates them
     if (document.getElementById(`imgbtn${i}`)){
       showElement('fishdesc', i, "block")
       showElement('imgbtn', i, "initial")
     }
     else{
-      var buttonEl = document.createElement("a");
-      var buttonTextEl = document.createElement("span");
-      buttonTextEl.className = "imgbtn";
-      buttonTextEl.id = `imgbtn${i}`
-      buttonTextEl.innerText = '\n'+"<<";
-      buttonTextEl.style.color = "blue"
-      buttonTextEl.style.fontSize = '20px'
-      buttonEl.appendChild(buttonTextEl);
+      const tile = document.getElementById(`rectangle${i}`)
+      let buttonEl = createDiv('imgbtn', i)
+      buttonEl.innerText = '\n'+"<<";
       element.appendChild(buttonEl);
-      imgButtonListener(i, json)
     }
   }
 
