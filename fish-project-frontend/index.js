@@ -108,10 +108,8 @@ function backgroundTiles(fish, i){
 	  element.appendChild(buttonEl);
   }
 
-  function addPrice(i, json, element){
-    var priceEl = document.createElement("div")
-    priceEl.setAttribute("class", "price")
-    priceEl.setAttribute("id", `price${i}`)
+  function addPrice(fish, i, element){
+    const newDiv = createDiv('price', i)
     priceEl.innerText = `Price: $${json[i].price}`
     element.appendChild(priceEl)
   }
