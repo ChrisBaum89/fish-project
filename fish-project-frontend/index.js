@@ -95,21 +95,18 @@ function performFilter(json){
 
 function createTiles(fish){
   for (let i = 0; i < fish.length; i++){
-    const newDiv = document.createElement('div')
-    console.log('test')
-    console.log(newDiv)
-    backgroundTiles(fish, i, newDiv)
-    fishPictures(fish, i, newDiv)
+    tileDiv = backgroundTiles(fish, i)
+    fishNames(fish, i, tileDiv)
+    fishPictures(fish, i, tileDiv)
   }
 }
 
 //creates number of tiles for the fish found
 //adds fish names, pictures, and button to go to description
-function backgroundTiles(fish, i, element){
-  console.log(element)
-    element.setAttribute('class', 'rectangle')
-    element.setAttribute('id', `rectangle${i}`)
-    document.body.appendChild(element)
+function backgroundTiles(fish, i){
+    let newDiv = createDiv('rectangle', i)
+    document.body.appendChild(newDiv)
+    return newDiv
     //fishNames(json, i, newDiv)
     //fishPictures(json, i, newDiv)
     //descriptButton(i , newDiv, json)
@@ -118,22 +115,27 @@ function backgroundTiles(fish, i, element){
   }
 
   //adds picture from the json to the tile
-  function fishPictures(json, i, element){
-    const newDiv = document.createElement('div')
+  function fishPictures(fish, i, element){
+    let newDiv = createDiv('fishpic', i)
     const newImg = document.createElement('img')
-    newImg.setAttribute('class', 'fishpic')
-    newImg.setAttribute('id', `fishpic${i}`)
-    newImg.src = json[i].img_url
+    newImg.src = fish[i].img_url
     element.appendChild(newDiv)
     newDiv.appendChild(newImg)
   }
 
+  function createDiv(className, i){
+    const newDiv = document.createElement('div')
+    newDiv.setAttribute('class', className)
+    newDiv.setAttribute('id', `${className}${i}`)
+    return newDiv
+  }
+
   //adds fish name from the json to the tile
-  function fishNames(json, i, element){
+  function fishNames(fish, i, element){
     const newDiv = document.createElement('div')
     newDiv.setAttribute('class', 'fishname')
     newDiv.setAttribute('id', `fishname${i}`)
-    newDiv.innerHTML = json[i].name
+    newDiv.innerHTML = fish[i].name
     newDiv.style.textAlign = 'center'
     element.appendChild(newDiv)
   }
