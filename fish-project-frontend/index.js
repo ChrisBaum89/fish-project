@@ -9,9 +9,7 @@ function fetchFish(){
     return response.json();
   })
   .then(function(json) {
-    //fetchCategories()
-    backgroundTiles(json);
-    filterEventListener(json)
+    return json
   });
 }
 
@@ -21,10 +19,13 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    let createdObj = createObjects(json)
-    createFilterEl(createdObj[0])
-    fetchFish()
+    return json
   });
+}
+
+function dataObjects(){
+  jsonCat = fetchCategories()
+  jsonFish = fetchFish()
 }
 
 function createObjects(json){
