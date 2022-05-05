@@ -45,3 +45,10 @@
   color: blue;
   font-size: 20px;
 }
+
+h2{
+  color:blue;
+  position: absolute;
+  top:0px;
+  left: 600px;
+}
