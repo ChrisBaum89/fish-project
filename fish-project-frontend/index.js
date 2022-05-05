@@ -161,6 +161,7 @@ function backgroundTiles(fish, i){
     hideElement("price", i)
     hideElement("instock", i)
     showDescription(fish, i)
+    imgButton(fish, i, element)
   }
 
   function showDescription(fish, i){
@@ -171,14 +172,11 @@ function backgroundTiles(fish, i){
     }
     else{
       const tile = document.getElementById(`rectangle${i}`)
-      const newDiv = document.createElement('div')
-      newDiv.setAttribute('class', 'fishdesc')
-      newDiv.setAttribute('id', `fishdesc${i}`)
-      newDiv.innerHTML = `\n${json[i].description}`
-      newDiv.style.fontSize = '16px'
+      const descripDiv = createDiv(fishdescrip, i)
+      descripDiv.innerHTML = `\n${fish[i].description}`
+      descripDiv.style.fontSize = '16px'
       //newDiv.style.font = "American Typewriter";
-      element = tile.appendChild(newDiv)
-      imgButton(i, element, json)
+      element = tile.appendChild(descripDiv)
     }
   }
 
