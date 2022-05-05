@@ -1,4 +1,5 @@
 
+
 .rectangle {
   height: 350px;
   width: 250px;
@@ -27,7 +28,7 @@
 
 }
 
-.fishpic {
+.fishpic img {
   display: block;
   margin-left: auto;
   margin-right: auto;
