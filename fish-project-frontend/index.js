@@ -21,8 +21,8 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
-    createObjects(json)
-    createFilter(json)
+    let createdObj = createObjects(json)
+    createFilterEl(createdObj[0])
     fetchFish()
   });
 }
@@ -30,6 +30,7 @@ function fetchCategories(){
 function createObjects(json){
   let catObjArray = []
   let fishObjArray = []
+  let objArray = []
 
   //create fish objects
   for (i = 0; i < json.included.length; i ++){
@@ -39,24 +40,20 @@ function createObjects(json){
   }
 
   //create category objects
-  console.log(json)
   for (let i = 0; i < json.data.length; i++){
     newCategory = new Category(json.data[i].id, json.data[i].attributes.name, [])
     for (let j = 0; j < json.data[i].relationships.fish.data.length; j++){
       newCategory.fish_ids.push(json.data[i].relationships.fish.data[j].id)
     }
+    catObjArray.push(newCategory)
   }
 
-  //assign fish objects to category objects
-  for (i = 0; i < catObjArray.length; i++){
-    catObjArray[0].fish.push(fishObjArray.all)
-
-  }
-
-  return fishObjArray
+  objArray.push(catObjArray, fishObjArray)
+  console.log(objArray)
+  return objArray
 }
 
-function createFilter(json){
+function createFilterEl(objects){
   let filterArray = [];
   var newDiv = document.createElement('div')
   var select = document.createElement("select")
@@ -70,7 +67,7 @@ function createFilter(json){
   option.text = ""
   select.appendChild(option)
 
-  for (let i = 0; i < json.data.length; i++){
+  for (let i = 0; i < objects; i++){
     //json.data[i].attributes.name
     option = document.createElement("option")
     option.val = json.data[i].attributes.name
