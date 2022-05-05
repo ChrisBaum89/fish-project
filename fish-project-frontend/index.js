@@ -68,9 +68,9 @@ function createTiles(fish){
 //creates number of tiles for the fish found
 //adds fish names, pictures, and button to go to description
 function backgroundTiles(fish, i){
-    let newDiv = createDiv('rectangle', i)
-    document.body.appendChild(newDiv)
-    return newDiv
+    let tileDiv = createDiv('rectangle', i)
+    document.body.appendChild(tileDiv)
+    return tileDiv
   }
 
   //adds picture from the json to the tile
