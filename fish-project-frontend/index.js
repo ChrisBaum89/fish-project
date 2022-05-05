@@ -133,11 +133,11 @@ function backgroundTiles(fish, i){
     option.text = ""
     select.appendChild(option)
 
-    for (let i = 0; i < objects; i++){
+    for (let i = 0; i < objects.length; i++){
       //json.data[i].attributes.name
       option = document.createElement("option")
-      option.val = json.data[i].attributes.name
-      option.text = json.data[i].attributes.name
+      option.val = objects[i].name
+      option.text = objects[i].name
       select.appendChild(option)
     }
     newDiv.appendChild(select)
