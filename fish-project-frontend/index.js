@@ -98,6 +98,7 @@ function createTiles(fish){
     tileDiv = backgroundTiles(fish, i)
     fishNames(fish, i, tileDiv)
     fishPictures(fish, i, tileDiv)
+    descriptButton(fish, i, tileDiv)
   }
 }
 
@@ -134,7 +135,7 @@ function backgroundTiles(fish, i){
   }
 
 // creates "Description" button
-  function descriptButton(i, element, json){
+  function descriptButton(fish, i, element){
     var buttonEl = document.createElement("button");
 	  buttonEl.className = "descriptbtn";
     buttonEl.id = `descriptbtn${i}`
@@ -144,24 +145,21 @@ function backgroundTiles(fish, i){
     buttonEl.style.borderradius = "20px"
 	  //buttonTextEl.appendChild(buttonTextEl);
 	  element.appendChild(buttonEl);
-    descriptButtonListener(i, json)
   }
 
 // creates listener for when the "Click for Description" button is pressed
-  function descriptButtonListener(i, json){
-    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, json)});
+  function descriptButtonListener(i, fish){
+    document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, fish)});
   }
 
 //hides elements and shows description
-  function hideImage(i, json){
+  function hideImage(i, fish){
     //hides image
-    console.log(document.getElementById(`descriptbtn${i}`))
     hideElement("fishpic", i)
     hideElement("descriptbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
-    //document.getElementById(`descriptbtn${i}`).style.display= `none`
-    //document.getElementById(`price${i}`).style.display = `none`
+
     showDescription(i, json)
   }
 
