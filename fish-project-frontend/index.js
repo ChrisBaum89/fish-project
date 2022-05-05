@@ -121,11 +121,10 @@ function backgroundTiles(fish, i){
 
   function createFilterEl(objects){
     let filterArray = [];
-    var newDiv = document.createElement('div')
+
+    var filterDiv = createDiv('filter', i)
+    filterDiv.innerText = "Filter by Category:  "
     var select = document.createElement("select")
-    newDiv.setAttribute('class', 'filter')
-    newDiv.setAttribute('id', `filter`)
-    newDiv.innerText = "Filter by Category:  "
     select.name = "categories"
     select.id = "categories"
     option = document.createElement("option")
@@ -140,8 +139,8 @@ function backgroundTiles(fish, i){
       option.text = objects[i].name
       select.appendChild(option)
     }
-    newDiv.appendChild(select)
-    document.body.appendChild(newDiv)
+    filterDiv.appendChild(select)
+    document.body.appendChild(filterDiv)
   }
 
 // creates listener for when the "Click for Description" button is pressed
