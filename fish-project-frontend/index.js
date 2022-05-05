@@ -3,16 +3,6 @@ document.addEventListener( "DOMContentLoaded", function () {
   fetchCategories()
 });
 
-//function fetchFish(){
-  //fetch('http://localhost:3000/fish')
-  //.then(function(response) {
-  //  return response.json();
-  //})
-//  .then(function(json) {
-
-  //});
-//}
-
 function fetchCategories(){
   fetch('http://localhost:3000/categories')
   .then(function(response) {
