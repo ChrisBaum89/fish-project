@@ -50,30 +50,7 @@ function createObjects(json){
   return objArray
 }
 
-function createFilterEl(objects){
-  let filterArray = [];
-  var newDiv = document.createElement('div')
-  var select = document.createElement("select")
-  newDiv.setAttribute('class', 'filter')
-  newDiv.setAttribute('id', `filter`)
-  newDiv.innerText = "Filter by Category:  "
-  select.name = "categories"
-  select.id = "categories"
-  option = document.createElement("option")
-  option.val = ""
-  option.text = ""
-  select.appendChild(option)
 
-  for (let i = 0; i < objects; i++){
-    //json.data[i].attributes.name
-    option = document.createElement("option")
-    option.val = json.data[i].attributes.name
-    option.text = json.data[i].attributes.name
-    select.appendChild(option)
-  }
-  newDiv.appendChild(select)
-  document.body.appendChild(newDiv)
-}
 
 function filterEventListener(json){
   document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
@@ -167,6 +144,31 @@ function backgroundTiles(fish, i){
       inStockEl.style.color = 'red'
     }
     element.appendChild(inStockEl)
+  }
+
+  function createFilterEl(objects){
+    let filterArray = [];
+    var newDiv = document.createElement('div')
+    var select = document.createElement("select")
+    newDiv.setAttribute('class', 'filter')
+    newDiv.setAttribute('id', `filter`)
+    newDiv.innerText = "Filter by Category:  "
+    select.name = "categories"
+    select.id = "categories"
+    option = document.createElement("option")
+    option.val = ""
+    option.text = ""
+    select.appendChild(option)
+
+    for (let i = 0; i < objects; i++){
+      //json.data[i].attributes.name
+      option = document.createElement("option")
+      option.val = json.data[i].attributes.name
+      option.text = json.data[i].attributes.name
+      select.appendChild(option)
+    }
+    newDiv.appendChild(select)
+    document.body.appendChild(newDiv)
   }
 
 // creates listener for when the "Click for Description" button is pressed
