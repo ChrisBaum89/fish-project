@@ -52,23 +52,7 @@ function createObjects(json){
 
 
 
-function filterEventListener(json){
-  document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
-}
 
-function performFilter(json){
-  //event.targe.value gives you the value of the filter
-  for (let i = 0; i < json.length; i++){
-    fetch(`http://localhost:3000/categories`)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(json) {
-      //console.log(json)
-    });
-
-  }
-}
 
 function createTiles(fish){
   for (let i = 0; i < fish.length; i++){
@@ -238,6 +222,24 @@ function backgroundTiles(fish, i){
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
   }
 
+  function filterEventListener(json){
+    document.getElementById(`filter`).addEventListener("change", function(){performFilter(json)});
+  }
+
+  function performFilter(json){
+    //event.targe.value gives you the value of the filter
+    for (let i = 0; i < json.length; i++){
+      fetch(`http://localhost:3000/categories`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
+        //console.log(json)
+      });
+
+    }
+  }
+
 
 
   function hideElement(className, i){
@@ -247,6 +249,8 @@ function backgroundTiles(fish, i){
   function showElement(className, i, showType){
     document.getElementById(`${className}${i}`).style.display = `${showType}`
   }
+
+
 
   class Category {
     constructor(id, name, fish_ids){
