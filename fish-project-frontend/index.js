@@ -75,11 +75,11 @@ function backgroundTiles(fish, i){
 
   //adds picture from the json to the tile
   function fishPictures(fish, i, element){
-    const newDiv = createDiv('fishpic', i)
-    const newImg = document.createElement('img')
-    newImg.src = fish[i].img_url
-    element.appendChild(newDiv)
-    newDiv.appendChild(newImg)
+    const picDiv = createDiv('fishpic', i)
+    const picImg = document.createElement('img')
+    picImg.src = fish[i].img_url
+    element.appendChild(picDiv)
+    picDiv.appendChild(picImg)
   }
 
   function createDiv(className, i){
