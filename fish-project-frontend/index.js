@@ -60,6 +60,8 @@ function createTiles(fish){
     fishNames(fish, i, tileDiv)
     fishPictures(fish, i, tileDiv)
     descriptButton(fish, i, tileDiv)
+    addPrice(fish, i, tileDiv)
+    addInStock(fish, i, tileDiv)
   }
 }
 
@@ -110,17 +112,14 @@ function backgroundTiles(fish, i){
 
   function addPrice(fish, i, element){
     const newDiv = createDiv('price', i)
-    priceEl.innerText = `Price: $${fish[i].price}`
-    element.appendChild(priceEl)
+    newDiv.innerText = `Price: $${fish[i].price}`
+    element.appendChild(newDiv)
   }
 
   function addInStock(fish, i, element){
-    const newDiv = createDiv('instock', i)
-    var inStockEl = document.createElement("div")
-    inStockEl.setAttribute("class", "instock")
-    inStockEl.setAttribute("id", `instock${i}`)
-    if (json[i].number_in_stock > 0){
-      inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
+    const inStockEl = createDiv('instock', i)
+    if (fish[i].number_in_stock > 0){
+      inStockEl.innerText = `Number in Stock: ${fish[i].number_in_stock}`
     }
     else{
       inStockEl.innerText = `Out of Stock`
