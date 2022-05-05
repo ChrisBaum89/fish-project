@@ -156,16 +156,14 @@ function backgroundTiles(fish, i){
 //hides elements and shows description
   function hideImage(i, fish){
     //hides image
-    console.log("hidding image")
     hideElement("fishpic", i)
     hideElement("descriptbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
-
-    showDescription(i, json)
+    showDescription(fish, i)
   }
 
-  function showDescription(i, json){
+  function showDescription(fish, i){
     //checks if fishdesc element alread exists.  If it doesn't then it creates it
     if (document.getElementById(`fishdesc${i}`)){
       showElement('fishdesc', i, "block")
