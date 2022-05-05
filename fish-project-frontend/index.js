@@ -147,6 +147,28 @@ function backgroundTiles(fish, i){
 	  element.appendChild(buttonEl);
   }
 
+  function addPrice(i, json, element){
+    var priceEl = document.createElement("div")
+    priceEl.setAttribute("class", "price")
+    priceEl.setAttribute("id", `price${i}`)
+    priceEl.innerText = `Price: $${json[i].price}`
+    element.appendChild(priceEl)
+  }
+
+  function addInStock(i, json, element){
+    var inStockEl = document.createElement("div")
+    inStockEl.setAttribute("class", "instock")
+    inStockEl.setAttribute("id", `instock${i}`)
+    if (json[i].number_in_stock > 0){
+      inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
+    }
+    else{
+      inStockEl.innerText = `Out of Stock`
+      inStockEl.style.color = 'red'
+    }
+    element.appendChild(inStockEl)
+  }
+
 // creates listener for when the "Click for Description" button is pressed
   function descriptButtonListener(i, fish){
     document.getElementById(`descriptbtn${i}`).addEventListener("click", function(){hideImage(i, fish)});
@@ -214,27 +236,7 @@ function backgroundTiles(fish, i){
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
   }
 
-  function addPrice(i, json, element){
-    var priceEl = document.createElement("div")
-    priceEl.setAttribute("class", "price")
-    priceEl.setAttribute("id", `price${i}`)
-    priceEl.innerText = `Price: $${json[i].price}`
-    element.appendChild(priceEl)
-  }
 
-  function addInStock(i, json, element){
-    var inStockEl = document.createElement("div")
-    inStockEl.setAttribute("class", "instock")
-    inStockEl.setAttribute("id", `instock${i}`)
-    if (json[i].number_in_stock > 0){
-      inStockEl.innerText = `Number in Stock: ${json[i].number_in_stock}`
-    }
-    else{
-      inStockEl.innerText = `Out of Stock`
-      inStockEl.style.color = 'red'
-    }
-    element.appendChild(inStockEl)
-  }
 
   function hideElement(className, i){
     document.getElementById(`${className}${i}`).style.display= `none`
