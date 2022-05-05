@@ -110,11 +110,12 @@ function backgroundTiles(fish, i){
 
   function addPrice(fish, i, element){
     const newDiv = createDiv('price', i)
-    priceEl.innerText = `Price: $${json[i].price}`
+    priceEl.innerText = `Price: $${fish[i].price}`
     element.appendChild(priceEl)
   }
 
-  function addInStock(i, json, element){
+  function addInStock(fish, i, element){
+    const newDiv = createDiv('instock', i)
     var inStockEl = document.createElement("div")
     inStockEl.setAttribute("class", "instock")
     inStockEl.setAttribute("id", `instock${i}`)
