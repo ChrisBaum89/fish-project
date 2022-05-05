@@ -3,15 +3,15 @@ document.addEventListener( "DOMContentLoaded", function () {
   fetchCategories()
 });
 
-function fetchFish(){
-  fetch('http://localhost:3000/fish')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
+//function fetchFish(){
+  //fetch('http://localhost:3000/fish')
+  //.then(function(response) {
+  //  return response.json();
+  //})
+//  .then(function(json) {
 
-  });
-}
+  //});
+//}
 
 function fetchCategories(){
   fetch('http://localhost:3000/categories')
@@ -21,7 +21,7 @@ function fetchCategories(){
   .then(function(json) {
     let categories = createObjects(json)[0]
     let fish = createObjects(json)[1]
-    backgroundTiles(fish)
+    createTiles(fish)
   });
 }
 
@@ -93,20 +93,28 @@ function performFilter(json){
   }
 }
 
+function createTiles(fish){
+  for (let i = 0; i < fish.length; i++){
+    const newDiv = document.createElement('div')
+    console.log('test')
+    console.log(newDiv)
+    backgroundTiles(fish, i, newDiv)
+    fishPictures(fish, i, newDiv)
+  }
+}
+
 //creates number of tiles for the fish found
 //adds fish names, pictures, and button to go to description
-function backgroundTiles(json){
-  for (let i = 0; i < json.length; i++){
-    const newDiv = document.createElement('div')
-    newDiv.setAttribute('class', 'rectangle')
-    newDiv.setAttribute('id', `rectangle${i}`)
-    document.body.appendChild(newDiv)
-    fishNames(json, i, newDiv)
-    fishPictures(json, i, newDiv)
-    descriptButton(i , newDiv, json)
-    addPrice(i, json, newDiv)
-    addInStock(i, json, newDiv)
-    }
+function backgroundTiles(fish, i, element){
+  console.log(element)
+    element.setAttribute('class', 'rectangle')
+    element.setAttribute('id', `rectangle${i}`)
+    document.body.appendChild(element)
+    //fishNames(json, i, newDiv)
+    //fishPictures(json, i, newDiv)
+    //descriptButton(i , newDiv, json)
+    //addPrice(i, json, newDiv)
+    //addInStock(i, json, newDiv)
   }
 
   //adds picture from the json to the tile
