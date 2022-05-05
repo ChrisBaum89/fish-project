@@ -157,6 +157,7 @@ function backgroundTiles(fish, i){
     hideImageElements(fish, i)
     showDescription(fish, i)
     imgButton(fish, i)
+    imgButtonListener(fish, i)
   }
 
 //hides elements and shows description
@@ -170,7 +171,7 @@ function backgroundTiles(fish, i){
 
   function showDescription(fish, i){
     //checks if fishdesc element alread exists.  If it doesn't then it creates it
-    if (document.getElementById(`fishdesc${i}`)){
+    if (document.getElementById(`fishdescrip${i}`)){
       showElement('fishdesc', i, "block")
       showElement('imgbtn', i, "initial")
     }
@@ -198,19 +199,18 @@ function backgroundTiles(fish, i){
     }
   }
 
-  function displayImage(i, json){
-    hideElement("fishdesc", i)
+  function imgButtonListener(fish, i){
+    document.getElementById(`imgbtn${i}`).addEventListener("click", function(){switchToImage(fish, i)});
+  }
+
+  function switchToImage(fish, i){
+    hideElement("fishdescrip", i)
+    hideElement("imgbtn", i)
     showElement("fishpic", i, "block")
     showElement("descriptbtn", i, "block")
     showElement("price", i, "block")
     showElement("instock", i, "block")
   }
-
-  function imgButtonListener(i, json){
-    document.getElementById(`imgbtn${i}`).addEventListener("click", function(){displayImage(i, json)});
-  }
-
-
 
   function performFilter(json){
     //event.targe.value gives you the value of the filter
