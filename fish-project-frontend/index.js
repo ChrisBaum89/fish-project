@@ -107,11 +107,6 @@ function backgroundTiles(fish, i){
     let newDiv = createDiv('rectangle', i)
     document.body.appendChild(newDiv)
     return newDiv
-    //fishNames(json, i, newDiv)
-    //fishPictures(json, i, newDiv)
-    //descriptButton(i , newDiv, json)
-    //addPrice(i, json, newDiv)
-    //addInStock(i, json, newDiv)
   }
 
   //adds picture from the json to the tile
