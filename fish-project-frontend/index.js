@@ -12,6 +12,7 @@ function fetchCategories(){
     let categories = createObjects(json)[0]
     let fish = createObjects(json)[1]
     createTiles(fish)
+    createFilterEl(categories)
   });
 }
 
