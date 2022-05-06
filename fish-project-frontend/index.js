@@ -152,8 +152,23 @@ function backgroundTiles(fish, i){
     contactDiv.id = 'contact'
     contactDiv.innerText = "Contact Us"
     document.body.appendChild(contactDiv)
+  }
 
+  function createContactPage(){
+    var contactDiv = createDiv('contactpage', 1)
+    contactDiv.id = 'contactpage'
+    document.body.appendChild(contactDiv)
+  }
 
+  function createTextInputBox(name){
+
+  }
+
+  function createTextInputLabel(label, text, element){
+    const newLabel = document.createElement("label");
+    newLabel.setAttribute("for", `${label}`);
+    newLabel.innerHTML = text;
+    element.appendChild(newlabel);
   }
 
 // creates listener for when the "Click for Description" button is pressed
@@ -166,7 +181,7 @@ function backgroundTiles(fish, i){
   }
 
   function contactListener(){
-    document.getElementById(`contact1`).addEventListener("click", function(){switchToContact()});
+    document.getElementById('contact').addEventListener("click", function(){switchToContact()});
   }
 
   function switchToDescription(fish, i){
