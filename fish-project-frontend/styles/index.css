@@ -52,3 +52,12 @@ h2{
   top:0px;
   left: 600px;
 }
+
+.contact{
+  color: blue;
+  font-size: 20px;
+  position: absolute;
+  top:50px;
+  left: 600px;
+  text-decoration: underline;
+}
