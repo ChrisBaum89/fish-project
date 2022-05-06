@@ -14,6 +14,7 @@ function fetchCategories(){
     createTiles(fish)
     createFilterEl(categories)
     filterEventListener(fish, categories)
+    createContactEl()
   });
 }
 
@@ -143,6 +144,15 @@ function backgroundTiles(fish, i){
     }
     filterDiv.appendChild(select)
     document.body.appendChild(filterDiv)
+  }
+
+  function createContactEl(){
+    var contactDiv = createDiv('contact', 1)
+    contactDiv.id = 'contact'
+    contactDiv.innerText = "Contact Us"
+    document.body.appendChild(contactDiv)
+
+
   }
 
 // creates listener for when the "Click for Description" button is pressed
