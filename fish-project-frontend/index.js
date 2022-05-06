@@ -15,6 +15,7 @@ function fetchCategories(){
     createFilterEl(categories)
     filterEventListener(fish, categories)
     createContactEl()
+    contactListener()
   });
 }
 
@@ -162,6 +163,10 @@ function backgroundTiles(fish, i){
 
   function filterEventListener(fish, categories){
     document.getElementById(`filter`).addEventListener("change", function(){performFilter(fish, categories, event.target.value)});
+  }
+
+  function contactListener(){
+    document.getElementById(`contact1`).addEventListener("click", function(){switchToContact()});
   }
 
   function switchToDescription(fish, i){
