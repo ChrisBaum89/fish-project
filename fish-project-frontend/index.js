@@ -160,6 +160,10 @@ function backgroundTiles(fish, i){
     document.body.appendChild(contactDiv)
   }
 
+  function createContactPageEntries(){
+    
+  }
+
   function createTextInputBox(name){
 
   }
