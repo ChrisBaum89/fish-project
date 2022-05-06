@@ -161,16 +161,19 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPageEntries(){
-    
+
   }
 
-  function createTextInputBox(name){
-
+  function createTextInputBox(idname, element){
+    const input = document.createElement("input");
+    input.setAttribute("id", idname);
+    input.setAttribute("type", "text");
+    element.appendChild(input);
   }
 
   function createTextInputLabel(label, text, element){
     const newLabel = document.createElement("label");
-    newLabel.setAttribute("for", `${label}`);
+    newLabel.setAttribute("for", label);
     newLabel.innerHTML = text;
     element.appendChild(newlabel);
   }
