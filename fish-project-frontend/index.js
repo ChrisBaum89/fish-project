@@ -16,6 +16,7 @@ function fetchCategories(){
     filterEventListener(fish, categories)
     createContactEl()
     contactListener()
+    createContactPage()
   });
 }
 
@@ -158,17 +159,19 @@ function backgroundTiles(fish, i){
     var contactDiv = createDiv('contactpage', 1)
     contactDiv.id = 'contactpage'
     document.body.appendChild(contactDiv)
+    createContactPageEntries(contactDiv)
   }
 
-  function createContactPageEntries(){
-    
+  function createContactPageEntries(contactDiv){
+    createLabel("firstname", "First Name:", contactDiv)
+    createTextInputBox("firstname", contactDiv)
   }
 
   function createLabel(label, text, element){
     const newLabel = document.createElement("label");
     newLabel.setAttribute("for", label);
     newLabel.innerHTML = text;
-    element.appendChild(newlabel);
+    element.appendChild(newLabel);
   }
 
   function createTextInputBox(idname, element){
