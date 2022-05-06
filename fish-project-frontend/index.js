@@ -161,7 +161,14 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPageEntries(){
+    
+  }
 
+  function createLabel(label, text, element){
+    const newLabel = document.createElement("label");
+    newLabel.setAttribute("for", label);
+    newLabel.innerHTML = text;
+    element.appendChild(newlabel);
   }
 
   function createTextInputBox(idname, element){
@@ -171,12 +178,7 @@ function backgroundTiles(fish, i){
     element.appendChild(input);
   }
 
-  function createTextInputLabel(label, text, element){
-    const newLabel = document.createElement("label");
-    newLabel.setAttribute("for", label);
-    newLabel.innerHTML = text;
-    element.appendChild(newlabel);
-  }
+
 
 // creates listener for when the "Click for Description" button is pressed
   function descripButtonListener(fish, i){
