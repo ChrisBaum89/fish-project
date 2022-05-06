@@ -244,6 +244,9 @@ function backgroundTiles(fish, i){
 
   }
 
+  function switchToContact(){
+    console.log('switch to contact')
+  }
 
 
   function hideElement(className, i){
