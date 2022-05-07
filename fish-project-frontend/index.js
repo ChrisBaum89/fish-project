@@ -169,23 +169,24 @@ function backgroundTiles(fish, i){
     createContactPageEntries(contactDiv)
 
     //create submit button
-    createButton('contactButton', contactDiv, "submit", "Submit")
+    createButton('contactbutton', contactDiv, 1, "submit", "Submit")
 
     //create exit button
-    createButton('contactButton', contactDiv, "exit", "Exit")
+    createButton('contactbutton', contactDiv, 2, "exit", "Exit")
+    exitListener()
 
 
   }
 
-  function createButton(classname, element, idval, buttontext){
+  function createButton(classname, element, dividval, buttonidval, buttontext){
     //create div
-    newDiv = createDiv(classname, 1)
+    newDiv = createDiv(classname, dividval)
     element.appendChild(newDiv)
 
     //create button
     var button = document.createElement("BUTTON");
     button.innerHTML = buttontext;
-    button.setAttribute('id', idval)
+    button.setAttribute('id', buttonidval)
     button.setAttribute('class', 'contactbutton')
     newDiv.appendChild(button)
   }
@@ -254,6 +255,10 @@ function backgroundTiles(fish, i){
         messagebox.value = "";
       }
     })
+  }
+
+  function exitListener(){
+    document.getElementById('exit').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
 
   function switchToDescription(fish, i){
