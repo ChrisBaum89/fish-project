@@ -78,7 +78,11 @@ h2{
 
 .contacttitle{
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
   position: relative;
   left: 40%;
+}
+
+.contactlabel{
+  font-size: 20px;
 }
