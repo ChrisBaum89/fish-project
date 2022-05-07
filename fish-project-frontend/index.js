@@ -156,15 +156,25 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPage(){
+    //create Div for contact page
     var contactDiv = createDiv('contactpage', 1)
     document.body.appendChild(contactDiv)
 
-
+    //create title
     contactTitle = createDiv('contacttitle', 1)
     contactTitle.innerHTML = "Contact Us"
     contactDiv.appendChild(contactTitle)
 
+    //create contact page entry boxes
     createContactPageEntries(contactDiv)
+
+    //create submit button
+    submitDiv = createDiv('submit', 1)
+    contactDiv.appendChild(submitDiv)
+
+    //create exit button
+
+
   }
 
   function createContactPageEntries(contactDiv){
