@@ -75,3 +75,10 @@ h2{
   top: 25%;
   left: 25%;
 }
+
+.contacttitle{
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  left: 40%;
+}
