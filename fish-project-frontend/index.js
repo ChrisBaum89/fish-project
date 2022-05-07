@@ -176,6 +176,8 @@ function backgroundTiles(fish, i){
     createButton('contactbutton', contactDiv, 2, "exit", "Exit")
     exitListener()
 
+    hideElement('contactpage', 1)
+
 
   }
 
@@ -342,7 +344,7 @@ function backgroundTiles(fish, i){
   }
 
   function switchToContact(){
-    console.log('switch to contact')
+    showElement('contactpage', 1, "initial")
   }
 
 
