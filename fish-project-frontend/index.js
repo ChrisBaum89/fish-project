@@ -169,12 +169,25 @@ function backgroundTiles(fish, i){
     createContactPageEntries(contactDiv)
 
     //create submit button
-    submitDiv = createDiv('submit', 1)
-    contactDiv.appendChild(submitDiv)
+    createButton('contactButton', contactDiv, "submit", "Submit")
 
     //create exit button
+    createButton('contactButton', contactDiv, "exit", "Exit")
 
 
+  }
+
+  function createButton(classname, element, idval, buttontext){
+    //create div
+    newDiv = createDiv(classname, 1)
+    element.appendChild(newDiv)
+
+    //create button
+    var button = document.createElement("BUTTON");
+    button.innerHTML = buttontext;
+    button.setAttribute('id', idval)
+    button.setAttribute('class', 'contactbutton')
+    newDiv.appendChild(button)
   }
 
   function createContactPageEntries(contactDiv){
