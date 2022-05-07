@@ -86,3 +86,13 @@ h2{
 .contactlabel{
   font-size: 20px;
 }
+
+.textbox1{
+  position: relative;
+  left: 0%;
+  width: 300px;
+}
+
+.contactinfo{
+  display: block
+}
