@@ -170,6 +170,7 @@ function backgroundTiles(fish, i){
 
     //create submit button
     createButton('contactbutton', contactDiv, 1, "submit", "Submit")
+    submitListener()
 
     //create exit button
     createButton('contactbutton', contactDiv, 2, "exit", "Exit")
@@ -255,6 +256,10 @@ function backgroundTiles(fish, i){
         messagebox.value = "";
       }
     })
+  }
+
+  function submitListener(){
+    document.getElementById('submit').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
 
   function exitListener(){
