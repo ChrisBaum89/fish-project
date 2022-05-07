@@ -173,8 +173,17 @@ function backgroundTiles(fish, i){
     createLabelInputEl("contactinfo", "lastname", "Last Name:  ", contactDiv, "contactlabel", "textbox1")
     createLabelInputEl("contactinfo", "email", "Email:  ", contactDiv, "contactlabel", "textbox1")
     createLabelInputEl("contactinfo","phonenumber", "Phone Number:  ", contactDiv, "contactlabel", "textbox1")
-    createLabelInputEl("contactinfo","message", "Message:  ", contactDiv, "contactlabel", "textbox2")
 
+    newDiv = createDiv("contactinfo", 1)
+    contactDiv.appendChild(newDiv)
+    const textarea = document.createElement("TEXTAREA");
+    textarea.setAttribute("class", 'messagebox')
+    textarea.setAttribute("id", "messagebox")
+    let t = document.createTextNode("Enter your message here")
+    textarea.appendChild(t)
+    newDiv.appendChild(textarea)
+
+    messageListener()
   }
 
   function createLabelInputEl(divname, idname, labeltext, element, labelclass, inputclass){
@@ -213,6 +222,15 @@ function backgroundTiles(fish, i){
 
   function contactListener(){
     document.getElementById('contact').addEventListener("click", function(){switchToContact()});
+  }
+
+  function messageListener(){
+    messagebox = document.getElementById("messagebox")
+    messagebox.addEventListener("click", function(){
+      if (messagebox.value == "Enter your message here"){
+        messagebox.value = "";
+      }
+    })
   }
 
   function switchToDescription(fish, i){
