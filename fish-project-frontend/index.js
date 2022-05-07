@@ -168,20 +168,32 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPageEntries(contactDiv){
-    createLabel("firstname", "First Name:", contactDiv)
-    createTextInputBox("firstname", contactDiv)
+
+    createLabelInputEl("firstname", "First Name:  ", contactDiv, "contactlabel", "textbox1")
+    createLabelInputEl("lastname", "Last Name:  ", contactDiv, "contactlabel", "textbox1")
+    createLabelInputEl("email", "Email:  ", contactDiv, "contactlabel", "textbox1")
+    createLabelInputEl("phonenumber", "Phone Number:  ", contactDiv, "contactlabel", "textbox1")
+    createLabelInputEl("message", "Message:  ", contactDiv, "contactlabel", "textbox2")
+
   }
 
-  function createLabel(label, text, element){
+  function createLabelInputEl(idname, labeltext, element, labelclass, inputclass){
+    createLabel(idname, labeltext, element, labelclass)
+    createTextInputBox(idname, element, inputclass)
+  }
+
+  function createLabel(label, text, element, classname){
     const newLabel = document.createElement("label");
     newLabel.setAttribute("for", label);
+    newLabel.setAttribute("class", classname)
     newLabel.innerHTML = text;
     element.appendChild(newLabel);
   }
 
-  function createTextInputBox(idname, element){
+  function createTextInputBox(idname, element, classname){
     const input = document.createElement("input");
     input.setAttribute("id", idname);
+    input.setAttribute("class", classname)
     input.setAttribute("type", "text");
     element.appendChild(input);
   }
