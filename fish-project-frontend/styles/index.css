@@ -64,16 +64,15 @@ h2{
 
 .contactpage{
   height: 500px;
-  width: 500px;
+  width: 550px;
   background-color: #29b6f6;
   border: solid;
   border-color: white;
   float: left;
-  overflow-y: auto;
   font-family: "Fantasy", "papyrus";
   position: absolute;
   top: 25%;
-  left: 25%;
+  left: 15%;
 }
 
 .contacttitle{
@@ -94,5 +93,15 @@ h2{
 }
 
 .contactinfo{
-  display: block
+  position: relative;
+  display: block;
+  left: 5%;
+}
+
+.messagebox{
+  display: block;
+  width: 400;
+  height: 200;
+  margin-left: auto;
+  margin-right: auto;
 }
