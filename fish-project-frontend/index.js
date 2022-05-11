@@ -195,48 +195,41 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPageEntries(contactDiv){
+    console.log(contactDiv)
+    form = createForm(contactDiv, 'contactform')
+    console.log(form)
+    createInputElement(form, "text", "firstname", "firstname", "contactinput")
 
-    createLabelInputEl("contactinfo","firstname", "First Name:  ", contactDiv, "contactlabel", "textbox1")
-    createLabelInputEl("contactinfo", "lastname", "Last Name:  ", contactDiv, "contactlabel", "textbox1")
-    createLabelInputEl("contactinfo", "email", "Email:  ", contactDiv, "contactlabel", "textbox1")
-    createLabelInputEl("contactinfo","phonenumber", "Phone Number:  ", contactDiv, "contactlabel", "textbox1")
-
-    newDiv = createDiv("contactinfo", 1)
-    contactDiv.appendChild(newDiv)
-    const textarea = document.createElement("TEXTAREA");
-    textarea.setAttribute("class", 'messagebox')
-    textarea.setAttribute("id", "messagebox")
-    let t = document.createTextNode("Enter your message here")
-    textarea.appendChild(t)
-    newDiv.appendChild(textarea)
 
     messageListener()
   }
 
-  function createLabelInputEl(divname, idname, labeltext, element, labelclass, inputclass){
-    newDiv = createDiv(divname, 1)
-    element.append(newDiv)
-    createLabel(idname, labeltext, newDiv, labelclass)
-    createTextInputBox(idname, newDiv, inputclass)
+  function createForm(parentEl, id){
+    var form = document.createElement("form")
+    form.setAttribute('method', "post")
+    form.setAttribute('action', "submit.php")
+    form.setAttribute('id', id)
+    parentEl.appendChild(form)
+    return form
   }
 
-  function createLabel(label, text, element, classname){
-    const newLabel = document.createElement("label");
-    newLabel.setAttribute("for", label);
-    newLabel.setAttribute("class", classname)
-    newLabel.innerHTML = text;
-    element.appendChild(newLabel);
-  }
 
-  function createTextInputBox(idname, element, classname){
+  function createInputElement(parentEl, typename, name, id, classname){
     const input = document.createElement("input");
-    input.setAttribute("id", idname);
+    input.setAttribute("type", typename);
+    input.setAttribute("name", name)
+    input.setAttribute("id", id);
     input.setAttribute("class", classname)
-    input.setAttribute("type", "text");
-    element.appendChild(input);
+    parentEl.appendChild(input);
   }
 
-
+  function createLabel(parentEl, label, classname, text){
+      const newLabel = document.createElement("label");
+      newLabel.setAttribute("for", label);
+      newLabel.setAttribute("class", classname)
+      newLabel.innerHTML = text;
+      element.appendChild(newLabel);
+    }
 
 // creates listener for when the "Click for Description" button is pressed
   function descripButtonListener(fish, i){
