@@ -381,19 +381,19 @@ function backgroundTiles(fish, i){
 
   function submitMessage() {
     //obtain form data from elements
-    let firstName = document.getElementById("firstname").value
-    let lastName = document.getElementById("lastname").value
-    let email = document.getElementById("email").value
-    let phoneNumber = document.getElementById("phonenumber").value
-    let messageText = document.getElementById("messagebox").value
+    let firstName = document.getElementById("firstname")
+    let lastName = document.getElementById("lastname")
+    let email = document.getElementById("email")
+    let phoneNumber = document.getElementById("phonenumber")
+    let messageText = document.getElementById("messagebox")
 
     //assign form data to object attributes
     const formData = {
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      phonenumber: phoneNumber,
-      messagetext: messageText
+      firstname: firstName.value,
+      lastname: lastName.value,
+      email: email.value,
+      phonenumber: phoneNumber.value,
+      messagetext: messageText.value
     }
 
     //send post request
@@ -412,6 +412,11 @@ function backgroundTiles(fish, i){
       })
       .then(function(object){
         console.log(object);
+        firstName.value = ""
+        lastname.value = ""
+        email.value = ""
+        phoneNumber.value = ""
+        messageText.value = "Enter your message here"
       })
 
     hideElement("contactpage", 1)
