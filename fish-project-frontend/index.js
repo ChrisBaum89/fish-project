@@ -168,9 +168,7 @@ function backgroundTiles(fish, i){
     //create contact page entry boxes
     createContactPageEntries(contactDiv)
 
-    //create submit button
-    createButton('contactbutton', contactDiv, 1, "submit", "Submit")
-    submitListener()
+
 
     //create exit button
     createButton('contactbutton', contactDiv, 2, "exit", "Exit")
@@ -195,7 +193,6 @@ function backgroundTiles(fish, i){
   }
 
   function createContactPageEntries(contactDiv){
-    console.log(contactDiv)
     form = createForm(contactDiv, 'contactform')
 
     let newDiv = createDiv("forminput", 1)
@@ -221,11 +218,25 @@ function backgroundTiles(fish, i){
     const textarea = document.createElement("TEXTAREA");
     textarea.setAttribute("class", 'messagebox')
     textarea.setAttribute("id", "messagebox")
+    textarea.setAttribute("name", "messagebox")
     let t = document.createTextNode("Enter your message here")
     textarea.appendChild(t)
     form.appendChild(textarea)
 
+    const submit = document.createElement("button")
+    submit.setAttribute("class", "submitButton")
+    submit.setAttribute("value", "Submit")
+    submit.setAttribute("type", "submit")
+    submit.setAttribute("onclick", submitMessage())
+    submit.innerHTML = "Submit"
+    //submit.setAttribute("onclick", submitMessage())
+    form.appendChild(submit)
+
+
     messageListener()
+
+
+    //submitListener()
   }
 
 
@@ -233,7 +244,7 @@ function backgroundTiles(fish, i){
   function createForm(parentEl, id){
     var form = document.createElement("form")
     form.setAttribute('method', "post")
-    form.setAttribute('action', "submit.php")
+    form.setAttribute('action', "")
     form.setAttribute('id', id)
     parentEl.appendChild(form)
     return form
@@ -400,7 +411,9 @@ function backgroundTiles(fish, i){
 
   function submitMessage() {
     //obtain form data from elements
+    console.log("in submit message")
     let firstName = document.getElementById("firstname")
+    console.log(firstName)
     let lastName = document.getElementById("lastname")
     let email = document.getElementById("email")
     let phoneNumber = document.getElementById("phonenumber")
