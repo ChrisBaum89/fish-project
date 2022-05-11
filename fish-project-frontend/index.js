@@ -207,19 +207,23 @@ function backgroundTiles(fish, i){
     form.appendChild(textarea)
 
     const submit = document.createElement("button")
-    submit.setAttribute("class", "submitButton")
+    submit.setAttribute("class", "formbutton")
     submit.setAttribute("value", "Submit")
-    submit.setAttribute("type", "submit")
-    submit.setAttribute("onclick", submitMessage())
+    submit.setAttribute("type", "button")
+    submit.setAttribute("id", "submit")
+    submit.onclick = function(){submitMessage()}
     submit.innerHTML = "Submit"
-    //submit.setAttribute("onclick", submitMessage())
     form.appendChild(submit)
 
+    const exit = document.createElement("button")
+    exit.setAttribute("class", "formbutton")
+    exit.setAttribute("id", "exitbutton")
+    exit.setAttribute("type", "button")
+    exit.onclick = function(){hideElement("contactpage", 1)}
+    exit.innerHTML = "Exit"
+    form.appendChild(exit)
 
     messageListener()
-
-
-    //submitListener()
   }
 
 
@@ -273,12 +277,13 @@ function backgroundTiles(fish, i){
     })
   }
 
-  function submitListener(){
-    document.getElementById('submit').addEventListener("click", function(){submitMessage()});
-  }
+  //function submitListener(){
+  //  console.log("submit listener created")
+  //  document.getElementById('submit').addEventListener("click", function(){submitMessage()});
+  //}
 
   function exitListener(){
-    document.getElementById('exit').addEventListener("click", function(){hideElement("contactpage", 1)});
+    document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
 
   function switchToDescription(fish, i){
@@ -396,7 +401,6 @@ function backgroundTiles(fish, i){
     //obtain form data from elements
     console.log("in submit message")
     let firstName = document.getElementById("firstname")
-    console.log(firstName)
     let lastName = document.getElementById("lastname")
     let email = document.getElementById("email")
     let phoneNumber = document.getElementById("phonenumber")
