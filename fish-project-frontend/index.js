@@ -168,28 +168,11 @@ function backgroundTiles(fish, i){
     //create contact page entry boxes
     createContactPageEntries(contactDiv)
 
-
-
-    //create exit button
-    createButton('contactbutton', contactDiv, 2, "exit", "Exit")
     exitListener()
 
     hideElement('contactpage', 1)
 
 
-  }
-
-  function createButton(classname, element, dividval, buttonidval, buttontext){
-    //create div
-    newDiv = createDiv(classname, dividval)
-    element.appendChild(newDiv)
-
-    //create button
-    var button = document.createElement("BUTTON");
-    button.innerHTML = buttontext;
-    button.setAttribute('id', buttonidval)
-    button.setAttribute('class', 'contactbutton')
-    newDiv.appendChild(button)
   }
 
   function createContactPageEntries(contactDiv){
