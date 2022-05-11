@@ -197,12 +197,38 @@ function backgroundTiles(fish, i){
   function createContactPageEntries(contactDiv){
     console.log(contactDiv)
     form = createForm(contactDiv, 'contactform')
-    console.log(form)
-    createInputElement(form, "text", "firstname", "firstname", "contactinput")
 
+    let newDiv = createDiv("forminput", 1)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv,  "firstname", "contactlabel", "First Name:  ")
+    createInputElement(newDiv, "text", "firstname", "firstname", "contactinput")
+
+    newDiv = createDiv("forminput", 2)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
+    createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
+
+    newDiv = createDiv("forminput", 3)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv, "email", "contactlabel", "Email:  ")
+    createInputElement(newDiv, "text", "email", "email", "contactinput")
+
+    newDiv = createDiv("forminput", 4)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv, "phonenumber", "contactlabel", "Phone Number:  ")
+    createInputElement(newDiv, "text", "phonenumber", "phonenumber", "contactinput")
+
+    const textarea = document.createElement("TEXTAREA");
+    textarea.setAttribute("class", 'messagebox')
+    textarea.setAttribute("id", "messagebox")
+    let t = document.createTextNode("Enter your message here")
+    textarea.appendChild(t)
+    form.appendChild(textarea)
 
     messageListener()
   }
+
+
 
   function createForm(parentEl, id){
     var form = document.createElement("form")
@@ -223,12 +249,12 @@ function backgroundTiles(fish, i){
     parentEl.appendChild(input);
   }
 
-  function createLabel(parentEl, label, classname, text){
+  function createInputLabel(parentEl, label, classname, text){
       const newLabel = document.createElement("label");
       newLabel.setAttribute("for", label);
       newLabel.setAttribute("class", classname)
       newLabel.innerHTML = text;
-      element.appendChild(newLabel);
+      parentEl.appendChild(newLabel);
     }
 
 // creates listener for when the "Click for Description" button is pressed
