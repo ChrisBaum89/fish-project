@@ -261,7 +261,7 @@ function backgroundTiles(fish, i){
   }
 
   function submitListener(){
-    document.getElementById('submit').addEventListener("click", function(){hideElement("contactpage", 1)});
+    document.getElementById('submit').addEventListener("click", function(){submitMessage()});
   }
 
   function exitListener(){
@@ -377,4 +377,35 @@ function backgroundTiles(fish, i){
       this.price = price
       this.number_in_stock = number_in_stock
     }
+  }
+
+  function submitMessage() {
+    const formData = {
+      firstname: "Chris",
+      lastname: "Baum",
+      email: "crbaum@yahoo.com",
+      phonenumber: "704-604-6450",
+      messagetext: "Test message for Chris Baum2"
+    }
+
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(formData)
+    }
+
+    console.log(formData)
+
+    fetch("http://localhost:3000/messages", configObj)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(object){
+        console.log(object);
+      })
+
+    hideElement("contactpage", 1)
   }
