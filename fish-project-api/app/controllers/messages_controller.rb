@@ -15,4 +15,16 @@ class MessagesController < ApplicationController
     render json: MessageSerializer.new(message)
   end
 
+  def create
+    @message = Message.new(
+      firstname: params[:firstname],
+      lastname: params[:lastname],
+      email: params[:email],
+      phonenumber: params[:phonenumber],
+      messagetext: params[:messagetext]
+    )
+    binding.pry
+    #@message.save
+    #redirect_to message_path(@message)
+  end
 end
