@@ -78,3 +78,11 @@ bluehippo = Fish.create(
   category_id: 4,
   number_in_stock: 12,
   price: 15)
+
+  firstmessage = Message.create(
+    firstname: "Bob",
+    lastname: "Doe",
+    email: "bd@yahoo.com",
+    phonenumber: "999-999-9999",
+    messagetext: "This is my message test for Bob Doe"
+  )
