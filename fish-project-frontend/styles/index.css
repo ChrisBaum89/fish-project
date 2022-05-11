@@ -82,20 +82,10 @@ h2{
   left: 40%;
 }
 
-.contactlabel{
+.forminput{
+  position: relative;
   font-size: 20px;
-}
-
-.textbox1{
-  position: relative;
-  left: 0%;
-  width: 300px;
-}
-
-.contactinfo{
-  position: relative;
-  display: block;
-  left: 5%;
+  left: 5%
 }
 
 .messagebox{
@@ -111,4 +101,8 @@ h2{
   font-size: 20px;
   text-align: center;
 
+}
+
+.contactinput{
+  width: 300px;
 }
