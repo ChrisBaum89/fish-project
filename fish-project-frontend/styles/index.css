@@ -100,7 +100,15 @@ h2{
   margin-top: 1%;
   font-size: 20px;
   text-align: center;
+}
 
+.submitButton{
+  position: relative;
+  left: 40%;
+  font-size: 20px;
+  height: 30px;
+  width: 100px;
+  text-align: center;
 }
 
 .contactinput{
