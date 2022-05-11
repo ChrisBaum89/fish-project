@@ -380,14 +380,23 @@ function backgroundTiles(fish, i){
   }
 
   function submitMessage() {
+    //obtain form data from elements
+    let firstName = document.getElementById("firstname").value
+    let lastName = document.getElementById("lastname").value
+    let email = document.getElementById("email").value
+    let phoneNumber = document.getElementById("phonenumber").value
+    let messageText = document.getElementById("messagebox").value
+
+    //assign form data to object attributes
     const formData = {
-      firstname: "Chris",
-      lastname: "Baum",
-      email: "crbaum@yahoo.com",
-      phonenumber: "704-604-6450",
-      messagetext: "Test message for Chris Baum2"
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      phonenumber: phoneNumber,
+      messagetext: messageText
     }
 
+    //send post request
     const configObj = {
       method: "POST",
       headers: {
@@ -396,8 +405,6 @@ function backgroundTiles(fish, i){
       },
       body: JSON.stringify(formData)
     }
-
-    console.log(formData)
 
     fetch("http://localhost:3000/messages", configObj)
       .then(function(response){
