@@ -23,8 +23,7 @@ class MessagesController < ApplicationController
       phonenumber: params[:phonenumber],
       messagetext: params[:messagetext]
     )
-    binding.pry
-    #@message.save
-    #redirect_to message_path(@message)
+    @message.save
+    render json: MessageSerializer.new(@message)
   end
 end
