@@ -1,6 +1,9 @@
 
 body {
-background-image: url("https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_1280.jpg")
+background-image: url("https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_1280.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
 }
 .rectangle {
   height: 350px;
