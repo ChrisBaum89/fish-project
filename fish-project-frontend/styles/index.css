@@ -1,11 +1,14 @@
 
-
+body {
+background-image: url("https://cdn.pixabay.com/photo/2015/03/30/12/37/jellyfish-698521_1280.jpg")
+}
 .rectangle {
   height: 350px;
   width: 250px;
   background-color: #29b6f6;
   border: solid;
   border-color: white;
+  border-width: thick;
   float: left;
   overflow-y: auto;
   font-family: "Fantasy", "papyrus"
@@ -28,13 +31,6 @@
 
 }
 
-.fishpic img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-
 .filter{
   position: absolute;
   top: 50px;
@@ -44,6 +40,10 @@
 .imgbtn{
   color: blue;
   font-size: 20px;
+}
+
+h1{
+  font-family: "Fantasy", "papyrus";
 }
 
 h2{
@@ -113,4 +113,17 @@ h2{
 
 .contactinput{
   width: 300px;
+}
+
+#video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  overflow: hidden;
+  width: 30%
+}
+
+.player iframe{
+  position: relative;
+  width: 95%;
+  left: 4px;
 }
