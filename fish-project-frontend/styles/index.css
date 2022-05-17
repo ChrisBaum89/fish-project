@@ -38,6 +38,7 @@ background-size: 100% 100%;
   position: absolute;
   top: 50px;
   left: 300px;
+  font-family: "Fantasy", "papyrus"
 }
 
 .imgbtn{
@@ -54,6 +55,7 @@ h2{
   position: absolute;
   top:0px;
   left: 600px;
+  font-family: "Fantasy", "papyrus"
 }
 
 .contact{
@@ -63,6 +65,7 @@ h2{
   top:50px;
   left: 600px;
   text-decoration: underline;
+  font-family: "Fantasy", "papyrus"
 }
 
 .contactpage{
