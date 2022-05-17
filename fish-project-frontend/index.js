@@ -28,7 +28,7 @@ function createObjects(json){
   //create fish objects
   for (i = 0; i < json.included.length; i ++){
     fish = json.included[i].attributes
-    newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.img_url, json.included[i].relationships.category.data.id, fish.price, fish.number_in_stock)
+    newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, json.included[i].relationships.category.data.id, fish.price, fish.number_in_stock)
     fishObjArray.push(newFish)
   }
 
@@ -71,11 +71,16 @@ function backgroundTiles(fish, i){
 
   //adds picture from the json to the tile
   function fishPictures(fish, i, element){
-    const picDiv = createDiv('fishpic', i)
-    const picImg = document.createElement('img')
-    picImg.src = fish[i].img_url
+    let picDiv = createDiv('player', i)
     element.appendChild(picDiv)
-    picDiv.appendChild(picImg)
+    vidFrame = document.createElement('iframe')
+    vidFrame.src = `https://www.youtube.com/embed/${fish[i].vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish[i].vid_url}`
+    vidFrame.id = `vid${i}`
+    vidFrame.class = 'fishvid'
+    //vidFrame.width = 100
+    picDiv.appendChild(vidFrame)
+    var vid = document.getElementById(`vid${i}`)
+
   }
 
   function createDiv(className, i){
@@ -171,7 +176,12 @@ function backgroundTiles(fish, i){
     exitListener()
 
     hideElement('contactpage', 1)
+  }
 
+  function createLoginEl(){
+    var loginDiv = createDiv('login', 1)
+    loginDiv.id = "login"
+    document.body.appendChild(loginDiv)
 
   }
 
@@ -296,7 +306,7 @@ function backgroundTiles(fish, i){
 //hides elements and shows description
   function hideImageElements(fish, i){
     //hides image
-    hideElement("fishpic", i)
+    hideElement("player", i)
     hideElement("descripbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
@@ -339,7 +349,7 @@ function backgroundTiles(fish, i){
   function switchToImage(fish, i){
     hideElement("fishdescrip", i)
     hideElement("imgbtn", i)
-    showElement("fishpic", i, "block")
+    showElement("player", i, "block")
     showElement("descripbtn", i, "block")
     showElement("price", i, "block")
     showElement("instock", i, "block")
@@ -385,12 +395,12 @@ function backgroundTiles(fish, i){
    }
 
   class Fish {
-    constructor(id, name, description, size, img_url, category_id, price, number_in_stock){
+    constructor(id, name, description, size, vid_url, category_id, price, number_in_stock){
       this.id = id
       this.name = name
       this.description = description
       this.size = size
-      this.img_url = img_url
+      this.vid_url = vid_url
       this.category_id = category_id
       this.price = price
       this.number_in_stock = number_in_stock
