@@ -359,11 +359,13 @@ function backgroundTiles(fish, i){
 
     for (let i = 0; i < fish.length; i++){
       showElement('rectangle', i, 'block')
+      enableVideo(fish, i)
 
       if (eventValue != ""){
         let category = categories.find(category => category.name === eventValue)
         if (fish[i].category_id != category.id) {
           hideElement('rectangle', i)
+          disableVideo(i)
         }
       }
 
@@ -449,4 +451,14 @@ function backgroundTiles(fish, i){
       })
 
     hideElement("contactpage", 1)
+  }
+
+  function disableVideo(i){
+    let vid = document.getElementById(`vid${i}`)
+    vid.src = ""
+  }
+
+  function enableVideo(fish, i){
+    let vid = document.getElementById(`vid${i}`)
+    vid.src = `https://www.youtube.com/embed/${fish[i].vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish[i].vid_url}`
   }
