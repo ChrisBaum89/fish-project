@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2022_05_11_000142) do
     t.string "name"
     t.string "description"
     t.string "size"
-    t.string "img_url"
+    t.string "vid_url"
     t.integer "category_id"
     t.integer "number_in_stock"
     t.integer "price"
