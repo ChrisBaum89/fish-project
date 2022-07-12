@@ -45,10 +45,6 @@ function createObjects(json){
   return objArray
 }
 
-
-
-
-
 function createTiles(fish){
   for (let i = 0; i < fish.length; i++){
     tileDiv = backgroundTiles(fish, i)
@@ -236,8 +232,6 @@ function backgroundTiles(fish, i){
     messageListener()
   }
 
-
-
   function createForm(parentEl, id){
     var form = document.createElement("form")
     form.setAttribute('method', "post")
@@ -246,7 +240,6 @@ function backgroundTiles(fish, i){
     parentEl.appendChild(form)
     return form
   }
-
 
   function createInputElement(parentEl, typename, name, id, classname){
     const input = document.createElement("input");
@@ -286,11 +279,6 @@ function backgroundTiles(fish, i){
       }
     })
   }
-
-  //function submitListener(){
-  //  console.log("submit listener created")
-  //  document.getElementById('submit').addEventListener("click", function(){submitMessage()});
-  //}
 
   function exitListener(){
     document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
