@@ -411,7 +411,6 @@ function backgroundTiles(fish, i){
 
   function submitMessage() {
     //obtain form data from elements
-    console.log("in submit message")
     let firstName = document.getElementById("firstname")
     let lastName = document.getElementById("lastname")
     let email = document.getElementById("email")
@@ -442,7 +441,6 @@ function backgroundTiles(fish, i){
         return response.json();
       })
       .then(function(object){
-        console.log(object);
         firstName.value = ""
         lastname.value = ""
         email.value = ""
