@@ -4,7 +4,7 @@ This application is called The Fish Store and is used by TheFishStore, LLC to di
 
 The Fish Store application can be accessed through the index.html file.
 
-The application uses the fish-project-api, which must be running on an active server in order to receive the database information and populate the application with fish. API database can be accessed through "servername"/fish or "servername"/categories
+The application uses the fish-project-api, which must be running on an active server in order to receive the database information and populate the application with fish. API database can be accessed through "servername"/fish or "servername"/categories.  Those with access to database can view Contact Us messages through the "servername"/messages.
 
 Rails 6.1.5.
 Built with Atom 1.60.0 x64
