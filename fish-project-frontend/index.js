@@ -314,7 +314,7 @@ function backgroundTiles(fish, i){
     hideImageElements(fish, i)
     showReviews(fish, i)
     imgButton(fish, i)
-    imgButtonListener(fish, i)
+    //imgButtonListener(fish, i)
   }
 
 //hides elements and shows description
@@ -355,11 +355,9 @@ function backgroundTiles(fish, i){
           let starsDiv = createDiv('fa fa-star', k)
           if (k <= fish[i].reviews[j].stars){
             starsDiv.className = 'fa fa-star checked'
-            console.log(starsDiv)
           }
           element = tile.appendChild(starsDiv)
         }
-          //let starsDiv = createDiv('fa fa-star', k)
         reviewsDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
         element = tile.appendChild(reviewsDiv)
       }
@@ -373,10 +371,11 @@ function backgroundTiles(fish, i){
       showElement('imgbtn', i, "initial")
     }
     else{
+      console.log('new button')
       const tile = document.getElementById(`rectangle${i}`)
       let buttonEl = createDiv('imgbtn', i)
       buttonEl.innerText = '\n'+"<<";
-      element.appendChild(buttonEl);
+      tile.appendChild(buttonEl);
     }
   }
 
