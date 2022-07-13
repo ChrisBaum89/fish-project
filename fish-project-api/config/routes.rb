@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :messages
   resources :fish
   resources :categories
