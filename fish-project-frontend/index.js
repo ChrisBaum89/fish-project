@@ -30,7 +30,6 @@ function createObjects(json){
     for (j = 0; j < json[i].fish.length; j++){
       fish = json[i].fish[j]
       newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, fish.category_id, fish.price, fish.number_in_stock, fish.reviews)
-      console.log(newFish)
       fishObjArray.push(newFish)
     }
   }
@@ -349,9 +348,21 @@ function backgroundTiles(fish, i){
     }
     else{
       const tile = document.getElementById(`rectangle${i}`)
-      const reviewsDiv = createDiv('reviews', i)
-      reviewsDiv.innerHTML = `\n${fish[i].reviews}`
-      element = tile.appendChild(reviewsDiv)
+      for (let j = 0; j < fish[i].reviews.length; j ++){
+        const reviewsDiv = createDiv('reviews', j)
+        // create 5 stars
+        for (let k = 1; k < 6; k++){
+          let starsDiv = createDiv('fa fa-star', k)
+          if (k <= fish[i].reviews[j].stars){
+            starsDiv.className = 'fa fa-star checked'
+            console.log(starsDiv)
+          }
+          element = tile.appendChild(starsDiv)
+        }
+          //let starsDiv = createDiv('fa fa-star', k)
+        reviewsDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
+        element = tile.appendChild(reviewsDiv)
+      }
     }
   }
 
