@@ -26,17 +26,19 @@ function createObjects(json){
   let objArray = []
 
   //create fish objects
-  for (i = 0; i < json.included.length; i ++){
-    fish = json.included[i].attributes
-    newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, json.included[i].relationships.category.data.id, fish.price, fish.number_in_stock)
-    fishObjArray.push(newFish)
+  for (i = 0; i < json.length; i ++){
+    for (j = 0; j < json[i].fish.length; j++){
+      fish = json[i].fish[j]
+      newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, fish.category_id, fish.price, fish.number_in_stock)
+      fishObjArray.push(newFish)
+    }
   }
 
   //create category objects
-  for (let i = 0; i < json.data.length; i++){
-    newCategory = new Category(json.data[i].id, json.data[i].attributes.name, [])
-    for (let j = 0; j < json.data[i].relationships.fish.data.length; j++){
-      newCategory.fish_ids.push(json.data[i].relationships.fish.data[j].id)
+  for (let i = 0; i < json.length; i++){
+    newCategory = new Category(json[i].id, json[i].name, [])
+    for (let j = 0; j < json[i].fish.length; j++){
+      newCategory.fish_ids.push(json[i].fish[j].id)
     }
     catObjArray.push(newCategory)
   }
