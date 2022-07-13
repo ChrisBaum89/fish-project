@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_07_13_001108) do
     t.string "name"
     t.string "reviewtext"
     t.integer "stars"
+    t.integer "fish_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
