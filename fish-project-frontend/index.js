@@ -51,6 +51,7 @@ function createTiles(fish){
     fishNames(fish, i, tileDiv)
     fishPictures(fish, i, tileDiv)
     descripButton(fish, i, tileDiv)
+    reviewsButton(fish, i, tileDiv)
     addPrice(fish, i, tileDiv)
     addInStock(fish, i, tileDiv)
     descripButtonListener(fish, i)
@@ -100,6 +101,17 @@ function backgroundTiles(fish, i){
 	  buttonEl.className = "descripbtn";
     buttonEl.id = `descripbtn${i}`
 	  buttonEl.innerText = "Description";
+    buttonEl.style.color = "blue"
+    buttonEl.style.fontSize = '18px'
+    buttonEl.style.borderradius = "20px"
+	  element.appendChild(buttonEl);
+  }
+
+  function reviewsButton(fish, i, element){
+    var buttonEl = document.createElement("button");
+    buttonEl.className = "reviewsbtn";
+    buttonEl.id = `reviewsbtn${i}`;
+    buttonEl.innerText = "Reviews";
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
     buttonEl.style.borderradius = "20px"
