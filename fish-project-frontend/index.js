@@ -55,6 +55,7 @@ function createTiles(fish){
     addPrice(fish, i, tileDiv)
     addInStock(fish, i, tileDiv)
     descripButtonListener(fish, i)
+    reviewsButtonListener(fish, i)
   }
 }
 
@@ -273,6 +274,10 @@ function backgroundTiles(fish, i){
 // creates listener for when the "Click for Description" button is pressed
   function descripButtonListener(fish, i){
     document.getElementById(`descripbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
+  }
+
+  function reviewsButtonListener(fish, i){
+    document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
   }
 
   function filterEventListener(fish, categories){
