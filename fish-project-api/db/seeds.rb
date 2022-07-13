@@ -86,3 +86,24 @@ bluehippo = Fish.create(
     phonenumber: "999-999-9999",
     messagetext: "This is my message test for Bob Doe"
   )
+
+  review1 = Review.create(
+    name: "Chris",
+    reviewtext: "Fish was good",
+    stars: 5,
+    fish_id: 1
+  )
+
+  review2 = Review.create(
+    name: "Bleys",
+    reviewtext: "Fish was just ok",
+    stars: 2,
+    fish_id: 1
+  )
+
+  review3 = Review.create(
+    name: "Adam",
+    reviewtext: "I ate fish",
+    stars: 4,
+    fish_id: 2
+  )
