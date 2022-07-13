@@ -4,6 +4,6 @@ class ReviewsController < ApplicationController
     options = {
       include: [:name, :reviewtext, :stars]
     }
-    render json: ReviewSerializer.new(messages)
+    render json: ReviewSerializer.new(reviews)
   end
 end
