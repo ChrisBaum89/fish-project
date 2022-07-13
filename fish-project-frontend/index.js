@@ -29,7 +29,8 @@ function createObjects(json){
   for (i = 0; i < json.length; i ++){
     for (j = 0; j < json[i].fish.length; j++){
       fish = json[i].fish[j]
-      newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, fish.category_id, fish.price, fish.number_in_stock)
+      newFish = new Fish(fish.id, fish.name, fish.description, fish.size, fish.vid_url, fish.category_id, fish.price, fish.number_in_stock, fish.reviews)
+      console.log(newFish)
       fishObjArray.push(newFish)
     }
   }
@@ -349,7 +350,6 @@ function backgroundTiles(fish, i){
     else{
       const tile = document.getElementById(`rectangle${i}`)
       const reviewsDiv = createDiv('reviews', i)
-      console.log(fish[i].review)
       reviewsDiv.innerHTML = `\n${fish[i].reviews}`
       element = tile.appendChild(reviewsDiv)
     }
@@ -425,7 +425,7 @@ function backgroundTiles(fish, i){
    }
 
   class Fish {
-    constructor(id, name, description, size, vid_url, category_id, price, number_in_stock){
+    constructor(id, name, description, size, vid_url, category_id, price, number_in_stock, reviews){
       this.id = id
       this.name = name
       this.description = description
@@ -434,6 +434,7 @@ function backgroundTiles(fish, i){
       this.category_id = category_id
       this.price = price
       this.number_in_stock = number_in_stock
+      this.reviews = reviews
     }
   }
 
