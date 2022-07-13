@@ -277,7 +277,7 @@ function backgroundTiles(fish, i){
   }
 
   function reviewsButtonListener(fish, i){
-    document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
+    document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){switchToReviews(fish, i)});
   }
 
   function filterEventListener(fish, categories){
@@ -308,6 +308,13 @@ function backgroundTiles(fish, i){
     imgButtonListener(fish, i)
   }
 
+  function switchToReviews(fish, i){
+    hideImageElements(fish, i)
+    showReviews(fish, i)
+    imgButton(fish, i)
+    imgButtonListener(fish, i)
+  }
+
 //hides elements and shows description
   function hideImageElements(fish, i){
     //hides image
@@ -315,6 +322,7 @@ function backgroundTiles(fish, i){
     hideElement("descripbtn", i)
     hideElement("price", i)
     hideElement("instock", i)
+    hideElement("reviewsbtn", i)
   }
 
   function showDescription(fish, i){
@@ -327,9 +335,21 @@ function backgroundTiles(fish, i){
       const tile = document.getElementById(`rectangle${i}`)
       const descripDiv = createDiv('fishdescrip', i)
       descripDiv.innerHTML = `\n${fish[i].description}`
-      descripDiv.style.fontSize = '16px'
-      //newDiv.style.font = "American Typewriter";
       element = tile.appendChild(descripDiv)
+    }
+  }
+
+  function showReviews(fish, i){
+    if (document.getElementById(`reviewsdescrip${i}`)){
+      showElement('reviews', i, "block")
+      showElement('imgbtn', i, "block")
+    }
+    else{
+      const tile = document.getElementById(`rectangle${i}`)
+      const reviewsDiv = createDiv('reviews', i)
+      console.log(fish[i].review)
+      reviewsDiv.innerHTML = `\n${fish[i].reviews}`
+      element = tile.appendChild(reviewsDiv)
     }
   }
 
@@ -358,6 +378,7 @@ function backgroundTiles(fish, i){
     showElement("descripbtn", i, "block")
     showElement("price", i, "block")
     showElement("instock", i, "block")
+    showElement('reviewsbtn', i, "block")
   }
 
   function performFilter(fish, categories, eventValue){
