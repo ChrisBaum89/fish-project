@@ -31,7 +31,17 @@ background-size: 100% 100%;
   border: 3px solid blue;
   margin: 0 auto;
   display: block;
+}
 
+.reviewsbtn {
+  font-family: "Fantasy", "papyrus";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border: 3px solid blue;
+  margin: 0 auto;
+  display: block;
 }
 
 .filter{
