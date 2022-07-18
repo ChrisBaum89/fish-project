@@ -38,7 +38,6 @@ function createObjects(json){
   for (let i = 0; i < json.length; i++){
     newCategory = new Category(json[i].id, json[i].name, [])
     for (let j = 0; j < json[i].fish.length; j++){
-      console.log(newCategory.fish_ids)
       newCategory.fish_ids.push(json[i].fish[j].id)
     }
     catObjArray.push(newCategory)
@@ -415,10 +414,7 @@ function backgroundTiles(fish, i){
 
       if (eventValue != ""){
         let category = categories.find(category => category.name === eventValue)
-        console.log(category)
         if (fish[i].category_id != category.id) {
-          console.log(fish[i].category_id)
-          console.log(category.id)
           hideElement('rectangle', i)
           disableVideo(i)
         }
