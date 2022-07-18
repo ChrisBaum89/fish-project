@@ -38,6 +38,7 @@ function createObjects(json){
   for (let i = 0; i < json.length; i++){
     newCategory = new Category(json[i].id, json[i].name, [])
     for (let j = 0; j < json[i].fish.length; j++){
+      console.log(newCategory.fish_ids)
       newCategory.fish_ids.push(json[i].fish[j].id)
     }
     catObjArray.push(newCategory)
@@ -314,7 +315,7 @@ function backgroundTiles(fish, i){
     hideImageElements(fish, i)
     showReviews(fish, i)
     imgButton(fish, i)
-    //imgButtonListener(fish, i)
+    imgButtonListener(fish, i)
   }
 
 //hides elements and shows description
@@ -342,24 +343,37 @@ function backgroundTiles(fish, i){
   }
 
   function showReviews(fish, i){
-    if (document.getElementById(`reviewsdescrip${i}`)){
+    if (document.getElementById(`reviews${i}`)){
       showElement('reviews', i, "block")
       showElement('imgbtn', i, "block")
     }
     else{
+      //create Div that contains all reviews
+      const reviewsDiv = createDiv('reviews', i)
       const tile = document.getElementById(`rectangle${i}`)
+      let element = tile.appendChild(reviewsDiv)
+      //create individual reviews
       for (let j = 0; j < fish[i].reviews.length; j ++){
-        const reviewsDiv = createDiv('reviews', j)
-        // create 5 stars
+        //create review element
+        const reviewDiv = createDiv('review', `${i}${j}`)
+        element = reviewsDiv.appendChild(reviewDiv)
+        // create review stars element
+        const starsDiv = createDiv('stars', `${i}${j}`)
+        element = reviewDiv.appendChild(starsDiv)
+
+        const reviewTextDiv = createDiv('reviewtext', `${i}${j}`)
+        element = reviewDiv.appendChild(reviewTextDiv)
+
+        //create star
         for (let k = 1; k < 6; k++){
-          let starsDiv = createDiv('fa fa-star', k)
+          let starDiv = createDiv('fa fa-star', k)
+          element = starsDiv.appendChild(starDiv)
           if (k <= fish[i].reviews[j].stars){
-            starsDiv.className = 'fa fa-star checked'
+            starDiv.className = 'fa fa-star checked'
           }
-          element = tile.appendChild(starsDiv)
         }
-        reviewsDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
-        element = tile.appendChild(reviewsDiv)
+        reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
+        element = reviewsDiv.appendChild(reviewDiv)
       }
     }
   }
@@ -371,7 +385,6 @@ function backgroundTiles(fish, i){
       showElement('imgbtn', i, "initial")
     }
     else{
-      console.log('new button')
       const tile = document.getElementById(`rectangle${i}`)
       let buttonEl = createDiv('imgbtn', i)
       buttonEl.innerText = '\n'+"<<";
@@ -386,6 +399,7 @@ function backgroundTiles(fish, i){
   function switchToImage(fish, i){
     hideElement("fishdescrip", i)
     hideElement("imgbtn", i)
+    hideElement("reviews", i)
     showElement("player", i, "block")
     showElement("descripbtn", i, "block")
     showElement("price", i, "block")
@@ -401,7 +415,10 @@ function backgroundTiles(fish, i){
 
       if (eventValue != ""){
         let category = categories.find(category => category.name === eventValue)
+        console.log(category)
         if (fish[i].category_id != category.id) {
+          console.log(fish[i].category_id)
+          console.log(category.id)
           hideElement('rectangle', i)
           disableVideo(i)
         }
@@ -417,11 +434,17 @@ function backgroundTiles(fish, i){
 
 
   function hideElement(className, i){
-    document.getElementById(`${className}${i}`).style.display= `none`
+    try{
+      document.getElementById(`${className}${i}`).style.display= `none`
+    }
+    catch{}
   }
 
   function showElement(className, i, showType){
-    document.getElementById(`${className}${i}`).style.display = `${showType}`
+    try {
+      document.getElementById(`${className}${i}`).style.display = `${showType}`
+    }
+    catch{}
   }
 
 
