@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
     options = {
       include: [:fish]
     }
-    render json: categories.to_json(only: [:name, :description], include: {fish:{include: {reviews: {}}}})
+    render json: categories.to_json(only: [:id, :name, :description], include: {fish:{include: {reviews: {}}}})
   end
 
   def show
@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
       include: [:fish]
     }
     #render json: CategorySerializer.new(category, options)
-    render json: category.to_json(only: [:name, :description], include: {fish:{include: {reviews: {}}}})
+    render json: category.to_json(only: [:id, :name, :description], include: {fish:{include: {reviews: {}}}})
   end
 
 end
