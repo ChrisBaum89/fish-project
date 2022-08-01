@@ -251,12 +251,27 @@ function backgroundTiles(fish, i){
   function createReviewsForm(reviewsDiv){
     form = createForm(reviewsDiv, 'reviewform')
 
-    let newDiv = createDiv("reviewinput", 1)
+    //create div for reviewer name
+    let newDiv = createDiv("reviewname", 1)
     form.appendChild(newDiv)
     createInputLabel(newDiv,  "name", "namelabel", "Name:  ")
     createInputElement(newDiv, "text", "name", "name", "name")
 
-    
+    //create div for review stars
+
+    //create div for review text
+    newDiv = createDiv("reviewcontent", 1)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv, "review", "reviewlabel", "Review: ")
+    const textarea = document.createElement("TEXTAREA");
+    textarea.setAttribute("class", 'reviewbox')
+    textarea.setAttribute("id", "reviewbox")
+    textarea.setAttribute("name", "reviewbox")
+    let t = document.createTextNode("Enter your review here")
+    textarea.appendChild(t)
+    form.appendChild(textarea)
+
+
   }
 
   function createForm(parentEl, id){
@@ -386,6 +401,8 @@ function backgroundTiles(fish, i){
         reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
         element = reviewsDiv.appendChild(reviewDiv)
       }
+      let linebreak = document.createElement("br")
+      reviewsDiv.appendChild(linebreak)
       createReviewsForm(reviewsDiv)
     }
   }
