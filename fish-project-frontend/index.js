@@ -622,7 +622,18 @@ function backgroundTiles(fish, i){
       }
     }
 
-    //let fisId = document.getElementById("messagebox")
+    //get fish id
+    let fishId = reviewId
+
+    //assign form data to object attributes
+    const formData = {
+      name: name,
+      reviewtext: reviewText,
+      stars: stars,
+      fish_id: fishId
+    }
+
+    
   }
 
   function disableVideo(i){
