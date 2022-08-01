@@ -249,24 +249,30 @@ function backgroundTiles(fish, i){
 
 //create reviews form
   function createReviewsForm(reviewsDiv){
+
+    //get ID of specific fish review tile
+    reviewId = reviewsDiv.id.replace("reviews", "")
+
+    //create review form
     form = createForm(reviewsDiv, 'reviewform')
 
     //create div for reviewer name
-    let newDiv = createDiv("reviewname", 1)
+    let newDiv = createDiv("newreviewname", reviewId)
     form.appendChild(newDiv)
-    createInputLabel(newDiv,  "name", "namelabel", "Name:  ")
-    createInputElement(newDiv, "text", "name", "name", "name")
+    createInputLabel(newDiv,  "reviewname", "namelabel", "Name:  ")
+    createInputElement(newDiv, "text", "reviewname", "reviewname", "name")
 
     //create div for review stars
-    newDiv = createDiv("stars", 1)
+    newDiv = createDiv("newreviewstars", reviewId)
     form.appendChild(newDiv)
     for (let k = 1; k < 6; k++){
       let starDiv = createDiv('fa fa-star', k)
+      starDiv.setAttribute("id", `newreviewstar${k}${reviewId}`)
       element = newDiv.appendChild(starDiv)
     }
 
     //create div for review text
-    newDiv = createDiv("reviewcontent", 1)
+    newDiv = createDiv("newreviewcontent", reviewId)
     form.appendChild(newDiv)
     createInputLabel(newDiv, "review", "reviewlabel", "Review: ")
     const textarea = document.createElement("TEXTAREA");
@@ -277,6 +283,7 @@ function backgroundTiles(fish, i){
     textarea.appendChild(t)
     form.appendChild(textarea)
 
+  newReviewStarsListener(reviewId)
 
   }
 
@@ -336,16 +343,27 @@ function backgroundTiles(fish, i){
     document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
 
-  function newReviewStarsListener(){
+  function newReviewStarsListener(newReviewId){
+    //obtain stars element, which is displayed as an array
     // one star
+    let star1 = starIdFind(1, newReviewId)
 
     // two stars
+    let star2 = starIdFind(2, newReviewId)
 
     // three stars
+    let star3 = starIdFind(3, newReviewId)
 
     // four stars
+    let star4 = starIdFind(4, newReviewId)
 
     // five stars
+    let star5 = starIdFind(5, newReviewId)
+  }
+
+  function starIdFind(starNumber, newReviewId){
+    let star = document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
+    console.log(star)
   }
 
   function switchToDescription(fish, i){
