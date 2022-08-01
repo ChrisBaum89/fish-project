@@ -283,6 +283,15 @@ function backgroundTiles(fish, i){
     textarea.appendChild(t)
     form.appendChild(textarea)
 
+    const submit = document.createElement("button")
+    submit.setAttribute("class", "formbutton")
+    submit.setAttribute("value", "Submit")
+    submit.setAttribute("type", "button")
+    submit.setAttribute("id", "reviewsubmit")
+    submit.onclick = function(){submitMessage()}
+    submit.innerHTML = "Submit"
+    form.appendChild(submit)
+
   reviewStarsListener(reviewId)
 
   }
@@ -387,9 +396,10 @@ function backgroundTiles(fish, i){
 
   function switchToReviews(fish, i){
     hideImageElements(fish, i)
-    showReviews(fish, i)
+    //showReviews(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
+    showReviews(fish, i)
   }
 
 //hides elements and shows description
