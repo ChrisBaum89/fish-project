@@ -371,11 +371,21 @@ function backgroundTiles(fish, i){
   }
 
   function highlightStar(starDiv, newReviewId){
+    clearStars(newReviewId)
     starSelected = starDiv.id.replace("newreviewstar", "")
     numOfStars = starSelected.charAt(0)
     for (let i = 1; i <= numOfStars; i++){
       let starDiv = document.getElementById(`newreviewstar${i}${newReviewId}`)
       starDiv.className = 'fa fa-star checked'
+    }
+  }
+
+  // added to allow reviewer to dynamically be able to click on the stars to
+  // change their # of stars review
+  function clearStars(newReviewId){
+    for (let i = 1; i <= 5; i++){
+      let starDiv = document.getElementById(`newreviewstar${i}${newReviewId}`)
+      starDiv.className = 'fa fa-star'
     }
   }
 
