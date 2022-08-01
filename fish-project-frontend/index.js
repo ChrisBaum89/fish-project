@@ -347,23 +347,31 @@ function backgroundTiles(fish, i){
     //obtain stars element, which is displayed as an array
     // one star
     let star1 = starIdFind(1, newReviewId)
+    star1.addEventListener("click", function(){highlightStar(star1)});
 
     // two stars
     let star2 = starIdFind(2, newReviewId)
+    star2.addEventListener("click", function(){highlightStar(star2)});
 
     // three stars
     let star3 = starIdFind(3, newReviewId)
+    star3.addEventListener("click", function(){highlightStar(star3)});
 
     // four stars
     let star4 = starIdFind(4, newReviewId)
+    star4.addEventListener("click", function(){highlightStar(star4)});
 
     // five stars
     let star5 = starIdFind(5, newReviewId)
+    star5.addEventListener("click", function(){highlightStar(star5)});
   }
 
   function starIdFind(starNumber, newReviewId){
-    let star = document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
-    console.log(star)
+    return document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
+  }
+
+  function highlightStar(starDiv){
+    starDiv.className = 'fa fa-star checked'
   }
 
   function switchToDescription(fish, i){
