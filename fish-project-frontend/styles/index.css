@@ -112,6 +112,14 @@ h2{
   margin-right: auto;
 }
 
+.reviewbox{
+  display: block;
+  width: 200;
+  height: 100;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .contactbutton{
   margin-top: 1%;
   font-size: 20px;
