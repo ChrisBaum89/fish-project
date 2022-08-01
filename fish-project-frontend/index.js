@@ -433,7 +433,7 @@ function backgroundTiles(fish, i){
 
   function createReview(i, j, reviewsDiv, fish){
     let reviewDiv = createDiv('review', `${i}${j}`)
-    element = reviewsDiv.appendChild(reviewDiv)
+    let element = reviewsDiv.appendChild(reviewDiv)
     // create review stars element
     const starsDiv = createDiv('stars', `${i}${j}`)
     element = reviewDiv.appendChild(starsDiv)
@@ -459,21 +459,18 @@ function backgroundTiles(fish, i){
       showElement('imgbtn', i, "block")
     }
     else{
-      //create Div that contains all reviews
       const reviewsDiv = createDiv('reviews', i)
+
+      //create Div that contains all reviews
       const tile = document.getElementById(`rectangle${i}`)
       let element = tile.appendChild(reviewsDiv)
+
+      createReviewsForm(fish, reviewsDiv)
 
       //create individual reviews
       for (let j = 0; j < fish[i].reviews.length; j ++){
         createReview(i, j, reviewsDiv, fish)
       }
-
-      //create seperation between existing reviews and new review form
-      let linebreak = document.createElement("br")
-      reviewsDiv.appendChild(linebreak)
-
-      createReviewsForm(fish, reviewsDiv)
     }
   }
 
@@ -655,13 +652,25 @@ function backgroundTiles(fish, i){
         name = ""
         reviewText = "Enter your message here"
         //reload review divs
-        reloadReviews(reviewId)
+        reloadReviews(fish, reviewId)
 
       })
   }
 
   function reloadReviews(fish, reviewId){
-    i = reviewId
+
+    // set i
+    let i = reviewId
+
+    // set reviewsDiv
+    let reviewsDiv = document.getElementById(`reviews${i}`)
+
+    // set j
+    let j = fish[i].reviews.length - 1
+    console.log(fish)
+    console.log(j)
+
+    createReview(i, j, reviewsDiv, fish)
   }
 
   function disableVideo(i){
