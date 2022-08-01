@@ -258,6 +258,12 @@ function backgroundTiles(fish, i){
     createInputElement(newDiv, "text", "name", "name", "name")
 
     //create div for review stars
+    newDiv = createDiv("stars", 1)
+    form.appendChild(newDiv)
+    for (let k = 1; k < 6; k++){
+      let starDiv = createDiv('fa fa-star', k)
+      element = newDiv.appendChild(starDiv)
+    }
 
     //create div for review text
     newDiv = createDiv("reviewcontent", 1)
@@ -328,6 +334,18 @@ function backgroundTiles(fish, i){
 
   function exitListener(){
     document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
+  }
+
+  function newReviewStarsListener(){
+    // one star
+
+    // two stars
+
+    // three stars
+
+    // four stars
+
+    // five stars
   }
 
   function switchToDescription(fish, i){
@@ -401,8 +419,10 @@ function backgroundTiles(fish, i){
         reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
         element = reviewsDiv.appendChild(reviewDiv)
       }
+      //create seperation between existing reviews and new review form
       let linebreak = document.createElement("br")
       reviewsDiv.appendChild(linebreak)
+
       createReviewsForm(reviewsDiv)
     }
   }
