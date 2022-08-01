@@ -633,7 +633,16 @@ function backgroundTiles(fish, i){
       fish_id: fishId
     }
 
-    
+    //send post request
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(formData)
+      }
+    }
   }
 
   function disableVideo(i){
