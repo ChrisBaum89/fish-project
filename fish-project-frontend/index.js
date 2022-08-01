@@ -606,11 +606,16 @@ function backgroundTiles(fish, i){
   }
 
   function submitReview(reviewId){
-    let name = document.getElementById(`reviewname${reviewId}`)
-    console.log(name)
-    let reviewText = document.getElementById(`reviewtext${reviewId}`)
-    console.log(reviewText)
-    //let stars = document.getElementById("stars")
+    let stars = 0
+    let name = document.getElementById(`reviewname${reviewId}`).value
+    let reviewText = document.getElementById(`reviewbox${reviewId}`).value
+    for (let i = 1; i <= 5; i++){
+      let starstatus = document.getElementById(`newreviewstar${i}${reviewId}`).className
+      if (starstatus == "fa fa-star checked"){
+        stars = i
+      }
+    }
+
     //let fisId = document.getElementById("messagebox")
   }
 
