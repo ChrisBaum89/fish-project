@@ -606,9 +606,15 @@ function backgroundTiles(fish, i){
   }
 
   function submitReview(reviewId){
-    let stars = 0
+
+    //get reviewer name
     let name = document.getElementById(`reviewname${reviewId}`).value
+
+    //get review box value
     let reviewText = document.getElementById(`reviewbox${reviewId}`).value
+
+    //get star count
+    let stars = 0
     for (let i = 1; i <= 5; i++){
       let starstatus = document.getElementById(`newreviewstar${i}${reviewId}`).className
       if (starstatus == "fa fa-star checked"){
