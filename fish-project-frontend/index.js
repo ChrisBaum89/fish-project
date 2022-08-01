@@ -1,5 +1,4 @@
 document.addEventListener( "DOMContentLoaded", function () {
-  console.log('DOM loaded');
   fetchCategories()
 });
 
@@ -259,8 +258,9 @@ function backgroundTiles(fish, i){
     //create div for reviewer name
     let newDiv = createDiv("newreviewname", reviewId)
     form.appendChild(newDiv)
-    createInputLabel(newDiv,  "reviewname", "namelabel", "Name:  ")
-    createInputElement(newDiv, "text", "reviewname", "reviewname", "name")
+    createInputLabel(newDiv,  "reviewname", `namelabel${reviewId}`, "Name:  ")
+    let targetElem = createInputElement(newDiv, "text", "reviewname", `reviewname${reviewId}`, "name")
+    targetElem.setAttribute("id", `reviewname${reviewId}`)
 
     //create div for review stars
     newDiv = createDiv("newreviewstars", reviewId)
@@ -274,10 +274,10 @@ function backgroundTiles(fish, i){
     //create div for review text
     newDiv = createDiv("newreviewcontent", reviewId)
     form.appendChild(newDiv)
-    createInputLabel(newDiv, "review", "reviewlabel", "Review: ")
+    createInputLabel(newDiv, "review", `reviewlabel${reviewId}`, "Review: ")
     const textarea = document.createElement("TEXTAREA");
-    textarea.setAttribute("class", 'reviewbox')
-    textarea.setAttribute("id", "reviewbox")
+    textarea.setAttribute("class", `reviewbox`)
+    textarea.setAttribute("id", `reviewbox${reviewId}`)
     textarea.setAttribute("name", "reviewbox")
     let t = document.createTextNode("Enter your review here")
     textarea.appendChild(t)
@@ -288,11 +288,11 @@ function backgroundTiles(fish, i){
     submit.setAttribute("value", "Submit")
     submit.setAttribute("type", "button")
     submit.setAttribute("id", "reviewsubmit")
-    submit.onclick = function(){submitMessage()}
+    submit.onclick = function(){submitReview(reviewId)}
     submit.innerHTML = "Submit"
     form.appendChild(submit)
 
-  reviewListener()
+  reviewListener(reviewId)
   reviewStarsListener(reviewId)
 
   }
@@ -313,6 +313,7 @@ function backgroundTiles(fish, i){
     input.setAttribute("id", id);
     input.setAttribute("class", classname)
     parentEl.appendChild(input);
+    return input
   }
 
   function createInputLabel(parentEl, label, classname, text){
@@ -349,8 +350,8 @@ function backgroundTiles(fish, i){
     })
   }
 
-  function reviewListener(){
-    messagebox = document.getElementById("reviewbox")
+  function reviewListener(reviewId){
+    messagebox = document.getElementById(`reviewbox${reviewId}`)
     messagebox.addEventListener("click", function(){
       if (messagebox.value == "Enter your review here"){
         messagebox.value = "";
@@ -364,7 +365,6 @@ function backgroundTiles(fish, i){
 
   function reviewStarsListener(newReviewId){
     //obtain stars element, which is displayed as an array
-    console.log("listener created")
     for (let i = 1; i <= 5; i++){
       let star = starIdFind(i, newReviewId)
       star.addEventListener("click", function(){highlightStar(star, newReviewId)});
@@ -372,9 +372,6 @@ function backgroundTiles(fish, i){
   }
 
   function starIdFind(starNumber, newReviewId){
-    console.log(starNumber)
-    console.log(newReviewId)
-    console.log(`newreviewstar${starNumber}${newReviewId}`)
     return document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
   }
 
@@ -606,6 +603,15 @@ function backgroundTiles(fish, i){
       })
 
     hideElement("contactpage", 1)
+  }
+
+  function submitReview(reviewId){
+    let name = document.getElementById(`reviewname${reviewId}`)
+    console.log(name)
+    let reviewText = document.getElementById(`reviewtext${reviewId}`)
+    console.log(reviewText)
+    //let stars = document.getElementById("stars")
+    //let fisId = document.getElementById("messagebox")
   }
 
   function disableVideo(i){
