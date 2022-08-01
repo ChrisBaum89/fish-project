@@ -247,6 +247,21 @@ function backgroundTiles(fish, i){
     messageListener()
   }
 
+//create reviews form
+  function createReviewsForm(reviewsDiv){
+    form = createForm(reviewsDiv, 'reviewform')
+
+    let newDiv = createDiv("reviewinput", 1)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv,  "name", "namelabel", "Name:  ")
+    createInputElement(newDiv, "reviewtext", "reviewtext", "name", "name")
+
+    newDiv = createDiv("forminput", 2)
+    form.appendChild(newDiv)
+    createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
+    createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
+  }
+
   function createForm(parentEl, id){
     var form = document.createElement("form")
     form.setAttribute('method', "post")
