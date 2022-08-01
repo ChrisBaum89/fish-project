@@ -283,7 +283,7 @@ function backgroundTiles(fish, i){
     textarea.appendChild(t)
     form.appendChild(textarea)
 
-  newReviewStarsListener(reviewId)
+  reviewStarsListener(reviewId)
 
   }
 
@@ -343,30 +343,19 @@ function backgroundTiles(fish, i){
     document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
 
-  function newReviewStarsListener(newReviewId){
+  function reviewStarsListener(newReviewId){
     //obtain stars element, which is displayed as an array
-    // one star
-    let star1 = starIdFind(1, newReviewId)
-    star1.addEventListener("click", function(){highlightStar(star1, newReviewId)});
-
-    // two stars
-    let star2 = starIdFind(2, newReviewId)
-    star2.addEventListener("click", function(){highlightStar(star2, newReviewId)});
-
-    // three stars
-    let star3 = starIdFind(3, newReviewId)
-    star3.addEventListener("click", function(){highlightStar(star3, newReviewId)});
-
-    // four stars
-    let star4 = starIdFind(4, newReviewId)
-    star4.addEventListener("click", function(){highlightStar(star4, newReviewId)});
-
-    // five stars
-    let star5 = starIdFind(5, newReviewId)
-    star5.addEventListener("click", function(){highlightStar(star5, newReviewId)});
+    console.log("listener created")
+    for (let i = 1; i <= 5; i++){
+      let star = starIdFind(i, newReviewId)
+      star.addEventListener("click", function(){highlightStar(star, newReviewId)});
+    }
   }
 
   function starIdFind(starNumber, newReviewId){
+    console.log(starNumber)
+    console.log(newReviewId)
+    console.log(`newreviewstar${starNumber}${newReviewId}`)
     return document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
   }
 
