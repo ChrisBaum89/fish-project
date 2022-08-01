@@ -623,7 +623,7 @@ function backgroundTiles(fish, i){
     }
 
     //get fish id
-    let fishId = reviewId
+    let fishId = parseInt(reviewId) + 1
 
     //assign form data to object attributes
     const formData = {
@@ -641,8 +641,16 @@ function backgroundTiles(fish, i){
         "Accept": "application/json"
       },
       body: JSON.stringify(formData)
-      }
     }
+
+    fetch("http://localhost:3000/reviews", configObj)
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(object){
+        name = ""
+        reviewText = "Enter your message here"
+      })
   }
 
   function disableVideo(i){
