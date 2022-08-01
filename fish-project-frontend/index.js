@@ -254,12 +254,9 @@ function backgroundTiles(fish, i){
     let newDiv = createDiv("reviewinput", 1)
     form.appendChild(newDiv)
     createInputLabel(newDiv,  "name", "namelabel", "Name:  ")
-    createInputElement(newDiv, "reviewtext", "reviewtext", "name", "name")
+    createInputElement(newDiv, "text", "name", "name", "name")
 
-    newDiv = createDiv("forminput", 2)
-    form.appendChild(newDiv)
-    createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
-    createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
+    
   }
 
   function createForm(parentEl, id){
@@ -389,6 +386,7 @@ function backgroundTiles(fish, i){
         reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
         element = reviewsDiv.appendChild(reviewDiv)
       }
+      createReviewsForm(reviewsDiv)
     }
   }
 
