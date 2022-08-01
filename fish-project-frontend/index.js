@@ -292,6 +292,7 @@ function backgroundTiles(fish, i){
     submit.innerHTML = "Submit"
     form.appendChild(submit)
 
+  reviewListener()
   reviewStarsListener(reviewId)
 
   }
@@ -348,6 +349,15 @@ function backgroundTiles(fish, i){
     })
   }
 
+  function reviewListener(){
+    messagebox = document.getElementById("reviewbox")
+    messagebox.addEventListener("click", function(){
+      if (messagebox.value == "Enter your review here"){
+        messagebox.value = "";
+      }
+    })
+  }
+
   function exitListener(){
     document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
   }
@@ -396,7 +406,6 @@ function backgroundTiles(fish, i){
 
   function switchToReviews(fish, i){
     hideImageElements(fish, i)
-    //showReviews(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
     showReviews(fish, i)
