@@ -247,8 +247,7 @@ function backgroundTiles(fish, i){
   }
 
 //create reviews form
-  function createReviewsForm(reviewsDiv){
-
+  function createReviewsForm(fish, reviewsDiv){
     //get ID of specific fish review tile
     reviewId = reviewsDiv.id.replace("reviews", "")
 
@@ -288,7 +287,7 @@ function backgroundTiles(fish, i){
     submit.setAttribute("value", "Submit")
     submit.setAttribute("type", "button")
     submit.setAttribute("id", "reviewsubmit")
-    submit.onclick = function(){submitReview(reviewId)}
+    submit.onclick = function(){submitReview(fish, reviewId)}
     submit.innerHTML = "Submit"
     form.appendChild(submit)
 
@@ -432,6 +431,28 @@ function backgroundTiles(fish, i){
     }
   }
 
+  function createReview(i, j, reviewsDiv, fish){
+    let reviewDiv = createDiv('review', `${i}${j}`)
+    element = reviewsDiv.appendChild(reviewDiv)
+    // create review stars element
+    const starsDiv = createDiv('stars', `${i}${j}`)
+    element = reviewDiv.appendChild(starsDiv)
+    // create review text element
+    const reviewTextDiv = createDiv('reviewtext', `${i}${j}`)
+    element = reviewDiv.appendChild(reviewTextDiv)
+
+    //create star
+    for (let k = 1; k < 6; k++){
+      let starDiv = createDiv('fa fa-star', k)
+      element = starsDiv.appendChild(starDiv)
+      if (k <= fish[i].reviews[j].stars){
+        starDiv.className = 'fa fa-star checked'
+      }
+    }
+    reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
+    element = reviewsDiv.appendChild(reviewDiv)
+  }
+
   function showReviews(fish, i){
     if (document.getElementById(`reviews${i}`)){
       showElement('reviews', i, "block")
@@ -442,34 +463,17 @@ function backgroundTiles(fish, i){
       const reviewsDiv = createDiv('reviews', i)
       const tile = document.getElementById(`rectangle${i}`)
       let element = tile.appendChild(reviewsDiv)
+
       //create individual reviews
       for (let j = 0; j < fish[i].reviews.length; j ++){
-        //create review element
-        const reviewDiv = createDiv('review', `${i}${j}`)
-        element = reviewsDiv.appendChild(reviewDiv)
-        // create review stars element
-        const starsDiv = createDiv('stars', `${i}${j}`)
-        element = reviewDiv.appendChild(starsDiv)
-
-        const reviewTextDiv = createDiv('reviewtext', `${i}${j}`)
-        element = reviewDiv.appendChild(reviewTextDiv)
-
-        //create star
-        for (let k = 1; k < 6; k++){
-          let starDiv = createDiv('fa fa-star', k)
-          element = starsDiv.appendChild(starDiv)
-          if (k <= fish[i].reviews[j].stars){
-            starDiv.className = 'fa fa-star checked'
-          }
-        }
-        reviewTextDiv.innerHTML = `\n${fish[i].reviews[j].reviewtext} - ${fish[i].reviews[j].name}`
-        element = reviewsDiv.appendChild(reviewDiv)
+        createReview(i, j, reviewsDiv, fish)
       }
+
       //create seperation between existing reviews and new review form
       let linebreak = document.createElement("br")
       reviewsDiv.appendChild(linebreak)
 
-      createReviewsForm(reviewsDiv)
+      createReviewsForm(fish, reviewsDiv)
     }
   }
 
@@ -605,7 +609,7 @@ function backgroundTiles(fish, i){
     hideElement("contactpage", 1)
   }
 
-  function submitReview(reviewId){
+  function submitReview(fish, reviewId){
 
     //get reviewer name
     let name = document.getElementById(`reviewname${reviewId}`).value
@@ -650,7 +654,14 @@ function backgroundTiles(fish, i){
       .then(function(object){
         name = ""
         reviewText = "Enter your message here"
+        //reload review divs
+        reloadReviews(reviewId)
+
       })
+  }
+
+  function reloadReviews(fish, reviewId){
+    i = reviewId
   }
 
   function disableVideo(i){
