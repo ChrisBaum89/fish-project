@@ -48,16 +48,21 @@ function createObjects(json){
 
 function createTiles(fish){
   for (let i = 0; i < fish.length; i++){
-    tileDiv = backgroundTiles(fish, i)
-    fishNames(fish, i, tileDiv)
-    fishPictures(fish, i, tileDiv)
-    descripButton(fish, i, tileDiv)
-    reviewsButton(fish, i, tileDiv)
-    addPrice(fish, i, tileDiv)
-    addInStock(fish, i, tileDiv)
-    descripButtonListener(fish, i)
-    reviewsButtonListener(fish, i)
+    populateFishInfo(fish, i)
   }
+}
+
+function populateFishInfo(fish, i){
+  tileDiv = backgroundTiles(fish, i)
+  console.log(tileDiv)
+  fishNames(fish, i, tileDiv)
+  fishPictures(fish, i, tileDiv)
+  descripButton(fish, i, tileDiv)
+  reviewsButton(fish, i, tileDiv)
+  addPrice(fish, i, tileDiv)
+  addInStock(fish, i, tileDiv)
+  descripButtonListener(fish, i)
+  //reviewsButtonListener(fish, i)
 }
 
 //creates number of tiles for the fish found
@@ -319,11 +324,21 @@ function backgroundTiles(fish, i){
 
 // creates listener for when the "Click for Description" button is pressed
   function descripButtonListener(fish, i){
-    document.getElementById(`descripbtn${i}`).addEventListener("click", function(){switchToDescription(fish, i)});
+    document.getElementById(`descripbtn${i}`).addEventListener("click", function(){
+      removeImageElements(fish, i)
+      showDescription(fish, i)
+      imgButton(fish, i)
+      imgButtonListener(fish, i)
+    });
   }
 
   function reviewsButtonListener(fish, i){
-    document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){switchToReviews(fish, i)});
+    document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){
+      removeImageElements(fish, i)
+      showReview(fish, i)
+      imgButton(fish, i)
+      imgButtonListener(fish, i)
+    });
   }
 
   function filterEventListener(fish, categories){
@@ -392,27 +407,27 @@ function backgroundTiles(fish, i){
   }
 
   function switchToDescription(fish, i){
-    hideImageElements(fish, i)
+    //hideImageElements(fish, i)
     showDescription(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
   }
 
   function switchToReviews(fish, i){
-    hideImageElements(fish, i)
+    //hideImageElements(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
-    showReviews(fish, i)
+    //showReviews(fish, i)
   }
 
 //hides elements and shows description
-  function hideImageElements(fish, i){
-    //hides image
-    hideElement("player", i)
-    hideElement("descripbtn", i)
-    hideElement("price", i)
-    hideElement("instock", i)
-    hideElement("reviewsbtn", i)
+  function removeImageElements(fish, i){
+    //remove elements
+    removeElement("player", i)
+    removeElement('descripbtn', i)
+    removeElement('price', i)
+    removeElement('instock', i)
+    removeElement('reviewsbtn', i)
   }
 
   function showDescription(fish, i){
@@ -451,7 +466,7 @@ function backgroundTiles(fish, i){
     element = reviewsDiv.appendChild(reviewDiv)
   }
 
-  function showReviews(fish, i){
+  function showReview(fish, i){
     if (document.getElementById(`reviews${i}`)){
       showElement('reviews', i, "block")
       showElement('imgbtn', i, "block")
@@ -491,14 +506,10 @@ function backgroundTiles(fish, i){
   }
 
   function switchToImage(fish, i){
-    hideElement("fishdescrip", i)
-    hideElement("imgbtn", i)
-    hideElement("reviews", i)
-    showElement("player", i, "block")
-    showElement("descripbtn", i, "block")
-    showElement("price", i, "block")
-    showElement("instock", i, "block")
-    showElement('reviewsbtn', i, "block")
+    removeElement("fishdescrip", i)
+    removeElement("imgbtn", i)
+    removeElement("reviews", i)
+    populateFishInfo(fish, i)
   }
 
   function performFilter(fish, categories, eventValue){
@@ -523,6 +534,12 @@ function backgroundTiles(fish, i){
     let contactPage = document.getElementById(`contactpage1`).remove()
   }
 
+  function removeElement(className, i){
+    try{
+      document.getElementById(`${className}${i}`).remove()
+    }
+    catch{}
+  }
 
   function hideElement(className, i){
     try{
