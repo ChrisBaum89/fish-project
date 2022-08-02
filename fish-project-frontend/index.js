@@ -257,7 +257,6 @@ function backgroundTiles(fish){
     exit.setAttribute("class", "formbutton")
     exit.setAttribute("id", "exitbutton")
     exit.setAttribute("type", "button")
-    exit.onclick = function(){hideElement("contactpage", 1)}
     exit.innerHTML = "Exit"
     form.appendChild(exit)
   }
@@ -414,6 +413,8 @@ function backgroundTiles(fish){
     }
   }
 
+// highlights additional stars when a high star value is selected.
+// e.g. if star 4 is selected then this will highlight star 1 - 4.
   function highlightStar(starDiv, newReviewId){
     clearStars(newReviewId)
     starSelected = starDiv.id.replace("newreviewstar", "")
@@ -433,12 +434,14 @@ function backgroundTiles(fish){
     }
   }
 
+// performs switch to description page of a fish tile
   function switchToDescription(fish, i){
     showDescription(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
   }
 
+// performs switch to review page of a fish tile
   function switchToReviews(fish, i){
     imgButton(fish, i)
     imgButtonListener(fish, i)
@@ -456,6 +459,7 @@ function backgroundTiles(fish){
     removeElement('reviewsbtn', i)
   }
 
+// creates the fish description
   function showDescription(fish){
       let i = fish.id
       const tileDiv = document.getElementById(`rectangle${i}`)
@@ -466,11 +470,16 @@ function backgroundTiles(fish){
       element = tileDiv.appendChild(descripDiv)
   }
 
+// resets the review tiles
   function resetReviewTile(fish, i){
     removeElement("fishname", i)
     removeElement("fishdescrip", i)
     removeElement("reviews", i)
   }
+
+// generates and shows the review tiles.
+// fetches from API since reviews can be added and must be updated
+// in real time
   function showReviewTile(fish, i){
     resetReviewTile(fish, i)
 
@@ -503,6 +512,7 @@ function backgroundTiles(fish){
     });
   }
 
+// displays an existing review
   function createReview(json, i, reviewsDiv){
     let divId = i;
     let review = json
@@ -529,6 +539,8 @@ function backgroundTiles(fish){
 
     }
 }
+
+// creates the "<<" button go to back to main tile
   function imgButton(fish){
     let i = fish.id
     const tile = document.getElementById(`rectangle${i}`)
@@ -537,12 +549,14 @@ function backgroundTiles(fish){
     tile.appendChild(buttonEl);
   }
 
+// creates listener for the "<<" button to go back to main tile
   function imgButtonListener(fish){
     let i = fish.id
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){
       switchToImage(fish, i)});
   }
 
+// performs thw switch back to the main image tile
   function switchToImage(fish){
     let i = fish.id
     removeElement("fishdescrip", i)
@@ -551,6 +565,7 @@ function backgroundTiles(fish){
     populateFishInfo(fish)
   }
 
+// performs the filtering when a filter is selected
   function performFilter(fish, categories, eventValue){
 
     //remove tiles
@@ -575,16 +590,19 @@ function backgroundTiles(fish){
     addTiles(filteredFishArray)
   }
 
+// removes the contact page
   function exitContact(){
     let contactPage = document.getElementById(`contactpage1`).remove()
   }
 
+// removes a specified element
   function removeElement(className, i){
     try{
       document.getElementById(`${className}${i}`).remove()
     }
     catch{}
   }
+
 
   function hideElement(className, i){
     try{
