@@ -63,7 +63,7 @@ function populateFishInfo(fish){
   fishNames(fish, tileDiv)
   fishVideo(fish, tileDiv)
   createDescripButton(fish, tileDiv)
-  reviewsButton(fish, tileDiv)
+  createReviewsButton(fish, tileDiv)
   addPrice(fish, tileDiv)
   addInStock(fish, tileDiv)
   descripButtonListener(fish)
@@ -125,7 +125,7 @@ function backgroundTiles(fish){
   }
 
 // creates a reviews button that is accessible from main tile layout
-  function reviewsButton(fish, tileDiv){
+  function createReviewsButton(fish, tileDiv){
     let i = fish.id
     var buttonEl = document.createElement("button");
     buttonEl.className = "reviewsbtn";
