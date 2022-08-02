@@ -624,10 +624,11 @@ function backgroundTiles(fish, i){
 
     //reviews Div
     let reviewsDiv = document.getElementById(`reviews${reviewId}`)
-    console.log(reviewsDiv)
+    // ^^ verified to be correct with console.log
 
     //get reviewer name
     let name = document.getElementById(`reviewname${reviewId}`).value
+    // ^^ verified to be correct with console.log
 
     //get review box value
     let reviewText = document.getElementById(`reviewbox${reviewId}`).value
@@ -643,6 +644,7 @@ function backgroundTiles(fish, i){
 
     //get fishId
     let fishId = parseInt(reviewId) + 1
+    // ^^ verified to be correct with console.log
 
     //assign form data to object attributes
     const formData = {
@@ -651,6 +653,7 @@ function backgroundTiles(fish, i){
       stars: stars,
       fish_id: fishId
     }
+    // ^^ verified to be correct with console.log
 
     //send post request
     const configObj = {
@@ -667,8 +670,8 @@ function backgroundTiles(fish, i){
         return response.json();
       })
       .then(function(json){
-        fishId = json.data.attributes.fish_id
         specificFish = fish.find(x => x.id === (fishId))
+        // ^^ verified to be correct using console.log
         createReview(json, (fishId - 1), reviewsDiv)
       })
   }
