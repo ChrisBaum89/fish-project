@@ -62,12 +62,12 @@ function populateFishInfo(fish){
   let tileDiv = document.getElementById(`rectangle${i}`)
   fishNames(fish, tileDiv)
   fishVideo(fish, tileDiv)
-  createDescripButton(fish, tileDiv)
-  createReviewsButton(fish, tileDiv)
+  addDescripButton(fish, tileDiv)
+  addReviewButton(fish, tileDiv)
   addPrice(fish, tileDiv)
   addInStock(fish, tileDiv)
   descripButtonListener(fish)
-  reviewsButtonListener(fish)
+  reviewButtonListener(fish)
 }
 
 //creates number of tiles for the fish found
@@ -112,7 +112,7 @@ function backgroundTiles(fish){
   }
 
 // creates "Description" button from main tile layout
-  function createDescripButton(fish, tileDiv){
+  function addDescripButton(fish, tileDiv){
     let i = fish.id
     var buttonEl = document.createElement("button");
 	  buttonEl.className = "descripbtn";
@@ -125,7 +125,7 @@ function backgroundTiles(fish){
   }
 
 // creates a reviews button that is accessible from main tile layout
-  function createReviewsButton(fish, tileDiv){
+  function addReviewButton(fish, tileDiv){
     let i = fish.id
     var buttonEl = document.createElement("button");
     buttonEl.className = "reviewsbtn";
@@ -346,7 +346,7 @@ function backgroundTiles(fish){
     });
   }
 
-  function reviewsButtonListener(fish){
+  function reviewButtonListener(fish){
     let i = fish.id
     document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){
       removeImageElements(fish, i)
