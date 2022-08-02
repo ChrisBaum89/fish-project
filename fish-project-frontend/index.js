@@ -407,17 +407,14 @@ function backgroundTiles(fish, i){
   }
 
   function switchToDescription(fish, i){
-    //hideImageElements(fish, i)
     showDescription(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
   }
 
   function switchToReviews(fish, i){
-    //hideImageElements(fish, i)
     imgButton(fish, i)
     imgButtonListener(fish, i)
-    //showReviews(fish, i)
   }
 
 //hides elements and shows description
