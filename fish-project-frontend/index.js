@@ -613,7 +613,7 @@ function backgroundTiles(fish, i){
         messageText.value = "Enter your message here"
       })
 
-    hideElement("contactpage", 1)
+    exitContact()
   }
 
   function submitReview(fish, reviewId){
