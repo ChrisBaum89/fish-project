@@ -438,6 +438,8 @@ function backgroundTiles(fish, i){
   }
 
   function createReview(i, j, reviewsDiv, fish){
+    let fish_id = fish[i].id
+    // creates reviewDiv
     let reviewDiv = createDiv('review', `${i}${j}`)
     let element = reviewsDiv.appendChild(reviewDiv)
     // create review stars element
@@ -460,22 +462,29 @@ function backgroundTiles(fish, i){
   }
 
   function showReview(fish, i){
-    const reviewsDiv = createDiv('reviews', i)
+    fetch('http://localhost:3000/reviews')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      console.log(json.data)
+      const reviewsDiv = createDiv('reviews', i)
 
-    //populate fish name
-    let tileDiv = document.getElementById(`rectangle${i}`)
-    fishNames(fish, i, tileDiv )
+      //populate fish name
+      let tileDiv = document.getElementById(`rectangle${i}`)
+      fishNames(fish, i, tileDiv)
 
-    //create Div that contains all reviews
-    const tile = document.getElementById(`rectangle${i}`)
-    let element = tile.appendChild(reviewsDiv)
+      //create Div that contains all reviews
+      const tile = document.getElementById(`rectangle${i}`)
+      let element = tile.appendChild(reviewsDiv)
 
-    createReviewsForm(fish, reviewsDiv)
+      createReviewsForm(fish, reviewsDiv)
 
-    //create individual reviews
-    for (let j = 0; j < fish[i].reviews.length; j ++){
-      createReview(i, j, reviewsDiv, fish)
-    }
+      //create individual reviews
+      for (let j = 0; j < json.data.length; j ++){
+        createReview(i, j, reviewsDiv, fish)
+      }
+    });
   }
 
   function imgButton(fish, i){
@@ -630,7 +639,7 @@ function backgroundTiles(fish, i){
       }
     }
 
-    //get fish id
+    //get fishId
     let fishId = parseInt(reviewId) + 1
 
     //assign form data to object attributes
@@ -658,23 +667,8 @@ function backgroundTiles(fish, i){
       .then(function(json){
         fishId = json.data.attributes.fish_id
         specificFish = fish.find(x => x.id === (fishId))
-        reloadReviews(specificFish, fishId)
-
+        showReview(fish, fishId)
       })
-  }
-
-  function reloadReviews(fish, fishId){
-
-    // set i
-    let i = fishId - 1
-
-    // set reviewsDiv
-    let reviewsDiv = document.getElementById(`reviews${i}`)
-
-    // set j
-    let j = fish.reviews.length - 1
-
-    createReview(i, j, reviewsDiv, fish)
   }
 
   function disableVideo(i){
