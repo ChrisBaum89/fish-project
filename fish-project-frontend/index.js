@@ -62,7 +62,7 @@ function populateFishInfo(fish){
   let tileDiv = document.getElementById(`rectangle${i}`)
   fishNames(fish, tileDiv)
   fishVideo(fish, tileDiv)
-  descripButton(fish, tileDiv)
+  createDescripButton(fish, tileDiv)
   reviewsButton(fish, tileDiv)
   addPrice(fish, tileDiv)
   addInStock(fish, tileDiv)
@@ -93,6 +93,8 @@ function backgroundTiles(fish){
 
   }
 
+// used to create a DIV element. The "i" is used to give it a unique
+// identifier.
   function createDiv(className, i){
     const newDiv = document.createElement('div')
     newDiv.setAttribute('class', className)
@@ -109,8 +111,8 @@ function backgroundTiles(fish){
     tileDiv.appendChild(nameDiv)
   }
 
-// creates "Description" button
-  function descripButton(fish, tileDiv){
+// creates "Description" button from main tile layout
+  function createDescripButton(fish, tileDiv){
     let i = fish.id
     var buttonEl = document.createElement("button");
 	  buttonEl.className = "descripbtn";
@@ -122,6 +124,7 @@ function backgroundTiles(fish){
 	  tileDiv.appendChild(buttonEl);
   }
 
+// creates a reviews button that is accessible from main tile layout
   function reviewsButton(fish, tileDiv){
     let i = fish.id
     var buttonEl = document.createElement("button");
