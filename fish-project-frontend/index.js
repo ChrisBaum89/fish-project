@@ -648,27 +648,26 @@ function backgroundTiles(fish, i){
       .then(function(response){
         return response.json();
       })
-      .then(function(object){
-        name = ""
-        reviewText = "Enter your message here"
-        //reload review divs
-        reloadReviews(fish, reviewId)
+      .then(function(json){
+        fishId = json.data.attributes.fish_id
+        specificFish = fish.find(x => x.id === (fishId))
+        console.log(specificFish)
+        reloadReviews(specificFish, fishId)
 
       })
   }
 
-  function reloadReviews(fish, reviewId){
+  function reloadReviews(fish, fishId){
 
     // set i
-    let i = reviewId
+    let i = fishId - 1
 
     // set reviewsDiv
     let reviewsDiv = document.getElementById(`reviews${i}`)
+    console.log(reviewsDiv)
 
     // set j
-    let j = fish[i].reviews.length - 1
-    console.log(fish)
-    console.log(j)
+    let j = fish.reviews.length - 1
 
     createReview(i, j, reviewsDiv, fish)
   }
