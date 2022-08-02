@@ -603,6 +603,7 @@ function backgroundTiles(fish){
     catch{}
   }
 
+// shows specified element
   function showElement(className, i, showType){
     try {
       document.getElementById(`${className}${i}`).style.display = `${showType}`
@@ -611,7 +612,7 @@ function backgroundTiles(fish){
   }
 
 
-
+// Category javascript object
   class Category {
     constructor(id, name, fish_ids){
       this.id = id
@@ -620,6 +621,7 @@ function backgroundTiles(fish){
     }
    }
 
+// Fish javascript object
   class Fish {
     constructor(id, name, description, size, vid_url, category_id, price, number_in_stock, reviews){
       this.id = id
@@ -634,6 +636,7 @@ function backgroundTiles(fish){
     }
   }
 
+// performs the submitting of a message through the "Contact Us" form
   function submitMessage() {
     //obtain form data from elements
     let firstName = document.getElementById("firstname")
@@ -676,6 +679,7 @@ function backgroundTiles(fish){
     exitContact()
   }
 
+// performs the submission of a review through the new review form
   function submitReview(fish, reviewId){
 
     //reviews Div
@@ -736,15 +740,4 @@ function backgroundTiles(fish){
 
         showReviewTile(fish, (fishId - 1))
       });
-  }
-
-  function disableVideo(i){
-    let vid = document.getElementById(`vid${i}`)
-    vid.src = ""
-  }
-
-  function enableVideo(fish){
-    let i = fish.id
-    let vid = document.getElementById(`player${i}`)
-    vid.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
   }
