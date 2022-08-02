@@ -83,7 +83,6 @@ function backgroundTiles(fish){
   function fishVideo(fish, tileDiv){
     let i = fish.id
     let picDiv = createDiv('player', i)
-    console.log(picDiv)
     tileDiv.appendChild(picDiv)
     vidFrame = document.createElement('iframe')
     vidFrame.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
@@ -551,6 +550,21 @@ function backgroundTiles(fish){
       removeElement("rectangle", i)
     }
 
+    //find correct category to match eventValue
+    let category = ""
+    for (i = 0; i < categories.length; i++){
+      if (categories[i].name === eventValue){
+        category = categories[i]
+      }
+    }
+    filteredFishArray = fish.filter(x => x.category_id == category.id)
+
+    //shows all tiles if the "blank" is selected or no fish in that category can be found
+    if (eventValue == ""){
+      filteredFishArray = fish
+    }
+
+    createTiles(filteredFishArray)
   }
 
   function exitContact(){
@@ -713,8 +727,6 @@ function backgroundTiles(fish){
 
   function enableVideo(fish){
     let i = fish.id
-    console.log(fish)
     let vid = document.getElementById(`player${i}`)
-    console.log(vid)
     vid.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
   }
