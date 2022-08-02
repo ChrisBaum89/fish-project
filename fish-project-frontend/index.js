@@ -238,8 +238,6 @@ function backgroundTiles(fish, i){
     exit.onclick = function(){hideElement("contactpage", 1)}
     exit.innerHTML = "Exit"
     form.appendChild(exit)
-
-    messageListener()
   }
 
 //create reviews form
@@ -335,6 +333,7 @@ function backgroundTiles(fish, i){
   function contactListener(){
     document.getElementById('contact').addEventListener("click", function(){
       createContactPage()
+      messageListener()
       exitListener()
     });
   }
@@ -358,10 +357,7 @@ function backgroundTiles(fish, i){
   }
 
   function exitListener(){
-    document.getElementById('exitbutton').addEventListener("click", function(){
-      console.log("exit listener activated")
-      exitContact()
-    });
+    document.getElementById('exitbutton').addEventListener("click", function(){exitContact()});
   }
 
   function reviewStarsListener(newReviewId){
