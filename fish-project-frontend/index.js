@@ -46,7 +46,8 @@ function createObjects(json){
   return objArray
 }
 
-//creates main tiles/cards for each fish
+//dynamically creates main tiles/cards for each fish.  Tile is created
+// dyanmically for each object obtained from the API
 function addTiles(fishArray){
   for (let i = 0; i < fishArray.length; i++){
     fish = fishArray[i]
@@ -399,20 +400,18 @@ function backgroundTiles(fish){
     })
   }
 
+// creates a listener for when you select Exit button on the Contact Us page
   function exitListener(){
     document.getElementById('exitbutton').addEventListener("click", function(){exitContact()});
   }
 
+// creates a listener for selecting the number of stars when creating a new review
   function reviewStarsListener(newReviewId){
     //obtain stars element, which is displayed as an array
     for (let i = 1; i <= 5; i++){
-      let star = starIdFind(i, newReviewId)
+      let star = document.getElementById(`newreviewstar${i}${newReviewId}`)
       star.addEventListener("click", function(){highlightStar(star, newReviewId)});
     }
-  }
-
-  function starIdFind(starNumber, newReviewId){
-    return document.getElementById(`newreviewstar${starNumber}${newReviewId}`)
   }
 
   function highlightStar(starDiv, newReviewId){
