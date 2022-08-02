@@ -210,6 +210,8 @@ function backgroundTiles(fish){
     createContactPageEntries(contactDiv)
   }
 
+// creates the elements of the Contact Us page so that users
+// can enter data into a form
   function createContactPageEntries(contactDiv){
     form = createForm(contactDiv, 'contactform')
 
@@ -259,7 +261,7 @@ function backgroundTiles(fish){
     form.appendChild(exit)
   }
 
-//create reviews form
+//create reviews form so a user can add a review
   function createReviewsForm(fish, reviewsDiv){
     //get ID of specific fish review tile
     reviewId = reviewsDiv.id.replace("reviews", "")
@@ -309,6 +311,7 @@ function backgroundTiles(fish){
 
   }
 
+// used to create a form
   function createForm(parentEl, id){
     var form = document.createElement("form")
     form.setAttribute('method', "post")
@@ -318,6 +321,7 @@ function backgroundTiles(fish){
     return form
   }
 
+// used to create an input element
   function createInputElement(parentEl, typename, name, id, classname){
     const input = document.createElement("input");
     input.setAttribute("type", typename);
@@ -328,6 +332,7 @@ function backgroundTiles(fish){
     return input
   }
 
+// used to create an input label
   function createInputLabel(parentEl, label, classname, text){
       const newLabel = document.createElement("label");
       newLabel.setAttribute("for", label);
@@ -347,6 +352,7 @@ function backgroundTiles(fish){
     });
   }
 
+// creates a listener for when the "Review" button is pressed on a fish tile
   function reviewButtonListener(fish){
     let i = fish.id
     document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){
@@ -357,10 +363,12 @@ function backgroundTiles(fish){
     });
   }
 
+// creates a listener for when the filter is used
   function filterEventListener(fish, categories){
     document.getElementById(`filter`).addEventListener("change", function(){performFilter(fish, categories, event.target.value)});
   }
 
+// creates a listener for when the "Contact Us" is clicked
   function contactListener(){
     document.getElementById('contact').addEventListener("click", function(){
       addContactPage()
@@ -369,6 +377,8 @@ function backgroundTiles(fish){
     });
   }
 
+// creates a listener for when a user clicks on the Contact Us form message boxes
+// the default message disappears
   function messageListener(){
     messagebox = document.getElementById("messagebox")
     messagebox.addEventListener("click", function(){
@@ -378,6 +388,8 @@ function backgroundTiles(fish){
     })
   }
 
+// creates a listener for when a user clicks on the review message boxes
+// the default message disappears
   function reviewListener(reviewId){
     messagebox = document.getElementById(`reviewbox${reviewId}`)
     messagebox.addEventListener("click", function(){
