@@ -14,7 +14,7 @@ function fetchCategories(){
     addTiles(fishArray)
     addFilterEl(categoriesArray)
     filterEventListener(fishArray, categoriesArray)
-    createContactEl()
+    addContactEl()
     contactListener()
   });
 }
@@ -181,14 +181,14 @@ function backgroundTiles(fish){
     document.body.appendChild(filterDiv)
   }
 
-  function createContactEl(){
+  function addContactEl(){
     var contactDiv = createDiv('contact', 1)
     contactDiv.id = 'contact'
     contactDiv.innerText = "Contact Us"
     document.body.appendChild(contactDiv)
   }
 
-  function createContactPage(){
+  function addContactPage(){
     //create Div for contact page
     var contactDiv = createDiv('contactpage', 1)
     document.body.appendChild(contactDiv)
@@ -362,7 +362,7 @@ function backgroundTiles(fish){
 
   function contactListener(){
     document.getElementById('contact').addEventListener("click", function(){
-      createContactPage()
+      addContactPage()
       messageListener()
       exitListener()
     });
