@@ -15,7 +15,7 @@ function fetchCategories(){
     filterEventListener(fish, categories)
     createContactEl()
     contactListener()
-    createContactPage()
+    //createContactPage()
   });
 }
 
@@ -182,10 +182,6 @@ function backgroundTiles(fish, i){
 
     //create contact page entry boxes
     createContactPageEntries(contactDiv)
-
-    exitListener()
-
-    hideElement('contactpage', 1)
   }
 
   function createLoginEl(){
@@ -337,7 +333,10 @@ function backgroundTiles(fish, i){
   }
 
   function contactListener(){
-    document.getElementById('contact').addEventListener("click", function(){switchToContact()});
+    document.getElementById('contact').addEventListener("click", function(){
+      createContactPage()
+      exitListener()
+    });
   }
 
   function messageListener(){
@@ -359,7 +358,10 @@ function backgroundTiles(fish, i){
   }
 
   function exitListener(){
-    document.getElementById('exitbutton').addEventListener("click", function(){hideElement("contactpage", 1)});
+    document.getElementById('exitbutton').addEventListener("click", function(){
+      console.log("exit listener activated")
+      exitContact()
+    });
   }
 
   function reviewStarsListener(newReviewId){
@@ -521,8 +523,8 @@ function backgroundTiles(fish, i){
 
   }
 
-  function switchToContact(){
-    showElement('contactpage', 1, "initial")
+  function exitContact(){
+    let contactPage = document.getElementById(`contactpage1`).remove()
   }
 
 
