@@ -603,14 +603,6 @@ function backgroundTiles(fish){
     catch{}
   }
 
-
-  function hideElement(className, i){
-    try{
-      document.getElementById(`${className}${i}`).style.display= `none`
-    }
-    catch{}
-  }
-
   function showElement(className, i, showType){
     try {
       document.getElementById(`${className}${i}`).style.display = `${showType}`
