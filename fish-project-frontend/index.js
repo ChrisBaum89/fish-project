@@ -670,7 +670,7 @@ function backgroundTiles(fish){
       })
       .then(function(object){
         firstName.value = ""
-        lastname.value = ""
+        lastName.value = ""
         email.value = ""
         phoneNumber.value = ""
         messageText.value = "Enter your message here"
