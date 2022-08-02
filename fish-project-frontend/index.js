@@ -55,6 +55,7 @@ function addTiles(fishArray){
   }
 }
 
+// populates the main fish tile information
 function populateFishInfo(fish){
   i = fish.id
   removeElement("fishname", i)
@@ -137,6 +138,7 @@ function backgroundTiles(fish){
 	  tileDiv.appendChild(buttonEl);
   }
 
+// adds an element to show the price on the main tile
   function addPrice(fish, tileDiv){
     let i = fish.id
     const newDiv = createDiv('price', i)
@@ -144,6 +146,8 @@ function backgroundTiles(fish){
     tileDiv.appendChild(newDiv)
   }
 
+// adds an element to show how many are in stock on main tile
+// also generates an "Out of Stock" message
   function addInStock(fish, tileDiv){
     let i = fish.id
     const inStockEl = createDiv('instock', i)
@@ -157,6 +161,8 @@ function backgroundTiles(fish){
     tileDiv.appendChild(inStockEl)
   }
 
+// creates the filter element which is a dropdown box that allows users
+// to filter by fish category
   function addFilterEl(objects){
     let filterArray = [];
 
@@ -181,6 +187,7 @@ function backgroundTiles(fish){
     document.body.appendChild(filterDiv)
   }
 
+// creates a "Contact Us" element that can be clicked on to submit a comment
   function addContactEl(){
     var contactDiv = createDiv('contact', 1)
     contactDiv.id = 'contact'
@@ -188,6 +195,7 @@ function backgroundTiles(fish){
     document.body.appendChild(contactDiv)
   }
 
+// creates the contact page once the Contact element is clicked on
   function addContactPage(){
     //create Div for contact page
     var contactDiv = createDiv('contactpage', 1)
