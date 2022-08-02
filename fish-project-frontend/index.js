@@ -437,8 +437,15 @@ function backgroundTiles(fish, i){
       element = tileDiv.appendChild(descripDiv)
   }
 
+  function resetReviewTile(fish, i){
+    removeElement("fishname", i)
+    removeElement("fishdescrip", i)
+    removeElement("reviews", i)
+  }
   function showReviewTile(fish, i){
-    fetch('http://localhost:3000/reviews')
+    resetReviewTile(fish, i)
+
+    fetch('http://localhost:3000/categories')
     .then(function(response) {
       return response.json();
     })
@@ -456,35 +463,43 @@ function backgroundTiles(fish, i){
       createReviewsForm(fish, reviewsDiv)
 
       //create individual reviews
-      createReview(json, i, reviewsDiv)
+      for (let j = 0; j < json.length; j++){
+        for(let k = 0; k < json[j].fish.length; k++){
+          for(let l = 0; l < json[j].fish[k].reviews.length; l++){
+            let review = json[j].fish[k].reviews[l]
+            createReview(review, i, reviewsDiv)
+          }
+        }
+      }
     });
   }
 
   function createReview(json, i, reviewsDiv){
-    let reviews = json.data
-    let fishIdTarget = i + 1
-    for (let j = 0; j < reviews.length; j ++){
-      if (reviews[j].attributes.fish_id === fishIdTarget){
-          let reviewDiv = createDiv('review', `${i}${reviews[j].id}`)
-          let element = reviewsDiv.appendChild(reviewDiv)
-          const starsDiv = createDiv('stars', `${i}${reviews[j].id}`)
-          element = reviewDiv.appendChild(starsDiv)
-          const reviewTextDiv = createDiv('reviewtext', `${i}${reviews[j].id}`)
-          element = reviewDiv.appendChild(reviewTextDiv)
+    let divId = i;
+    let review = json
+    let reviewId = review.id
+    let fishId = i+1
 
-          for (let k = 1; k < 6; k++){
-            let starDiv = createDiv('fa fa-star', k)
-            element = starsDiv.appendChild(starDiv)
-            if (k <= reviews[j].attributes.stars){
-              starDiv.className = 'fa fa-star checked'
-            }
+    if (review.fish_id == fishId){
+      let reviewDiv = createDiv('review', `${divId}${reviewId}`)
+      let element = reviewsDiv.appendChild(reviewDiv)
+      const starsDiv = createDiv('stars', `${divId}${reviewId}`)
+      element = reviewDiv.appendChild(starsDiv)
+      const reviewTextDiv = createDiv('reviewtext', `${divId}${reviewId}`)
+      element = reviewDiv.appendChild(reviewTextDiv)
+
+      for (let k = 1; k < 6; k++){
+          let starDiv = createDiv('fa fa-star', k)
+          element = starsDiv.appendChild(starDiv)
+          if (k <= review.stars){
+            starDiv.className = 'fa fa-star checked'
           }
-
-          reviewTextDiv.innerHTML = `\n ${reviews[j].attributes.reviewtext} - ${reviews[j].attributes.name}`
       }
-    }
-  }
 
+      reviewTextDiv.innerHTML = `\n ${review.reviewtext} - ${review.name}`
+
+    }
+}
   function imgButton(fish, i){
     //checks if elements already exist, if not then it creates them
     if (document.getElementById(`imgbtn${i}`)){
@@ -670,10 +685,16 @@ function backgroundTiles(fish, i){
         return response.json();
       })
       .then(function(json){
-        specificFish = fish.find(x => x.id === (fishId))
-        // ^^ verified to be correct using console.log
-        createReview(json, (fishId - 1), reviewsDiv)
       })
+
+    fetch('http://localhost:3000/categories')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(json) {
+
+        showReviewTile(fish, (fishId - 1))
+      });
   }
 
   function disableVideo(i){
