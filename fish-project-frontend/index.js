@@ -62,12 +62,12 @@ function populateFishInfo(fish){
   let tileDiv = document.getElementById(`rectangle${i}`)
   fishNames(fish, tileDiv)
   fishVideo(fish, tileDiv)
-  descripButton(fish, i, tileDiv)
-  reviewsButton(fish, i, tileDiv)
+  descripButton(fish, tileDiv)
+  reviewsButton(fish, tileDiv)
   addPrice(fish, tileDiv)
-  addInStock(fish, i, tileDiv)
-  descripButtonListener(fish, i)
-  reviewsButtonListener(fish, i)
+  addInStock(fish, tileDiv)
+  descripButtonListener(fish)
+  reviewsButtonListener(fish)
 }
 
 //creates number of tiles for the fish found
@@ -110,7 +110,8 @@ function backgroundTiles(fish){
   }
 
 // creates "Description" button
-  function descripButton(fish, i, element){
+  function descripButton(fish, tileDiv){
+    let i = fish.id
     var buttonEl = document.createElement("button");
 	  buttonEl.className = "descripbtn";
     buttonEl.id = `descripbtn${i}`
@@ -118,10 +119,11 @@ function backgroundTiles(fish){
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
     buttonEl.style.borderradius = "20px"
-	  element.appendChild(buttonEl);
+	  tileDiv.appendChild(buttonEl);
   }
 
-  function reviewsButton(fish, i, element){
+  function reviewsButton(fish, tileDiv){
+    let i = fish.id
     var buttonEl = document.createElement("button");
     buttonEl.className = "reviewsbtn";
     buttonEl.id = `reviewsbtn${i}`;
@@ -129,7 +131,7 @@ function backgroundTiles(fish){
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
     buttonEl.style.borderradius = "20px"
-	  element.appendChild(buttonEl);
+	  tileDiv.appendChild(buttonEl);
   }
 
   function addPrice(fish, tileDiv){
@@ -167,7 +169,6 @@ function backgroundTiles(fish){
     select.appendChild(option)
 
     for (let i = 0; i < objects.length; i++){
-      //json.data[i].attributes.name
       option = document.createElement("option")
       option.val = objects[i].name
       option.text = objects[i].name
@@ -332,16 +333,18 @@ function backgroundTiles(fish){
     }
 
 // creates listener for when the "Click for Description" button is pressed
-  function descripButtonListener(fish, i){
+  function descripButtonListener(fish){
+    let i = fish.id
     document.getElementById(`descripbtn${i}`).addEventListener("click", function(){
-      removeImageElements(fish, i)
-      showDescription(fish, i)
-      imgButton(fish, i)
-      imgButtonListener(fish, i)
+      removeImageElements(fish)
+      showDescription(fish)
+      imgButton(fish)
+      imgButtonListener(fish)
     });
   }
 
-  function reviewsButtonListener(fish, i){
+  function reviewsButtonListener(fish){
+    let i = fish.id
     document.getElementById(`reviewsbtn${i}`).addEventListener("click", function(){
       removeImageElements(fish, i)
       showReviewTile(fish, i)
@@ -427,7 +430,8 @@ function backgroundTiles(fish){
   }
 
 //hides elements and shows description
-  function removeImageElements(fish, i){
+  function removeImageElements(fish){
+    let i = fish.id
     //remove elements
     removeElement('fishname', i)
     removeElement("player", i)
@@ -437,12 +441,13 @@ function backgroundTiles(fish){
     removeElement('reviewsbtn', i)
   }
 
-  function showDescription(fish, i){
+  function showDescription(fish){
+      let i = fish.id
       const tileDiv = document.getElementById(`rectangle${i}`)
-      fishNames(fish, i, tileDiv)
+      fishNames(fish, tileDiv)
 
       const descripDiv = createDiv('fishdescrip', i)
-      descripDiv.innerHTML = `\n${fish[i].description}`
+      descripDiv.innerHTML = `\n${fish.description}`
       element = tileDiv.appendChild(descripDiv)
   }
 
@@ -463,7 +468,7 @@ function backgroundTiles(fish){
 
       //populate fish name
       let tileDiv = document.getElementById(`rectangle${i}`)
-      fishNames(fish, i, tileDiv)
+      fishNames(fish, tileDiv)
 
       //create Div that contains all reviews
       const tile = document.getElementById(`rectangle${i}`)
@@ -509,8 +514,9 @@ function backgroundTiles(fish){
 
     }
 }
-  function imgButton(fish, i){
+  function imgButton(fish){
     //checks if elements already exist, if not then it creates them
+    let i = fish.id
     if (document.getElementById(`imgbtn${i}`)){
       showElement('fishdescrip', i, "block")
       showElement('imgbtn', i, "initial")
@@ -523,16 +529,18 @@ function backgroundTiles(fish){
     }
   }
 
-  function imgButtonListener(fish, i){
+  function imgButtonListener(fish){
+    let i = fish.id
     document.getElementById(`imgbtn${i}`).addEventListener("click", function(){
       switchToImage(fish, i)});
   }
 
-  function switchToImage(fish, i){
+  function switchToImage(fish){
+    let i = fish.id
     removeElement("fishdescrip", i)
     removeElement("imgbtn", i)
     removeElement("reviews", i)
-    populateFishInfo(fish, i)
+    populateFishInfo(fish)
   }
 
   function performFilter(fish, categories, eventValue){
@@ -711,7 +719,8 @@ function backgroundTiles(fish){
     vid.src = ""
   }
 
-  function enableVideo(fish, i){
+  function enableVideo(fish){
+    let i = fish.id
     let vid = document.getElementById(`vid${i}`)
-    vid.src = `https://www.youtube.com/embed/${fish[i].vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish[i].vid_url}`
+    vid.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
   }
