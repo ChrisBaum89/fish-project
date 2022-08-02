@@ -15,7 +15,6 @@ function fetchCategories(){
     filterEventListener(fish, categories)
     createContactEl()
     contactListener()
-    //createContactPage()
   });
 }
 
@@ -54,7 +53,9 @@ function createTiles(fish){
 }
 
 function populateFishInfo(fish, i){
-  tileDiv = document.getElementById(`rectangle${i}`)
+  removeElement("fishname", i)
+
+  let tileDiv = document.getElementById(`rectangle${i}`)
   fishNames(fish, i, tileDiv)
   fishVideo(fish, i, tileDiv)
   descripButton(fish, i, tileDiv)
@@ -62,7 +63,7 @@ function populateFishInfo(fish, i){
   addPrice(fish, i, tileDiv)
   addInStock(fish, i, tileDiv)
   descripButtonListener(fish, i)
-  //reviewsButtonListener(fish, i)
+  reviewsButtonListener(fish, i)
 }
 
 //creates number of tiles for the fish found
@@ -75,16 +76,12 @@ function backgroundTiles(fish, i){
 
   //adds picture from the json to the tile
   function fishVideo(fish, i, element){
-    console.log("in fish Video")
     let picDiv = createDiv('player', i)
     element.appendChild(picDiv)
     vidFrame = document.createElement('iframe')
     vidFrame.src = `https://www.youtube.com/embed/${fish[i].vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish[i].vid_url}`
     vidFrame.id = `vid${i}`
     vidFrame.class = 'fishvid'
-    //vidFrame.width = 100
-    console.log(vidFrame)
-    console.log(picDiv)
     picDiv.appendChild(vidFrame)
     var vid = document.getElementById(`vid${i}`)
 
@@ -426,6 +423,7 @@ function backgroundTiles(fish, i){
 //hides elements and shows description
   function removeImageElements(fish, i){
     //remove elements
+    removeElement('fishname', i)
     removeElement("player", i)
     removeElement('descripbtn', i)
     removeElement('price', i)
@@ -434,17 +432,12 @@ function backgroundTiles(fish, i){
   }
 
   function showDescription(fish, i){
-    //checks if fishdesc element alread exists.  If it doesn't then it creates it
-    if (document.getElementById(`fishdescrip${i}`)){
-      showElement('fishdescrip', i, "block")
-      showElement('imgbtn', i, "block")
-    }
-    else{
-      const tile = document.getElementById(`rectangle${i}`)
+      const tileDiv = document.getElementById(`rectangle${i}`)
+      fishNames(fish, i, tileDiv)
+
       const descripDiv = createDiv('fishdescrip', i)
       descripDiv.innerHTML = `\n${fish[i].description}`
-      element = tile.appendChild(descripDiv)
-    }
+      element = tileDiv.appendChild(descripDiv)
   }
 
   function createReview(i, j, reviewsDiv, fish){
@@ -470,23 +463,21 @@ function backgroundTiles(fish, i){
   }
 
   function showReview(fish, i){
-    if (document.getElementById(`reviews${i}`)){
-      showElement('reviews', i, "block")
-      showElement('imgbtn', i, "block")
-    }
-    else{
-      const reviewsDiv = createDiv('reviews', i)
+    const reviewsDiv = createDiv('reviews', i)
 
-      //create Div that contains all reviews
-      const tile = document.getElementById(`rectangle${i}`)
-      let element = tile.appendChild(reviewsDiv)
+    //populate fish name
+    let tileDiv = document.getElementById(`rectangle${i}`)
+    fishNames(fish, i, tileDiv )
 
-      createReviewsForm(fish, reviewsDiv)
+    //create Div that contains all reviews
+    const tile = document.getElementById(`rectangle${i}`)
+    let element = tile.appendChild(reviewsDiv)
 
-      //create individual reviews
-      for (let j = 0; j < fish[i].reviews.length; j ++){
-        createReview(i, j, reviewsDiv, fish)
-      }
+    createReviewsForm(fish, reviewsDiv)
+
+    //create individual reviews
+    for (let j = 0; j < fish[i].reviews.length; j ++){
+      createReview(i, j, reviewsDiv, fish)
     }
   }
 
