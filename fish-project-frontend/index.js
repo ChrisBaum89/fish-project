@@ -210,13 +210,6 @@ function backgroundTiles(fish){
     createContactPageEntries(contactDiv)
   }
 
-  function createLoginEl(){
-    var loginDiv = createDiv('login', 1)
-    loginDiv.id = "login"
-    document.body.appendChild(loginDiv)
-
-  }
-
   function createContactPageEntries(contactDiv){
     form = createForm(contactDiv, 'contactform')
 
