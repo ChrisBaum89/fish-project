@@ -515,18 +515,11 @@ function backgroundTiles(fish){
     }
 }
   function imgButton(fish){
-    //checks if elements already exist, if not then it creates them
     let i = fish.id
-    if (document.getElementById(`imgbtn${i}`)){
-      showElement('fishdescrip', i, "block")
-      showElement('imgbtn', i, "initial")
-    }
-    else{
-      const tile = document.getElementById(`rectangle${i}`)
-      let buttonEl = createDiv('imgbtn', i)
-      buttonEl.innerText = '\n'+"<<";
-      tile.appendChild(buttonEl);
-    }
+    const tile = document.getElementById(`rectangle${i}`)
+    let buttonEl = createDiv('imgbtn', i)
+    buttonEl.innerText = '\n'+"<<";
+    tile.appendChild(buttonEl);
   }
 
   function imgButtonListener(fish){
