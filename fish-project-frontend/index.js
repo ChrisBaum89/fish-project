@@ -83,6 +83,7 @@ function backgroundTiles(fish){
   function fishVideo(fish, tileDiv){
     let i = fish.id
     let picDiv = createDiv('player', i)
+    console.log(picDiv)
     tileDiv.appendChild(picDiv)
     vidFrame = document.createElement('iframe')
     vidFrame.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
@@ -545,18 +546,9 @@ function backgroundTiles(fish){
 
   function performFilter(fish, categories, eventValue){
 
-    for (let i = 0; i < fish.length; i++){
-      showElement('rectangle', i, 'block')
-      enableVideo(fish, i)
-
-      if (eventValue != ""){
-        let category = categories.find(category => category.name === eventValue)
-        if (fish[i].category_id != category.id) {
-          hideElement('rectangle', i)
-          disableVideo(i)
-        }
-      }
-
+    //remove tiles
+    for (let i = 1; i <= fish.length; i++) {
+      removeElement("rectangle", i)
     }
 
   }
@@ -721,6 +713,8 @@ function backgroundTiles(fish){
 
   function enableVideo(fish){
     let i = fish.id
-    let vid = document.getElementById(`vid${i}`)
+    console.log(fish)
+    let vid = document.getElementById(`player${i}`)
+    console.log(vid)
     vid.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
   }
