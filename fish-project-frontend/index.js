@@ -2,17 +2,18 @@ document.addEventListener( "DOMContentLoaded", function () {
   fetchCategories()
 });
 
+//obtain data from API
 function fetchCategories(){
   fetch('http://localhost:3000/categories')
   .then(function(response) {
     return response.json();
   })
   .then(function(json) {
-    let categories = createObjects(json)[0]
-    let fish = createObjects(json)[1]
-    createTiles(fish)
-    createFilterEl(categories)
-    filterEventListener(fish, categories)
+    let categoriesArray = createObjects(json)[0]
+    let fishArray = createObjects(json)[1]
+    createTiles(fishArray)
+    createFilterEl(categoriesArray)
+    filterEventListener(fishArray, categoriesArray)
     createContactEl()
     contactListener()
   });
@@ -45,22 +46,25 @@ function createObjects(json){
   return objArray
 }
 
-function createTiles(fish){
-  for (let i = 0; i < fish.length; i++){
-    tileDiv = backgroundTiles(fish, i)
-    populateFishInfo(fish, i)
+//creates main tiles/cards for each fish
+function createTiles(fishArray){
+  for (let i = 0; i < fishArray.length; i++){
+    fish = fishArray[i]
+    tileDiv = backgroundTiles(fish)
+    populateFishInfo(fish)
   }
 }
 
-function populateFishInfo(fish, i){
+function populateFishInfo(fish){
+  i = fish.id
   removeElement("fishname", i)
 
   let tileDiv = document.getElementById(`rectangle${i}`)
-  fishNames(fish, i, tileDiv)
-  fishVideo(fish, i, tileDiv)
+  fishNames(fish, tileDiv)
+  fishVideo(fish, tileDiv)
   descripButton(fish, i, tileDiv)
   reviewsButton(fish, i, tileDiv)
-  addPrice(fish, i, tileDiv)
+  addPrice(fish, tileDiv)
   addInStock(fish, i, tileDiv)
   descripButtonListener(fish, i)
   reviewsButtonListener(fish, i)
@@ -68,18 +72,20 @@ function populateFishInfo(fish, i){
 
 //creates number of tiles for the fish found
 //adds fish names, pictures, and button to go to description
-function backgroundTiles(fish, i){
-    let tileDiv = createDiv('rectangle', i)
+function backgroundTiles(fish){
+    divId = fish.id
+    let tileDiv = createDiv('rectangle', divId)
     document.body.appendChild(tileDiv)
     return tileDiv
   }
 
   //adds picture from the json to the tile
-  function fishVideo(fish, i, element){
+  function fishVideo(fish, tileDiv){
+    let i = fish.id
     let picDiv = createDiv('player', i)
-    element.appendChild(picDiv)
+    tileDiv.appendChild(picDiv)
     vidFrame = document.createElement('iframe')
-    vidFrame.src = `https://www.youtube.com/embed/${fish[i].vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish[i].vid_url}`
+    vidFrame.src = `https://www.youtube.com/embed/${fish.vid_url}` + `?autoplay=1&mute=1&loop=1&playlist=${fish.vid_url}`
     vidFrame.id = `vid${i}`
     vidFrame.class = 'fishvid'
     picDiv.appendChild(vidFrame)
@@ -95,11 +101,12 @@ function backgroundTiles(fish, i){
   }
 
   //adds fish name from the json to the tile
-  function fishNames(fish, i, element){
-    const nameDiv = createDiv('fishname', i)
-    nameDiv.innerHTML = fish[i].name
+  function fishNames(fish, tileDiv){
+    let divId = fish.id
+    const nameDiv = createDiv('fishname', divId)
+    nameDiv.innerHTML = fish.name
     nameDiv.style.textAlign = 'center'
-    element.appendChild(nameDiv)
+    tileDiv.appendChild(nameDiv)
   }
 
 // creates "Description" button
@@ -125,22 +132,24 @@ function backgroundTiles(fish, i){
 	  element.appendChild(buttonEl);
   }
 
-  function addPrice(fish, i, element){
+  function addPrice(fish, tileDiv){
+    let i = fish.id
     const newDiv = createDiv('price', i)
-    newDiv.innerText = `Price: $${fish[i].price}`
-    element.appendChild(newDiv)
+    newDiv.innerText = `Price: $${fish.price}`
+    tileDiv.appendChild(newDiv)
   }
 
-  function addInStock(fish, i, element){
+  function addInStock(fish, element){
+    let i = fish.id
     const inStockEl = createDiv('instock', i)
-    if (fish[i].number_in_stock > 0){
-      inStockEl.innerText = `Number in Stock: ${fish[i].number_in_stock}`
+    if (fish.number_in_stock > 0){
+      inStockEl.innerText = `Number in Stock: ${fish.number_in_stock}`
     }
     else{
       inStockEl.innerText = `Out of Stock`
       inStockEl.style.color = 'red'
     }
-    element.appendChild(inStockEl)
+    tileDiv.appendChild(inStockEl)
   }
 
   function createFilterEl(objects){
