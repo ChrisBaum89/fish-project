@@ -12,7 +12,7 @@ function fetchCategories(){
     let categoriesArray = createObjects(json)[0]
     let fishArray = createObjects(json)[1]
     addTiles(fishArray)
-    createFilterEl(categoriesArray)
+    addFilterEl(categoriesArray)
     filterEventListener(fishArray, categoriesArray)
     createContactEl()
     contactListener()
@@ -157,7 +157,7 @@ function backgroundTiles(fish){
     tileDiv.appendChild(inStockEl)
   }
 
-  function createFilterEl(objects){
+  function addFilterEl(objects){
     let filterArray = [];
 
     var filterDiv = createDiv('filter', i)
