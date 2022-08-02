@@ -346,9 +346,9 @@ function backgroundTiles(fish){
     let i = fish.id
     document.getElementById(`descripbtn${i}`).addEventListener("click", function(){
       removeImageElements(fish)
-      showDescription(fish)
       imgButton(fish)
       imgButtonListener(fish)
+      showDescription(fish)
     });
   }
 
