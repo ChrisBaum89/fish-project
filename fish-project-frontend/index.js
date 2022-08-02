@@ -141,7 +141,7 @@ function backgroundTiles(fish){
     tileDiv.appendChild(newDiv)
   }
 
-  function addInStock(fish, element){
+  function addInStock(fish, tileDiv){
     let i = fish.id
     const inStockEl = createDiv('instock', i)
     if (fish.number_in_stock > 0){
