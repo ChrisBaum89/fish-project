@@ -560,7 +560,7 @@ function backgroundTiles(fish){
       filteredFishArray = fish
     }
 
-    createTiles(filteredFishArray)
+    addTiles(filteredFishArray)
   }
 
   function exitContact(){
