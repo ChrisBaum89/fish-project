@@ -13,8 +13,8 @@ function fetchCategories(){
     let fishArray = createObjects(json)[1]
     addTiles(fishArray)
     addFilterEl(categoriesArray)
-    filterEventListener(fishArray, categoriesArray)
     addContactEl()
+    filterEventListener(fishArray, categoriesArray)
     contactListener()
   });
 }
