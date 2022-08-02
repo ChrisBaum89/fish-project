@@ -11,7 +11,7 @@ function fetchCategories(){
   .then(function(json) {
     let categoriesArray = createObjects(json)[0]
     let fishArray = createObjects(json)[1]
-    createTiles(fishArray)
+    addTiles(fishArray)
     createFilterEl(categoriesArray)
     filterEventListener(fishArray, categoriesArray)
     createContactEl()
@@ -47,7 +47,7 @@ function createObjects(json){
 }
 
 //creates main tiles/cards for each fish
-function createTiles(fishArray){
+function addTiles(fishArray){
   for (let i = 0; i < fishArray.length; i++){
     fish = fishArray[i]
     tileDiv = backgroundTiles(fish)
