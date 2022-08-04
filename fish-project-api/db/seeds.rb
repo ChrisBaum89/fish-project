@@ -89,21 +89,21 @@ bluehippo = Fish.create(
 
   review1 = Review.create(
     name: "Chris",
-    reviewtext: "Fish was good",
+    reviewtext: "Best fish ever!",
     stars: 5,
     fish_id: 1
   )
 
   review2 = Review.create(
     name: "Bleys",
-    reviewtext: "Fish was just ok",
+    reviewtext: "Fish was just ok.  Didn't last long with my great white sharks.",
     stars: 2,
     fish_id: 1
   )
 
   review3 = Review.create(
     name: "Adam",
-    reviewtext: "I ate fish",
+    reviewtext: "I ate the fish. It was pretty yummy.",
     stars: 4,
     fish_id: 2
   )
