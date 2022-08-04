@@ -703,7 +703,7 @@ function backgroundTiles(fish){
     }
 
     //get fishId
-    let fishId = parseInt(reviewId) + 1
+    let fishId = parseInt(reviewId)
     // ^^ verified to be correct with console.log
 
     //assign form data to object attributes
