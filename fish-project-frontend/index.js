@@ -404,7 +404,6 @@ function backgroundTiles(fish){
   function submitReviewListener(fish, reviewId){
     submit = document.getElementById(`reviewsubmit${reviewId}`)
     submit.addEventListener("click", function(){
-      console.log(fish)
       submitReview(fish, reviewId)})
   }
 
