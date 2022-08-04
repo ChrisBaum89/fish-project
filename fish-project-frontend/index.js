@@ -517,7 +517,7 @@ function backgroundTiles(fish){
     let divId = i;
     let review = json
     let reviewId = review.id
-    let fishId = i+1
+    let fishId = i
 
     if (review.fish_id == fishId){
       let reviewDiv = createDiv('review', `${divId}${reviewId}`)
