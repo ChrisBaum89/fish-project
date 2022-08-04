@@ -301,11 +301,12 @@ function backgroundTiles(fish){
     submit.setAttribute("class", "formbutton")
     submit.setAttribute("value", "Submit")
     submit.setAttribute("type", "button")
-    submit.setAttribute("id", "reviewsubmit")
-    submit.onclick = function(){submitReview(fish, reviewId)}
+    submit.setAttribute("id", `reviewsubmit${reviewId}`)
+    //submit.onclick = function(){submitReview(fish, reviewId)}
     submit.innerHTML = "Submit"
     form.appendChild(submit)
 
+  submitReviewListener(fish, reviewId)
   reviewListener(reviewId)
   reviewStarsListener(reviewId)
 
@@ -393,10 +394,18 @@ function backgroundTiles(fish){
   function reviewListener(reviewId){
     messagebox = document.getElementById(`reviewbox${reviewId}`)
     messagebox.addEventListener("click", function(){
+      messagebox = document.getElementById(`reviewbox${reviewId}`)
       if (messagebox.value == "Enter your review here"){
         messagebox.value = "";
       }
     })
+  }
+
+  function submitReviewListener(fish, reviewId){
+    submit = document.getElementById(`reviewsubmit${reviewId}`)
+    submit.addEventListener("click", function(){
+      console.log(fish)
+      submitReview(fish, reviewId)})
   }
 
 // creates a listener for when you select Exit button on the Contact Us page
@@ -737,7 +746,6 @@ function backgroundTiles(fish){
         return response.json();
       })
       .then(function(json) {
-
         showReviewTile(fish, (fishId))
       });
   }
