@@ -738,6 +738,6 @@ function backgroundTiles(fish){
       })
       .then(function(json) {
 
-        showReviewTile(fish, (fishId - 1))
+        showReviewTile(fish, (fishId))
       });
   }
