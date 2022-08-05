@@ -1,6 +1,6 @@
 # README
 
-This application is called The Fish Store and is used by TheFishStore, LLC to display fish that are available at their store. It uses a card style display to display the fish.  The cards have a video that show the fish that way the user is able to see what the fish would look like in a fish tank. The cards also have the ability to rotate between the display information and a full description.
+This application is called The Fish Store and is used by TheFishStore, LLC to display fish that are available at their store. It uses a card/tile style display to display the fish.  The cards have a video that show the fish that way the user is able to see what the fish would look like in a fish tank. The cards also have the ability to rotate between the display information and a full description.
 
 The Fish Store application can be accessed through the index.html file.
 
