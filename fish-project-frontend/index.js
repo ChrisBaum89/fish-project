@@ -211,26 +211,6 @@ function backgroundTiles(fish){
     formInputEl(3, "email", "Email:  ")
     formInputEl(4, "phonenumber", "Phone Number:  ")
 
-    //let newDiv = createDiv("forminput", 1)
-    //form.appendChild(newDiv)
-    //createInputLabel(newDiv,  "firstname", "contactlabel", "First Name:  ")
-    //createInputElement(newDiv, "text", "firstname", "firstname", "contactinput")
-
-    //newDiv = createDiv("forminput", 2)
-    //form.appendChild(newDiv)
-    //createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
-    //createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
-
-    //newDiv = createDiv("forminput", 3)
-    //form.appendChild(newDiv)
-    //createInputLabel(newDiv, "email", "contactlabel", "Email:  ")
-    //createInputElement(newDiv, "text", "email", "email", "contactinput")
-
-    //newDiv = createDiv("forminput", 4)
-    //form.appendChild(newDiv)
-    //createInputLabel(newDiv, "phonenumber", "contactlabel", "Phone Number:  ")
-    //createInputElement(newDiv, "text", "phonenumber", "phonenumber", "contactinput")
-
     const textarea = document.createElement("TEXTAREA");
     textarea.setAttribute("class", 'messagebox')
     textarea.setAttribute("id", "messagebox")
@@ -256,6 +236,7 @@ function backgroundTiles(fish){
     form.appendChild(exit)
   }
 
+// create input element for a form
 function formInputEl(numId, elLabel, labelDesc){
   let newDiv = createDiv("forminput", numId)
   form.appendChild(newDiv)
@@ -403,6 +384,7 @@ function formInputEl(numId, elLabel, labelDesc){
     })
   }
 
+// creates a listener for the submit button on the new review form.
   function submitReviewListener(fish, reviewId){
     submit = document.getElementById(`reviewsubmit${reviewId}`)
     submit.addEventListener("click", function(){
@@ -524,17 +506,15 @@ function formInputEl(numId, elLabel, labelDesc){
 
 // displays an existing review
   function createReview(json, i, reviewsDiv){
-    let divId = i;
     let review = json
     let reviewId = review.id
-    let fishId = i
 
-    if (review.fish_id == fishId){
-      let reviewDiv = createDiv('review', `${divId}${reviewId}`)
+    if (review.fish_id == i){
+      let reviewDiv = createDiv('review', `${i}${reviewId}`)
       let element = reviewsDiv.appendChild(reviewDiv)
-      const starsDiv = createDiv('stars', `${divId}${reviewId}`)
+      const starsDiv = createDiv('stars', `${i}${reviewId}`)
       element = reviewDiv.appendChild(starsDiv)
-      const reviewTextDiv = createDiv('reviewtext', `${divId}${reviewId}`)
+      const reviewTextDiv = createDiv('reviewtext', `${i}${reviewId}`)
       element = reviewDiv.appendChild(reviewTextDiv)
 
       for (let k = 1; k < 6; k++){
