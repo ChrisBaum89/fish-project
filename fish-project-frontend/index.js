@@ -64,8 +64,7 @@ function populateFishInfo(fish){
   let tileDiv = document.getElementById(`rectangle${i}`)
   fishNames(fish, tileDiv)
   fishVideo(fish, tileDiv)
-  addDescripButton(fish, tileDiv)
-  addReviewButton(fish, tileDiv)
+  addTileButtons(fish, tileDiv)
   addPrice(fish, tileDiv)
   addInStock(fish, tileDiv)
   descripButtonListener(fish)
@@ -113,26 +112,17 @@ function backgroundTiles(fish){
     tileDiv.appendChild(nameDiv)
   }
 
-// creates "Description" button from main tile layout
-  function addDescripButton(fish, tileDiv){
-    let i = fish.id
-    var buttonEl = document.createElement("button");
-	  buttonEl.className = "descripbtn";
-    buttonEl.id = `descripbtn${i}`
-	  buttonEl.innerText = "Description";
-    buttonEl.style.color = "blue"
-    buttonEl.style.fontSize = '18px'
-    buttonEl.style.borderradius = "20px"
-	  tileDiv.appendChild(buttonEl);
+  function addTileButtons(fish, tileDiv){
+    tileButton(fish, tileDiv, "descripbtn", "Description")
+    tileButton(fish, tileDiv, "reviewsbtn", "Reviews")
   }
 
-// creates a reviews button that is accessible from main tile layout
-  function addReviewButton(fish, tileDiv){
+  function tileButton(fish, tileDiv, btnName, btnText){
     let i = fish.id
     var buttonEl = document.createElement("button");
-    buttonEl.className = "reviewsbtn";
-    buttonEl.id = `reviewsbtn${i}`;
-    buttonEl.innerText = "Reviews";
+	  buttonEl.className = `${btnName}`;
+    buttonEl.id = `${btnName}${i}`
+	  buttonEl.innerText = `${btnText}`;
     buttonEl.style.color = "blue"
     buttonEl.style.fontSize = '18px'
     buttonEl.style.borderradius = "20px"
