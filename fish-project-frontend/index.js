@@ -206,25 +206,30 @@ function backgroundTiles(fish){
   function createContactPageEntries(contactDiv){
     form = createForm(contactDiv, 'contactform')
 
-    let newDiv = createDiv("forminput", 1)
-    form.appendChild(newDiv)
-    createInputLabel(newDiv,  "firstname", "contactlabel", "First Name:  ")
-    createInputElement(newDiv, "text", "firstname", "firstname", "contactinput")
+    formInputEl(1, "firstname", "First Name:  ")
+    formInputEl(2, "lastname", "Last Name:  ")
+    formInputEl(3, "email", "Email:  ")
+    formInputEl(4, "phonenumber", "Phone Number:  ")
 
-    newDiv = createDiv("forminput", 2)
-    form.appendChild(newDiv)
-    createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
-    createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
+    //let newDiv = createDiv("forminput", 1)
+    //form.appendChild(newDiv)
+    //createInputLabel(newDiv,  "firstname", "contactlabel", "First Name:  ")
+    //createInputElement(newDiv, "text", "firstname", "firstname", "contactinput")
 
-    newDiv = createDiv("forminput", 3)
-    form.appendChild(newDiv)
-    createInputLabel(newDiv, "email", "contactlabel", "Email:  ")
-    createInputElement(newDiv, "text", "email", "email", "contactinput")
+    //newDiv = createDiv("forminput", 2)
+    //form.appendChild(newDiv)
+    //createInputLabel(newDiv, "lastname", "contactlabel", "Last Name:  ")
+    //createInputElement(newDiv, "text", "lastname", "lastname", "contactinput")
 
-    newDiv = createDiv("forminput", 4)
-    form.appendChild(newDiv)
-    createInputLabel(newDiv, "phonenumber", "contactlabel", "Phone Number:  ")
-    createInputElement(newDiv, "text", "phonenumber", "phonenumber", "contactinput")
+    //newDiv = createDiv("forminput", 3)
+    //form.appendChild(newDiv)
+    //createInputLabel(newDiv, "email", "contactlabel", "Email:  ")
+    //createInputElement(newDiv, "text", "email", "email", "contactinput")
+
+    //newDiv = createDiv("forminput", 4)
+    //form.appendChild(newDiv)
+    //createInputLabel(newDiv, "phonenumber", "contactlabel", "Phone Number:  ")
+    //createInputElement(newDiv, "text", "phonenumber", "phonenumber", "contactinput")
 
     const textarea = document.createElement("TEXTAREA");
     textarea.setAttribute("class", 'messagebox')
@@ -250,6 +255,13 @@ function backgroundTiles(fish){
     exit.innerHTML = "Exit"
     form.appendChild(exit)
   }
+
+function formInputEl(numId, elLabel, labelDesc){
+  let newDiv = createDiv("forminput", numId)
+  form.appendChild(newDiv)
+  createInputLabel(newDiv, elLabel, "contactlabel", labelDesc)
+  createInputElement(newDiv, "text", elLabel, elLabel, "contactinput")
+}
 
 //create reviews form so a user can add a review
   function createReviewsForm(fish, reviewsDiv){
