@@ -593,15 +593,6 @@ function formInputEl(numId, elLabel, labelDesc){
     catch{}
   }
 
-// shows specified element
-  function showElement(className, i, showType){
-    try {
-      document.getElementById(`${className}${i}`).style.display = `${showType}`
-    }
-    catch{}
-  }
-
-
 // Category javascript object
   class Category {
     constructor(id, name, fish_ids){
