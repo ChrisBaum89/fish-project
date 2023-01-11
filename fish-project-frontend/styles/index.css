@@ -64,7 +64,7 @@ h2{
   color:blue;
   position: absolute;
   top:0px;
-  left: 600px;
+  right: 10px;
   font-family: "Fantasy", "papyrus"
 }
 
@@ -73,7 +73,7 @@ h2{
   font-size: 20px;
   position: absolute;
   top:50px;
-  left: 600px;
+  right: 10px;
   text-decoration: underline;
   font-family: "Fantasy", "papyrus"
 }
