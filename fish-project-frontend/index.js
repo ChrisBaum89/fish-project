@@ -215,6 +215,8 @@ function backgroundTiles(fish){
     textarea.setAttribute("class", 'messagebox')
     textarea.setAttribute("id", "messagebox")
     textarea.setAttribute("name", "messagebox")
+    textarea.setAttribute("rows", "10")
+    textarea.setAttribute("cols", "50")
     let t = document.createTextNode("Enter your message here")
     textarea.appendChild(t)
     form.appendChild(textarea)
