@@ -46,8 +46,8 @@ background-size: 100% 100%;
 
 .filter{
   position: absolute;
-  top: 50px;
-  left: 300px;
+  top: 35px;
+  left: 35%;
   font-family: "Fantasy", "papyrus"
 }
 
@@ -60,7 +60,14 @@ h1{
   font-family: "Fantasy", "papyrus";
 }
 
-h2{
+/* h2{
+  color:blue;
+  position: absolute;
+  top:0px;
+  right: 10px;
+  font-family: "Fantasy", "papyrus"
+} */
+.call-div{
   color:blue;
   position: absolute;
   top:0px;
@@ -154,4 +161,13 @@ h2{
 
 .checked {
   color: orange;
+}
+
+@media (max-width: 900px){
+  .call-div{
+      display: none;
+  }
+  .contact{
+    display: none;
+  }
 }
