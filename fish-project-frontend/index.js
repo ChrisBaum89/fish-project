@@ -9,6 +9,7 @@ function fetchCategories(){
     return response.json();
   })
   .then(function(json) {
+    console.log("d")
     let categoriesArray = createObjects(json)[0]
     let fishArray = createObjects(json)[1]
     addTiles(fishArray)
