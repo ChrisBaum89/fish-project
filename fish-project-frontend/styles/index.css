@@ -135,7 +135,8 @@ h1{
 
 .formbutton{
   position: relative;
-  left: 40%;
+  margin-top: 20px;
+  left: 32%;
   font-size: 20px;
   height: 30px;
   width: 100px;
